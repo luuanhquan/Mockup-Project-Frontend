@@ -79,8 +79,8 @@ export const routes: Routes = [
         loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
       },
       {
-        path: 'widgets',
-        loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
+        path: 'team1',
+        loadChildren: () => import('./team1/base.module').then(m => m.BaseModule)
       }
     ]
   },
