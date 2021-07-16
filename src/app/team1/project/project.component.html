@@ -1,325 +1,472 @@
-<div class="animated fadeIn">
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-        <div class="card-footer">Card footer</div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          <i class="fa fa-check"></i>Card with icon
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Card with switch
-          <div class="card-header-actions" style="height: 21px;" >
-            <label class="switch switch-sm switch-label switch-info" >
-              <input type="checkbox" class="switch-input" checked>
-              <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-            </label>
+<div class="row" >
+  <div class="col-md-6 mb-4"   *ngFor="let pSummary of pSummary" >
+    <tabset   >
+      <tab heading="Summary" >
+        <form id="form-summary" action="">
+          <img
+            class="img-project d-block m-auto"
+            [src]="pSummary.thumbnail"
+            alt=""
+          />
+          <p class="title-project mt-2" style="text-transform: uppercase;">{{ pSummary.titleProject }}</p>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input"
+              >Tên đơn vị</label
+            >
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="text-input"
+                name="text-input"
+                class="form-control"
+                [value]="pSummary.tenDonVi"
+              />
+            </div>
           </div>
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Card with label
-          <div class="card-header-actions">
-            <span class="badge badge-success">Success</span>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="textarea-input"
+              >Mô tả dự án</label
+            >
+            <div class="col-md-8">
+              <textarea
+                id="textarea-input"
+                name="textarea-input"
+                rows="3"
+                class="form-control"
+                placeholder="Tổng quan dự án"
+                [value]="pSummary.tongQuanDuAn"
+              ></textarea>
+            </div>
           </div>
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Card with label
-          <div class="card-header-actions">
-            <span class="badge badge-pill badge-danger">42</span>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input"
+              >Tiến độ dự án</label
+            >
+            <div class="col-sm-4">
+              <progress
+                class="progress progress-striped" style="margin-top: 10px;"
+                [value]="pSummary.tienDoDuAn"
+                [max]="100"
+                type="warning"
+              >
+                {{ pSummary.tienDoDuAn }}
+              </progress>
+            </div>
           </div>
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-primary">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-secondary">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-success">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-info">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-warning">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-danger">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input"
+              >Tổng số bug</label
+            >
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="text-input"
+                name="text-input"
+                class="form-control"
+                [value]="pSummary.bugProject"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input"
+              >Tổng số nhân viên</label
+            >
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="text-input"
+                name="text-input"
+                class="form-control"
+                [value]="pSummary.tongNhanVien"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input"
+              >Now phase</label
+            >
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="text-input"
+                name="text-input"
+                class="form-control"
+                [value]="pSummary.nowPhase"
+              />
+            </div>
+          </div>
+        </form>
+      </tab>
+      <tab heading="Members">
+        <form id="form-members" action="">
+          <img
+            class="img-project d-block m-auto"
+            [src]="pSummary.thumbnail"
+            alt=""
+          />
+          <p class="title-project">{{pSummary.titleProject}}</p>
+          <div class="card">
+            <div class="card-header">
+              <i class="fa fa-align-justify"></i> List Member
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Username</th>
+                    <th>Date registered</th>
+                    <th>Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{pSummary.userName}}</td>
+                    <td>{{pSummary.dateRegistered |date }}</td>
+                    <td>{{pSummary.role}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="#">Prev</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </tab>
+      <tab heading="Issues">
+        <form id="form-issues" action="">
+          <img
+            class="img-project d-block m-auto"
+            [src]="pSummary.thumbnail"
+            alt=""
+          />
+          <p class="title-project">{{pSummary.titleProject}}</p>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="company">Tên công ty</label>
+              <input
+                type="text"
+                class="form-control"
+                id="company"
+                placeholder="Enter your company name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="vat">VAT</label>
+              <input
+                type="text"
+                class="form-control"
+                id="vat"
+                placeholder="PL1234567890"
+              />
+            </div>
+            <div class="form-group">
+              <label for="street">Street</label>
+              <input
+                type="text"
+                class="form-control"
+                id="street"
+                placeholder="Enter street name"
+              />
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-8">
+                <label for="city">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  placeholder="Enter your city"
+                />
+              </div>
+              <div class="form-group col-sm-4">
+                <label for="postal-code">Postal Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="postal-code"
+                  placeholder="Postal Code"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input
+                type="text"
+                class="form-control"
+                id="country"
+                placeholder="Country name"
+              />
+            </div>
+          </div>
+        </form>
+      </tab>
+    </tabset>
+  </div>
 
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-primary">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-secondary">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-success">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-info">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-warning">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-danger">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-primary text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-success text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-info text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-warning text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-danger text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-primary text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-primary">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-success">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-info">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-warning">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-danger">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
+  <!-- project1 -->
+  <!-- <div class="col-md-6 mb-4">
+    <tabset>
+      <tab heading="Summary">
+        <form id="form-summary" action="">
+          <img
+            class="img-project d-block m-auto"
+            src="../../../assets/img/image-project1.png"
+            alt=""
+          />
+          <p class="title-project">Dự án ITSOL 1</p>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input"
+              >Tên đơn vị</label
+            >
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="text-input"
+                name="text-input"
+                class="form-control"
+                placeholder="ITSOL, Viettel, FPT SoftWare,..."
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="textarea-input"
+              >Mô tả dự án</label
+            >
+            <div class="col-md-8">
+              <textarea
+                id="textarea-input"
+                name="textarea-input"
+                rows="3"
+                class="form-control"
+                placeholder="Tổng quan dự án"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input"
+              >Tiến độ dự án</label
+            >
+            <div class="col-sm-4">
+              <progress
+                class="progress progress-striped"
+                [value]="20"
+                [max]="100"
+                type="warning"
+              >
+                20%
+              </progress>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input"
+              >Tổng số bug</label
+            >
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="text-input"
+                name="text-input"
+                class="form-control"
+                placeholder="Bug Project"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input"
+              >Tổng số nhân viên</label
+            >
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="text-input"
+                name="text-input"
+                class="form-control"
+                placeholder="Nhân viên"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input"
+              >Now phase</label
+            >
+            <div class="col-md-8">
+              <input
+                type="text"
+                id="text-input"
+                name="text-input"
+                class="form-control"
+                placeholder="Now phase"
+              />
+            </div>
+          </div>
+        </form>
+      </tab>
+      <tab heading="Members">
+        <form id="form-members" action="">
+          <img
+            class="img-project d-block m-auto"
+            src="../../../assets/img/image-project1.png"
+            alt=""
+          />
+          <p class="title-project">Dự án ITSOL 1</p>
+          <div class="card">
+            <div class="card-header">
+              <i class="fa fa-align-justify"></i> List Member
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Username</th>
+                    <th>Date registered</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Samppa Nori</td>
+                    <td>2012/01/01</td>
+                    <td>Member</td>
+                    <td>
+                      <span class="badge badge-success">Active</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Estavan Lykos</td>
+                    <td>2012/02/01</td>
+                    <td>Staff</td>
+                    <td>
+                      <span class="badge badge-danger">Banned</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Chetan Mohamed</td>
+                    <td>2012/02/01</td>
+                    <td>Admin</td>
+                    <td>
+                      <span class="badge badge-secondary">Inactive</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Derick Maximinus</td>
+                    <td>2012/03/01</td>
+                    <td>Member</td>
+                    <td>
+                      <span class="badge badge-warning">Pending</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Friderik Dávid</td>
+                    <td>2012/01/21</td>
+                    <td>Staff</td>
+                    <td>
+                      <span class="badge badge-success">Active</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="#">Prev</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </tab>
+      <tab heading="Issues">
+        <form id="form-issues" action="">
+          <img
+            class="img-project d-block m-auto"
+            src="../../../assets/img/image-project1.png"
+            alt=""
+          />
+          <p class="title-project">Dự án ITSOL 1</p>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input
+                type="text"
+                class="form-control"
+                id="company"
+                placeholder="Enter your company name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="vat">VAT</label>
+              <input
+                type="text"
+                class="form-control"
+                id="vat"
+                placeholder="PL1234567890"
+              />
+            </div>
+            <div class="form-group">
+              <label for="street">Street</label>
+              <input
+                type="text"
+                class="form-control"
+                id="street"
+                placeholder="Enter street name"
+              />
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-8">
+                <label for="city">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  placeholder="Enter your city"
+                />
+              </div>
+              <div class="form-group col-sm-4">
+                <label for="postal-code">Postal Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="postal-code"
+                  placeholder="Postal Code"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input
+                type="text"
+                class="form-control"
+                id="country"
+                placeholder="Country name"
+              />
+            </div>
+          </div>
+        </form>
+      </tab>
+    </tabset>
+  </div> -->
+
+
 </div>
+<!--/.col-->
