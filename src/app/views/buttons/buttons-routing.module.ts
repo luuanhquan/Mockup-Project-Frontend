@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { ButtonsComponent } from './buttons.component';
-import { DropdownsComponent } from './dropdowns.component';
-import { BrandButtonsComponent } from './brand-buttons.component';
+import {ButtonsComponent} from './buttons.component';
+import {DropdownsComponent} from './dropdowns.component';
+import {BrandButtonsComponent} from './brand-buttons.component';
 
 const routes: Routes = [
   {

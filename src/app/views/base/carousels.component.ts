@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import { CarouselConfig } from 'ngx-bootstrap/carousel';
+import {CarouselConfig} from 'ngx-bootstrap/carousel';
 
 @Component({
   templateUrl: 'carousels.component.html',

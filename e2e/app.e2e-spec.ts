@@ -1,4 +1,4 @@
-import { AppDashboard } from './app.po';
+import {AppDashboard} from './app.po';
 
 describe('CoreUI template', () => {
   let page: AppDashboard;
