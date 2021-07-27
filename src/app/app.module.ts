@@ -42,6 +42,10 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination'; 
+
 
 @NgModule({
   imports: [
@@ -59,6 +63,9 @@ import { ChartsModule } from 'ng2-charts';
     ChartsModule,
     IconModule,
     IconSetModule.forRoot(),
+    HttpClientModule,
+    NgxPaginationModule,
+     FormsModule
   ],
   declarations: [
     AppComponent,

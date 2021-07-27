@@ -17,17 +17,22 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
 import { NavbarsComponent } from './navbars/navbars.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
   imports: [
+    //  BrowserModule,
     CommonModule,
     FormsModule,
     TabsModule,
-    BaseRoutingModule
+    BaseRoutingModule,
+    NgxPaginationModule
+    
+    
   ],
   declarations: [DashboardComponent,
-    EmployeeComponent,
+    EmployeeComponent, /// zzzzzzzzzzz
     LoginComponent,
     IssueComponent,
     ProjectComponent,
@@ -36,6 +41,7 @@ import { NavbarsComponent } from './navbars/navbars.component';
     RequestComponent,
     RegisterComponent,
     NavbarsComponent,
+   
   ]
 })
 export class BaseModule {
