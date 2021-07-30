@@ -12,11 +12,14 @@ import {RegisterComponent} from './register/register.component';
 import {RequestComponent} from './request/request.component';
 
 
+
 // Tabs Component
 import { TabsModule } from 'ngx-bootstrap/tabs';
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
 import { NavbarsComponent } from './navbars/navbars.component';
+import { ReportComponent } from './report/report.component';
+import { TestReportComponent } from './test-report/test-report.component';
 
 
 @NgModule({
@@ -36,6 +39,8 @@ import { NavbarsComponent } from './navbars/navbars.component';
     RequestComponent,
     RegisterComponent,
     NavbarsComponent,
+    ReportComponent,
+    TestReportComponent
   ]
 })
 export class BaseModule {

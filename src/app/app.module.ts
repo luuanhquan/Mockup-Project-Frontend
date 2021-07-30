@@ -75,6 +75,6 @@ import { ChartsModule } from 'ng2-charts';
     },
     IconSetService,
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
