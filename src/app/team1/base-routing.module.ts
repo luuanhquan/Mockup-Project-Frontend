@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TestReportComponent } from './test-report/test-report.component';
-
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {EmployeeComponent} from './employee/employee.component';
 import {IssueComponent} from './issue/issue.component';

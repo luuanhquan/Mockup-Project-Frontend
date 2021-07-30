@@ -1,17 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import {Component, ViewChild} from '@angular/core';
+import {ModalDirective} from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-test-report',
-  templateUrl: './test-report.component.html',
-  styleUrls: ['./test-report.component.scss']
+  templateUrl: 'test-report.component.html'
 })
-export class TestReportComponent implements OnInit {
+export class TestReportComponent {
   @ViewChild('myModal') public myModal: ModalDirective;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @ViewChild('largeModal') public largeModal: ModalDirective;
+  @ViewChild('smallModal') public smallModal: ModalDirective;
+  @ViewChild('primaryModal') public primaryModal: ModalDirective;
+  @ViewChild('successModal') public successModal: ModalDirective;
+  @ViewChild('warningModal') public warningModal: ModalDirective;
+  @ViewChild('dangerModal') public dangerModal: ModalDirective;
+  @ViewChild('infoModal') public infoModal: ModalDirective;
 }
