@@ -1,45 +1,55 @@
-import { Input, OnInit } from "@angular/core";
+import { Input, OnInit, ViewChild } from "@angular/core";
 import { Component } from "@angular/core";
-import { projectSummary } from "../../project.model";
+import { Project } from "./project";
+import { HttpErrorResponse }from '@angular/common/http';
 
-
+import { ProjectService } from "./project.service";
+import { ModalDirective } from "ngx-bootstrap/modal";
+declare var $: any;
 @Component({
   templateUrl: "project.component.html",
   styleUrls: ["./project.component.css"],
 })
 export class ProjectComponent implements OnInit {
-  constructor() {}
+  public project: Project[];
+  
+  constructor(private projectService: ProjectService) { }
+  ngOnInit() {
+    this.getProject();
+  }
+  
+  public getProject(): void {
+    this.projectService.getProject().subscribe(
+      (response: Project[]) => {
+        this.project = response;
+        console.log(this.project);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+  public onOpen( project:Project,node:String):void{
+      const con=document.getElementById('container');
+      const button= document.createElement('button');
+      button.type='button';
+      button.setAttribute('data-toggle','modal')
+      button.style.display='none';
+      if(node==='add'){
+        button.setAttribute('data-target','#addmodal')
+      }
+      con.appendChild(button);
+      button.click;
+  }
 
-  pSummary: projectSummary[] = [
-    {
-      id: 1,
-      thumbnail: "https://htland.vn/wp-content/uploads/2019/08/cong-du-an-phuc-an-garden-binh-duong-1024x523.jpg",
-      titleProject: "dự án team1",
-      tenDonVi: "itsol",
-      tongQuanDuAn: "websang xịn mịn",
-      tienDoDuAn: 50,
-      bugProject: 30,
-      tongNhanVien: 15,
-      nowPhase: "demo",
-      userName:'NMT',
-      dateRegistered:'11/30/2020',
-      role:'Member'
-    },
-    {
-      id: 2,
-      thumbnail: "https://htland.vn/wp-content/uploads/2019/08/cong-du-an-phuc-an-garden-binh-duong-1024x523.jpg",
-      titleProject: "dự án team2",
-      tenDonVi: "itsol",
-      tongQuanDuAn: "websang xịn mịn",
-      tienDoDuAn: 3,
-      bugProject: 3,
-      tongNhanVien:3,
-      nowPhase: "demo",
-      userName:'NQT',
-      dateRegistered:'11/11/2020',
-      role:'Member'
-    },
-  ];
-
-  ngOnInit(): void {}
+  showModal():void {
+    $("#myModal").modal('show');
+  }
+  sendModal(): void {
+    //do something here
+    this.hideModal();
+  }
+  hideModal():void {
+    document.getElementById('close-modal').click();
+  }
 }

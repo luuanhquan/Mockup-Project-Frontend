@@ -35,8 +35,10 @@ import { NavbarsComponent } from './navbars/navbars.component';
     LoginComponent,
     RequestComponent,
     RegisterComponent,
-    NavbarsComponent,
+    NavbarsComponent
   ]
 })
+
+
 export class BaseModule {
 }

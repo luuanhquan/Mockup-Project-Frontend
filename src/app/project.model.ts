@@ -1,4 +1,4 @@
-export class projectSummary {
+export interface projectSummary {
   id:number;
   thumbnail:string;
   titleProject:string;
