@@ -5,6 +5,10 @@ import { HttpErrorResponse }from '@angular/common/http';
 
 import { ProjectService } from "./project.service";
 import { ModalDirective } from "ngx-bootstrap/modal";
+import { Router } from "@angular/router";
+import { NgForm } from '@angular/forms';
+import {Project2} from "./project2";
+
 declare var $: any;
 @Component({
   templateUrl: "project.component.html",
@@ -13,7 +17,8 @@ declare var $: any;
 export class ProjectComponent implements OnInit {
   public project: Project[];
   
-  constructor(private projectService: ProjectService) { }
+  constructor(private projectService: ProjectService,
+    private router:Router) { }
   ngOnInit() {
     this.getProject();
   }
@@ -29,27 +34,41 @@ export class ProjectComponent implements OnInit {
       }
     );
   }
-  public onOpen( project:Project,node:String):void{
-      const con=document.getElementById('container');
-      const button= document.createElement('button');
-      button.type='button';
-      button.setAttribute('data-toggle','modal')
-      button.style.display='none';
-      if(node==='add'){
-        button.setAttribute('data-target','#addmodal')
-      }
-      con.appendChild(button);
-      button.click;
-  }
+  // public onOpen( project:Project,node:String):void{
+  //     const con=document.getElementById('container');
+  //     const button= document.createElement('button');
+  //     button.type='button';
+  //     button.setAttribute('data-toggle','modal')
+  //     button.style.display='none';
+  //     if(node==='add'){
+  //       button.setAttribute('data-target','#addmodal')
+  //     }
+  //     con.appendChild(button);
+  //     button.click;
+  // }
 
   showModal():void {
     $("#myModal").modal('show');
   }
-  sendModal(): void {
-    //do something here
-    this.hideModal();
-  }
+
   hideModal():void {
     document.getElementById('close-modal').click();
   }
+
+
+  public saveProject(addForm: NgForm): void {
+    // document.getElementById('add-project-form').click();
+    this.projectService.createProject(addForm.value).subscribe(
+      (response: Project2) => {
+        console.log(response);
+        this.getProject();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+
 }
