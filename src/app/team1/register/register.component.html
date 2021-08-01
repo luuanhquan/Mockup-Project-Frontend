@@ -1,5 +1,6 @@
 <div class="animated fadeIn">
   <div class="row">
+<<<<<<< Updated upstream
     <div class="col-sm-6 col-md-4">
       <div class="card">
         <div class="card-header">
@@ -321,5 +322,116 @@
         </div>
       </div>
     </div><!--/.col-->
+=======
+    <div class="col-sm-12">
+      <div class="card">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header" >
+          <strong>Register Form</strong>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="register_form" action="" method="post" enctype="multipart/form-data" class="form-horizontal" style="display: flex;">
+
+
+
+     <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">User Name</label>
+
+              <div class="col-md-9">
+              <input  type="text" class="form-control"  formControlName="username" placeholder="User name" minlength="5" required>
+              <div   *ngIf="username.invalid && (username.dirty ||username.touched)">
+                  <div *ngIf="username.errors.required">
+                     User Name is required.
+                  </div>
+                  <div *ngIf="username.errors.minlength">
+                    Username must be at least 5 characters long.
+                  </div>
+                  <div *ngIf="username.errors.pattern">
+                    Your username must contain only numbers and letters.
+                  </div>
+
+              </div>
+            </div>
+            </div>
+
+
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="password-input">Password</label>
+              <div class="col-md-9">
+                <input type="password" class="form-control"  formControlName="password" placeholder="Password" minlength="6"  required  >
+                <div  *ngIf="password.invalid && (password.dirty ||password.touched)">
+                  <div *ngIf="password.errors.required">
+                      Password is required.
+                  </div>
+                  <div *ngIf="password.errors.minlength">
+                    Password must be at least 6 characters long.
+               </div>
+               <div *ngIf="password.errors.pattern">
+                Your password must contain at least one uppercase, one lowercase, and one number.
+              </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" >Confirm password</label>
+              <div class="col-md-9">
+                <input  type="password" class="form-control" formControlName="confirm_password" placeholder="Password" minlength="6" required >
+                <div  *ngIf="confirm_password.invalid && (confirm_password.dirty ||confirm_password.touched)" >
+                  <div *ngIf="confirm_password.errors.required">
+                    Confirm password is required.
+                  </div>
+                    <div *ngIf="confirm_password.errors.areEqual">
+                      Password mismatch.
+                    </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="email-input">Email </label>
+              <div class="col-md-9">
+                <input  type="email" class="form-control" formControlName="email" placeholder="Enter email" email required autofocus  >
+                <div  *ngIf="email.invalid && (email.dirty ||email.touched)" >
+                    <div *ngIf="email.errors.required" >
+                        Email is required.
+                    </div>
+                    <div *ngIf="email.errors.email">
+                        Invalid Email.
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="phone-input">Phone </label>
+              <div class="col-md-9">
+                <input  type="text" class="form-control" formControlName="phone" placeholder="Phone" required  >
+        <div  *ngIf="phone.invalid && (phone.dirty ||phone.touched)">
+            <div *ngIf="phone.errors.required">
+                Phone is required.
+            </div>
+        </div>
+              </div>
+            </div>
+          </div>
+
+          </form>
+        </div>
+        <div class="card-footer"  >
+          <button (click)="clicksub()" [disabled]="register_form.invalid" type="button"  style="float: right;" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+
+        </div>
+      </div>
+
+    </div>
+
+    </div> <!--/.col-->
+>>>>>>> Stashed changes
   </div><!--/.row-->
 </div>

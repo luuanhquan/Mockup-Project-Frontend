@@ -1,0 +1,239 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header" >
+          <strong>User Profile</strong>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="profile_form" action="" method="post" enctype="multipart/form-data" class="form-horizontal" style="display: flex;">
+
+
+
+     <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">User Name</label>
+
+              <div class="col-md-9">
+              <input  type="text" class="form-control"  formControlName="username" placeholder="User name" minlength="5" required>
+              <div   *ngIf="username.invalid && (username.dirty ||username.touched)">
+                  <div *ngIf="username.errors.required">
+                     User Name is required.
+                  </div>
+                  <div *ngIf="username.errors.minlength">
+                    Username must be at least 5 characters long.
+                  </div>
+                  <div *ngIf="username.errors.pattern">
+                    Your username must contain only numbers and letters.
+                  </div>
+
+              </div>
+            </div>
+            </div>
+
+
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="password-input">Password</label>
+              <div class="col-md-9">
+                <input type="password" class="form-control"  formControlName="password" placeholder="Password" minlength="6"  required  >
+                <div  *ngIf="password.invalid && (password.dirty ||password.touched)">
+                  <div *ngIf="password.errors.required">
+                      Password is required.
+                  </div>
+                  <div *ngIf="password.errors.minlength">
+                    Password must be at least 6 characters long.
+               </div>
+               <!-- <div *ngIf="password.errors.pattern">
+                Your password must contain at least one uppercase, one lowercase, and one number.
+              </div> -->
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="email-input">Email </label>
+              <div class="col-md-9">
+                <input  type="email" class="form-control" formControlName="email" placeholder="Enter email" email required autofocus  >
+                <div  *ngIf="email.invalid && (email.dirty ||email.touched)" >
+                    <div *ngIf="email.errors.required" >
+                        Email is required.
+                    </div>
+                    <div *ngIf="email.errors.email">
+                        Invalid Email.
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="phone-input">Phone </label>
+              <div class="col-md-9">
+                <input  type="text" class="form-control" formControlName="phone" placeholder="Phone" required  >
+        <div  *ngIf="phone.invalid && (phone.dirty ||phone.touched)">
+            <div *ngIf="phone.errors.required">
+                Phone is required.
+            </div>
+        </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="select1">Type</label>
+              <div class="col-md-9">
+                <select  id="select1" name="type" class="form-control">
+
+                  <option value="1">Intern</option>
+                  <option value="2">Staff</option>
+
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="file-input">Avatar </label>
+              <div class="col-md-9">
+                <input type="file" formControlName="avatar" >
+                <div  *ngIf="avatar.invalid && (avatar.dirty ||avatar.touched)">
+                  <div *ngIf="avatar.errors.required">
+                    Avatar is required.
+                  </div>
+              </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">Personal Id </label>
+              <div class="col-md-9">
+                <input type="text"formControlName="personal_id" class="form-control" placeholder=" Personal-id" required>
+                <div  *ngIf="personal_id.invalid && (personal_id.dirty ||personal_id.touched)">
+                  <div *ngIf="personal_id.errors.required">
+                      Personal id is required.
+                  </div>
+              </div>
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+
+          <!-- form right -->
+ <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">First Name</label>
+              <div class="col-md-9">
+                <input type="text" formControlName="first_name"  class="form-control" placeholder="First name">
+                <div  *ngIf="first_name.invalid && (first_name.dirty ||first_name.touched)">
+                  <div *ngIf="first_name.errors.required">
+                    First Name is required.
+                  </div>
+              </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">Middle Name</label>
+              <div class="col-md-9">
+                <input type="text" formControlName="middle_name"  class="form-control" placeholder="Middle name">
+                <div  *ngIf="middle_name.invalid && (middle_name.dirty ||middle_name.touched)">
+                  <div *ngIf="middle_name.errors.required">
+                    Middle Name is required.
+                  </div>
+              </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">Last Name</label>
+              <div class="col-md-9">
+                <input type="text" formControlName="last_name" class="form-control" placeholder="Last name">
+                <div  *ngIf="last_name.invalid && (last_name.dirty ||last_name.touched)">
+                  <div *ngIf="last_name.errors.required">
+                    Last Name is required.
+                  </div>
+              </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="date-input">Date  of birthday</label>
+              <div class="col-md-9">
+                <input class="form-control" formControlName="birthday" placeholder="birthday">
+                <div  *ngIf="birthday.invalid && (birthday.dirty ||birthday.touched)">
+                  <div *ngIf="birthday.errors.required">
+                    Date  of birthday is required.
+                  </div>
+              </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="radio-input">Gender </label>
+
+                <label class="col-md-2">Male
+                  <input type="radio" checked="checked" name="gender">
+                  <span class="checkmark"></span>
+              </label>
+              <label class="col-md-3">Fe-Male
+                <input type="radio" checked="checked" name="gender">
+                <span class="checkmark"></span>
+            </label>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Home Town</label>
+                <div class="col-md-9">
+                  <input type="text" formControlName="home_town" class="form-control" placeholder=" Home-Town" required>
+                  <div  *ngIf="home_town.invalid && (home_town.dirty ||home_town.touched)">
+                    <div *ngIf="home_town.errors.required">
+                      Home Town is required.
+                    </div>
+                </div>
+                </div>
+              </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">School </label>
+              <div class="col-md-9">
+                <input type="text" formControlName="school" class="form-control" placeholder="School">
+                <div  *ngIf="school.invalid && (school.dirty ||school.touched)">
+                  <div *ngIf="school.errors.required">
+                    School is required.
+                  </div>
+              </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">Major </label>
+              <div class="col-md-9">
+                <input type="text" formControlName="major"  class="form-control" placeholder="Major">
+                <div  *ngIf="major.invalid && (major.dirty ||major.touched)">
+                  <div *ngIf="major.errors.required">
+                    Major is required.
+                  </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          </form>
+        </div>
+        <div class="card-footer"  >
+
+          <button (click)="clicksub()" [disabled]="profile_form.invalid" type="button"  style="float: right;" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Save</button>
+
+        </div>
+      </div>
+
+    </div>
+
+    </div> <!--/.col-->
+  </div><!--/.row-->
+</div>
