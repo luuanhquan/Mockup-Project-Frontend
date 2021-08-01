@@ -20,6 +20,12 @@ import { NavbarsComponent } from './navbars/navbars.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
+// Collapse Component
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+
+// Dropdowns Component
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 @NgModule({
   imports: [
     //  BrowserModule,
@@ -27,9 +33,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     TabsModule,
     BaseRoutingModule,
-    NgxPaginationModule
-    
-    
+    NgxPaginationModule,
+    CollapseModule,
+    BsDropdownModule,
   ],
   declarations: [DashboardComponent,
     EmployeeComponent, /// zzzzzzzzzzz
@@ -40,7 +46,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LoginComponent,
     RequestComponent,
     RegisterComponent,
-    NavbarsComponent,
+    NavbarsComponent
    
   ]
 })
