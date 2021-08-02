@@ -19,7 +19,7 @@ export class ReportComponent implements OnInit, OnDestroy {
   private active_project;
 
   changeItem(id: number) {
-    this.active_project=id;
+    this.active_project = id;
     this.getReport(id);
   }
 

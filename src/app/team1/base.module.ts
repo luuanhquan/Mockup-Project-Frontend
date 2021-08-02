@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReportComponent } from './report/report.component';
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
 
+
 // Tabs Component
 import { TabsModule } from 'ngx-bootstrap/tabs';
 // Components Routing
@@ -41,8 +42,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ReportComponent,
     RegisterComponent,
     NavbarsComponent,
-    IssueDetailComponent
+    ReportComponent
   ]
 })
+
+
 export class BaseModule {
 }

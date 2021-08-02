@@ -1,13 +1,14 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {EmployeeComponent} from './employee/employee.component';
-import {IssueComponent} from './issue/issue.component';
-import {ProjectComponent} from './project/project.component';
-import {RegisterComponent} from './register/register.component';
-import {ReportComponent} from './report/report.component';
-import {IssueDetailComponent} from './issue-detail/issue-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { IssueComponent } from './issue/issue.component';
+import { ProjectComponent } from './project/project.component';
+import { RegisterComponent } from './register/register.component';
+import { ReportComponent } from './report/report.component';
+import { IssueDetailComponent } from './issue-detail/issue-detail.component';
+
 
 const routes: Routes = [
   {
@@ -68,13 +69,19 @@ const routes: Routes = [
         data: {
           title: 'Requests'
         }
+      },
+      {
+        path: 'report',
+        component: ReportComponent,
+        data: {
+          title: 'Report'
+        }
       }
     ]
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BaseRoutingModule {}
+export class BaseRoutingModule { }

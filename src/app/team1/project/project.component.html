@@ -1,325 +1,198 @@
-<div class="animated fadeIn">
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Card title
+<button type="button" class="btn btn-primary" id="btn-add" data-toggle="modal" data-target="#myModal"
+  (click)="showModal()">
+  Add Project
+</button>
+<div class="modal fade" id="myModal">
+  <form #addForm="ngForm" (ngSubmit)="saveProject(addForm)">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Project</h4>
+          <button type="button" class="close" (click)="hideModal()">&times;</button>
         </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-        <div class="card-footer">Card footer</div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          <i class="fa fa-check"></i>Card with icon
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Card with switch
-          <div class="card-header-actions" style="height: 21px;" >
-            <label class="switch switch-sm switch-label switch-info" >
-              <input type="checkbox" class="switch-input" checked>
-              <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-            </label>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <!-- Tên đơn vị -->
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Tên đơn vị</label>
+            <div class="col-md-8">
+              <input ngModel type="text" id="text-input" name="name" placeholder="Tên đơn vị" class="form-control" />
+            </div>
+          </div>
+          <!-- Mô tả dự án: Description -->
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="textarea-input">Mô tả dự án</label>
+            <div class="col-md-8">
+              <textarea ngModel id="textarea-input" name="des" rows="3" class="form-control"
+                placeholder="Tổng quan dự án"></textarea>
+            </div>
+          </div>
+          <!-- Ngày bắt đầu dự án -->
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Ngày bắt đầu dự án</label>
+            <div class="col-md-8">
+              <input ngModel type="date" id="text-input" name="date_start" placeholder="Ngày bắt đầu dự án"
+                class="form-control" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Ngày kết thúc dự án</label>
+            <div class="col-md-8">
+              <input ngModel type="date" id="text-input" name="date_end" placeholder="Ngày kết thúc dự án"
+                class="form-control" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Status</label>
+            <div class="col-md-8">
+              <input ngModel type="text" id="text-input" name="status" placeholder="Status" class="form-control" />
+            </div>
           </div>
         </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Add</button>
+          <button type="button" class="btn btn-danger" (click)="hideModal()">Close</button>
+          <!-- this button is hidden, used to close from typescript -->
+          <button type="button" id="close-modal" data-dismiss="modal" style="display: none">Close</button>
         </div>
       </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Card with label
-          <div class="card-header-actions">
-            <span class="badge badge-success">Success</span>
-          </div>
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Card with label
-          <div class="card-header-actions">
-            <span class="badge badge-pill badge-danger">42</span>
-          </div>
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-primary">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-secondary">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-success">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-info">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-warning">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-danger">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
+    </div>
+  </form>
 
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-primary">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-secondary">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-success">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-info">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-warning">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-danger">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-primary text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-success text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-info text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-warning text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-danger text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-primary text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-primary">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-success">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-info">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-warning">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-danger">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
+</div>
+
+
+
+<!-- table -->
+<div class="row" id="container">
+  <div class="col-md-6 mb-4" *ngFor="let project of project">
+    <tabset>
+      <tab heading="Summary">
+        <form id="form-summary" action="">
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Tên đơn vị</label>
+            <div class="col-md-8">
+              <input type="text" disabled id="text-input" name="text-input" class="form-control"
+                [value]="project.name" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="textarea-input">Mô tả dự án</label>
+            <div class="col-md-8">
+              <textarea id="textarea-input" disabled name="textarea-input" rows="3" class="form-control"
+                placeholder="Tổng quan dự án" [value]="project.description"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Ngày bắt đầu dự án</label>
+            <div class="col-md-8">
+              <input type="text" id="text-input" disabled name="text-input" class="form-control"
+                [value]="project.dateStated" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Ngày kết thúc dự án</label>
+            <div class="col-md-8">
+              <input type="text" id="text-input" disabled name="text-input" class="form-control"
+                [value]="project.dateEnded" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Trạng thái</label>
+            <div class="col-md-8">
+              <input type="text" id="text-input" disabled name="text-input" class="form-control"
+                [value]="project.status" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Tổng số bug</label>
+            <div class="col-md-8">
+              <input type="text" id="text-input" disabled name="text-input" class="form-control"
+                [value]="project.totalIssues" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Tổng số nhân viên</label>
+            <div class="col-md-8">
+              <input type="text" id="text-input" disabled name="text-input" class="form-control"
+                [value]="project.totalMember" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Now phase</label>
+            <div class="col-md-8">
+              <input type="text" id="text-input" disabled name="text-input" class="form-control"
+                [value]="project.nowPhase" />
+            </div>
+          </div>
+        </form>
+      </tab>
+      <tab heading="Members">
+        <form id="form-members" action="">
+          <img class="img-project d-block m-auto" [src]="project.thumbnail" alt="" />
+          <p class="title-project">{{project.nameProject}}</p>
+          <div class="card">
+            <div class="card-header">
+              <i class="fa fa-align-justify"></i> LIST MEMBERS
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr class="text-center">
+                    <th>ID USER</th>
+                    <th>USER NAME</th>
+                    <th>EMAIL</th>
+                    <th>TELEPHONE</th>
+                    <th>ROLE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of project.listMember" class="text-center">
+                    <td>{{item.id }}</td>
+                    <td>{{item.username }}</td>
+                    <td>{{item.email }}</td>
+                    <td>{{item.phone }}</td>
+                    <td>{{item.role}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+      </tab>
+      <tab heading="Issues">
+        <form id="form-issues" action="">
+          <img class="img-project d-block m-auto" [src]="project.thumbnail" alt="" />
+          <p class="title-project">{{project.nameProject}}</p>
+          <div class="card">
+            <div class="card-header">
+              <i class="fa fa-align-justify"></i> LIST ISSUES
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr class="text-center">
+                    <th>ID ISSUES</th>
+                    <th>NGƯỜI TẠO</th>
+                    <th>NGƯỜI ĐƯỢC GIAO</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center" *ngFor="let item of project.listIssues">
+                    <a href="" class="text-decoration-none" style="color: #333;">
+                      <td>{{item.id }}</td>
+                    </a>
+                    <td>{{item.creator }}</td>
+                    <td>{{item.asignee }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+      </tab>
+    </tabset>
+  </div>
 </div>

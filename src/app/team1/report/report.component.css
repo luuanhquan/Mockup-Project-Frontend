@@ -1,9 +1,9 @@
 .card-body {
-    overflow: auto;
-      /* height: 400px; */
-      padding: 5px;
-  }
-  
-  .dropup .dropdown-menu {
-    /*transform: none!important;*/
-  }
+  overflow: auto;
+  /* height: 400px; */
+  padding: 5px;
+}
+
+.dropup .dropdown-menu {
+  /*transform: none!important;*/
+}

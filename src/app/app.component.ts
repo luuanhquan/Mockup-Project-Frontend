@@ -12,7 +12,7 @@ import { freeSet } from '@coreui/icons';
   
 providers: [IconSetService],
 })
-export class AppComponent implements OnInit {
+export class AppComponent  {
   constructor(
     private router: Router,
     public iconSet: IconSetService
@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     // iconSet singleton
     iconSet.icons = { ...freeSet };
   }
+
 
   ngOnInit() {
     this.router.events.subscribe((evt) => {

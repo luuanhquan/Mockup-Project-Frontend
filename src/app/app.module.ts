@@ -1,33 +1,35 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {HashLocationStrategy, LocationStrategy} from '@angular/common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
-import {IconModule, IconSetModule, IconSetService} from '@coreui/icons-angular';
-import {AppComponent} from './app.component';
+import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
+import { AppComponent } from './app.component';
 
 // Import containers
-import {DefaultLayoutComponent} from './containers';
+import { DefaultLayoutComponent } from './containers';
 
-import {P404Component} from './views/error/404.component';
-import {P500Component} from './views/error/500.component';
-import {LoginComponent} from './team1/login/login.component';
-import {RegisterComponent} from './views/register/register.component';
+import { P404Component } from './views/error/404.component';
+import { P500Component } from './views/error/500.component';
+import { LoginComponent } from './team1/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
 
-import {HttpClientModule} from '@angular/common/http';
-import {AppAsideModule, AppBreadcrumbModule, AppFooterModule, AppHeaderModule, AppSidebarModule,} from '@coreui/angular';
+import { HttpClientModule } from '@angular/common/http';
+import { AppAsideModule, AppBreadcrumbModule, AppFooterModule, AppHeaderModule, AppSidebarModule, } from '@coreui/angular';
 
 // Import routing module
-import {AppRoutingModule} from './app.routing';
+import { AppRoutingModule } from './app.routing';
 
 // Import 3rd party components
-import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
-import {TabsModule} from 'ngx-bootstrap/tabs';
-import {ChartsModule} from 'ng2-charts';
-import {FormsModule} from '@angular/forms';
-import {LoginModel} from './team1/model/Login.model';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ChartsModule } from 'ng2-charts';
+import { FormsModule } from '@angular/forms';
+import { LoginModel } from './team1/model/Login.model';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -53,9 +55,10 @@ const APP_CONTAINERS = [
     TabsModule.forRoot(),
     ChartsModule,
     IconModule,
+    HttpClientModule,
     IconSetModule.forRoot(),
     HttpClientModule,
-     FormsModule
+    FormsModule
   ],
   declarations: [
     AppComponent,
@@ -72,8 +75,8 @@ const APP_CONTAINERS = [
     },
     IconSetService,
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
-  user: LoginModel ;
+  user: LoginModel;
 }
