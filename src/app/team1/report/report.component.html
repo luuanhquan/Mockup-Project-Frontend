@@ -1,200 +1,195 @@
 <div class="btn-group">
-    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Chọn Project
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" *ngFor="let item of project" (click)="changeItem(item.id)">{{item.name}}</a>
-    </div>
+  <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+          type="button">
+    Chọn Project
+  </button>
+  <div class="dropdown-menu">
+    <a (click)="changeItem(item.id)" *ngFor="let item of project" class="dropdown-item">{{item.name}}</a>
+  </div>
 </div>
 
 <section style="display: flex;">
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header" style="float:left">
-                <i class="fa fa-align-justify font-bold"></i> <strong>BÁO CÁO TUẦN</strong>
-            </div>
-            <div class="card-body" id="reportWeek">
-                <table class="table table-striped text-center" style="word-break: break-word;">
-                    <thead>
-                        <tr>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header" style="float:left">
+        <i class="fa fa-align-justify font-bold"></i> <strong>BÁO CÁO TUẦN</strong>
+      </div>
+      <div class="card-body" id="reportWeek">
+        <table class="table table-striped text-center" style="word-break: break-word;">
+          <thead>
+          <tr>
 
-                            <th>DỰ ÁN</th>
-                            <th>ID BÁO CÁO</th>
-                            <th>NGÀY TẠO</th>
-                            <th>TRẠNG THÁI</th>
-                            <th>Nguoi Tao</th>
-
-
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr *ngFor="let report of reports">
-                            <ng-container *ngIf="report.type=='WEEKLY'">
-                                <td>{{report.projectId}}</td>
-                                <td (click)="onOpenModal(null,'read')">{{report.id}}</td>
-                                <td>{{report.dateCreat}}</td>
-                                <td>{{report.type}}</td>
-                                <td>{{report.creater}}</td>
-                                <td style="display:none">{{report.status}}</td>
+            <th>DỰ ÁN</th>
+            <th>ID BÁO CÁO</th>
+            <th>NGÀY TẠO</th>
+            <th>TRẠNG THÁI</th>
+            <th>Nguoi Tao</th>
 
 
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let report of reports">
+            <ng-container *ngIf="report.type=='WEEKLY'">
+              <td>{{report.projectId}}</td>
+              <td (click)="onOpenModal(null,'read')">{{report.id}}</td>
+              <td>{{report.dateCreat}}</td>
+              <td>{{report.type}}</td>
+              <td>{{report.creater}}</td>
+              <td style="display:none">{{report.status}}</td>
 
 
+            </ng-container>
+          </tr>
+          <div>
+            <a (click)="onOpenModal(null,'report')" class="badge badge-warning" role="button">Write
+              report</a>
+          </div>
 
 
-                            </ng-container>
-                        </tr>
-                        <div>
-                            <a role="button" class="badge badge-warning" (click)="onOpenModal(null,'report')">Write
-                                report</a>
-                        </div>
+          </tbody>
+        </table>
 
-
-
-
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header" style="float:left">
-                <i class="fa fa-align-justify font-bold"></i> <strong>BÁO CÁO DỰ ÁN</strong>
-            </div>
-            <div class="card-body">
-                <table class="table table-striped text-center" style="word-break: break-word;">
-                    <thead>
-                        <tr>
-                            <th>DỰ ÁN</th>
-                            <th>ID BÁO CÁO</th>
-                            <th>NGÀY TẠO</th>
-                            <th>TRẠNG THÁI</th>
-                            <th>Nguoi Tao</th>
-
-
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr *ngFor="let report of reports">
-                            <ng-container *ngIf="report.type=='PROJECT'">
-
-                                <td>{{report.id}}</td>
-                                <td>{{report.advantage}}</td>
-                                <td>{{report.type}}</td>
-                                <td>{{report.creater}}</td>
-                                <td>{{report.difficuly}}</td>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header" style="float:left">
+        <i class="fa fa-align-justify font-bold"></i> <strong>BÁO CÁO DỰ ÁN</strong>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped text-center" style="word-break: break-word;">
+          <thead>
+          <tr>
+            <th>DỰ ÁN</th>
+            <th>ID BÁO CÁO</th>
+            <th>NGÀY TẠO</th>
+            <th>TRẠNG THÁI</th>
+            <th>Nguoi Tao</th>
 
 
-                                <td style="display:none">{{report.type}}</td>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let report of reports">
+            <ng-container *ngIf="report.type=='PROJECT'">
+
+              <td>{{report.id}}</td>
+              <td>{{report.advantage}}</td>
+              <td>{{report.type}}</td>
+              <td>{{report.creater}}</td>
+              <td>{{report.difficuly}}</td>
 
 
-                            </ng-container>
-                        </tr>
+              <td style="display:none">{{report.type}}</td>
 
-                    </tbody>
-                </table>
 
-            </div>
-        </div>
+            </ng-container>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </div>
     </div>
+  </div>
 
 </section>
 <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-    <li class="page-item active">
-        <a class="page-link" href="#">1</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+  <li class="page-item active">
+    <a class="page-link" href="#">1</a>
+  </li>
+  <li class="page-item"><a class="page-link" href="#">2</a></li>
+  <li class="page-item"><a class="page-link" href="#">3</a></li>
+  <li class="page-item"><a class="page-link" href="#">4</a></li>
+  <li class="page-item"><a class="page-link" href="#">Next</a></li>
 </ul>
 
 
 <!-- Modal Read -->
-<div class="modal fade" id="modalread" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Read Report</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form #readForm="ngForm">
-                <div class="modal-body">
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="modalread" role="dialog"
+     tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Read Report</h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #readForm="ngForm">
+        <div class="modal-body">
 
-                    <label for="message-text" class="col-form-label">Du An</label>
-                    <input ngModel="{{readrequest?.projectId}}" name="projectId" type="text" class="form-control" />
-                    <label for="message-text" class="col-form-label">Id Bao Cao:</label>
-                    <input ngModel="{{readrequest?.id}}" name="id" type="text" class="form-control" />
-                    <label for="message-text" class="col-form-label">Ngay Tao:</label>
-                    <input ngModel="{{readrequest?.dateCreat}}" name="dateCreat" type="text" class="form-control" />
-                    <label for="message-text" class="col-form-label">Da Doc:</label>
-                    <input ngModel="{{readrequest?.type}}" name="type" type="text" class="form-control" />
-                    <label for="message-text" class="col-form-label">Loai Bao Cao</label>
-                    <input ngModel="{{readrequest?.status}}" name="isweek" type="text" class="form-control" />
-                    <label for="message-text" class="col-form-label">Nguoi Tao:</label>
-                    <input ngModel="{{readrequest?.creater}}" name="creater" type="text" class="form-control" /> >
-                    <label for="message-text" class="col-form-label">advantage:</label>
-                    <input ngModel="{{readrequest?.advantage}}" name="advantage" type="text" class="form-control" /> >
-                    <label for="message-text" class="col-form-label">disadvantage:</label>
-                    <input ngModel="{{readrequest?.disadvantage}}" name="disadvantage" type="text"
-                        class="form-control" />
-                    <label for="message-text" class="col-form-label">difficuly:</label>
-                    <input ngModel="{{readrequest?.difficuly}}" name="difficuly" type="text" class="form-control" />
-                    <label for="message-text" class="col-form-label">propose:</label>
-                    <input ngModel="{{readrequest?.propose}}" name="propose" type="text" class="form-control" />
+          <label class="col-form-label" for="message-text">Du An</label>
+          <input class="form-control" name="projectId" ngModel="{{readrequest?.projectId}}" type="text"/>
+          <label class="col-form-label" for="message-text">Id Bao Cao:</label>
+          <input class="form-control" name="id" ngModel="{{readrequest?.id}}" type="text"/>
+          <label class="col-form-label" for="message-text">Ngay Tao:</label>
+          <input class="form-control" name="dateCreat" ngModel="{{readrequest?.dateCreat}}" type="text"/>
+          <label class="col-form-label" for="message-text">Da Doc:</label>
+          <input class="form-control" name="type" ngModel="{{readrequest?.type}}" type="text"/>
+          <label class="col-form-label" for="message-text">Loai Bao Cao</label>
+          <input class="form-control" name="isweek" ngModel="{{readrequest?.status}}" type="text"/>
+          <label class="col-form-label" for="message-text">Nguoi Tao:</label>
+          <input class="form-control" name="creater" ngModel="{{readrequest?.creater}}" type="text"/> >
+          <label class="col-form-label" for="message-text">advantage:</label>
+          <input class="form-control" name="advantage" ngModel="{{readrequest?.advantage}}" type="text"/> >
+          <label class="col-form-label" for="message-text">disadvantage:</label>
+          <input class="form-control" name="disadvantage" ngModel="{{readrequest?.disadvantage}}"
+                 type="text"/>
+          <label class="col-form-label" for="message-text">difficuly:</label>
+          <input class="form-control" name="difficuly" ngModel="{{readrequest?.difficuly}}" type="text"/>
+          <label class="col-form-label" for="message-text">propose:</label>
+          <input class="form-control" name="propose" ngModel="{{readrequest?.propose}}" type="text"/>
 
-                </div>
-            </form>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                    (click)="writeReport(readForm.value)">Close</button>
-            </div>
         </div>
+      </form>
+      <div class="modal-footer">
+        <button (click)="writeReport(readForm.value)" class="btn btn-secondary" data-dismiss="modal"
+                type="button">Close
+        </button>
+      </div>
     </div>
+  </div>
 </div>
 
 
 <!-- Modal Report -->
-<div class="modal fade" id="modalreport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Write report</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form #addForm="ngForm">
-                    <div class="form-group">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">ADVANTAGE:</label>
-                        <input type="text" ngModel name="advantage" class="form-control">
-                    </div>
-                    <label for="message-text" class="col-form-label">DISADVANTAGE:</label>
-                    <input type="text" ngModel name="disadvantage" class="form-control">
-                    <label for="message-text" class="col-form-label">DIFFICULTY:</label>
-                    <input type="text" ngModel name="difficuly" class="form-control">
-                    <label for="message-text" class="col-form-label">PROPOSE:</label>
-                    <input type="text" ngModel name="propose" class="form-control">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary" type="submit" data-dismiss="modal">Send</button>
-            </div>
-        </div>
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="modalreport" role="dialog"
+     tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Write report</h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm">
+          <div class="form-group">
+          </div>
+          <div class="form-group">
+            <label class="col-form-label" for="message-text">ADVANTAGE:</label>
+            <input class="form-control" name="advantage" ngModel type="text">
+          </div>
+          <label class="col-form-label" for="message-text">DISADVANTAGE:</label>
+          <input class="form-control" name="disadvantage" ngModel type="text">
+          <label class="col-form-label" for="message-text">DIFFICULTY:</label>
+          <input class="form-control" name="difficuly" ngModel type="text">
+          <label class="col-form-label" for="message-text">PROPOSE:</label>
+          <input class="form-control" name="propose" ngModel type="text">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+        <button class="btn btn-primary" data-dismiss="modal" type="submit">Send</button>
+      </div>
     </div>
+  </div>
 </div>

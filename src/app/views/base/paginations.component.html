@@ -11,25 +11,27 @@
     <div class="card-body">
       <div class="row">
         <div class="col-xs-12 col-12 d-sm-down-none">
-          <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+          <pagination (pageChanged)="pageChanged($event)" [(ngModel)]="currentPage"
+                      [totalItems]="totalItems"></pagination>
         </div>
         <div class="col-xs-12 col-12">
-          <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" class="pagination-sm" [maxSize]="6"
-                      previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+          <pagination [(ngModel)]="currentPage" [boundaryLinks]="true" [maxSize]="6" [totalItems]="totalItems"
+                      class="pagination-sm"
+                      firstText="&laquo;" lastText="&raquo;" nextText="&rsaquo;" previousText="&lsaquo;"></pagination>
         </div>
         <div class="col-xs-12 col-12 d-sm-down-none">
-          <pagination [directionLinks]="false" [boundaryLinks]="true" [totalItems]="totalItems"
-                      [(ngModel)]="currentPage"></pagination>
+          <pagination [(ngModel)]="currentPage" [boundaryLinks]="true" [directionLinks]="false"
+                      [totalItems]="totalItems"></pagination>
         </div>
         <div class="col-xs-12 col-12">
-          <pagination [directionLinks]="false" [totalItems]="totalItems" [(ngModel)]="currentPage"
-                      (numPages)="smallnumPages = $event"></pagination>
+          <pagination (numPages)="smallnumPages = $event" [(ngModel)]="currentPage" [directionLinks]="false"
+                      [totalItems]="totalItems"></pagination>
         </div>
       </div>
       <pre class="card card-body card-header mb-3">The selected page no: {{currentPage}}/{{smallnumPages}}</pre>
     </div>
     <div class="card-footer">
-      <button type="button" class="btn btn-info" (click)="setPage(3)">Set current page to: 3</button>
+      <button (click)="setPage(3)" class="btn btn-info" type="button">Set current page to: 3</button>
     </div>
   </div>
   <div class="card">
@@ -39,14 +41,16 @@
     <div class="card-body">
       <div class="row">
         <div class="col-xs-12 col-12">
-          <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm"
-                      previousText="&lsaquo;" nextText="&rsaquo;" [boundaryLinks]="true"></pagination>
+          <pagination [(ngModel)]="bigCurrentPage" [boundaryLinks]="true" [maxSize]="maxSize"
+                      [totalItems]="bigTotalItems"
+                      class="pagination-sm" nextText="&rsaquo;" previousText="&lsaquo;"></pagination>
         </div>
 
         <div class="col-xs-12 col-12">
-          <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm"
-                      previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-                      [boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event"></pagination>
+          <pagination (numPages)="numPages = $event" [(ngModel)]="bigCurrentPage" [boundaryLinks]="true"
+                      [maxSize]="maxSize"
+                      [rotate]="false" [totalItems]="bigTotalItems" class="pagination-sm" firstText="&laquo;"
+                      lastText="&raquo;" nextText="&rsaquo;" previousText="&lsaquo;"></pagination>
         </div>
       </div>
       <pre class="card card-body card-header">Page: {{bigCurrentPage}} / {{numPages}}</pre>
@@ -60,21 +64,21 @@
       <div class="row">
         <div class="col-xs-12 col-12 col-md-6">
           <pagination
-            [directionLinks]="false"
-            [totalItems]="totalItems"
+            (numPages)="smallnumPages = $event"
             [(ngModel)]="currentPager"
-            (numPages)="smallnumPages = $event">
+            [directionLinks]="false"
+            [totalItems]="totalItems">
           </pagination>
         </div>
 
         <div class="col-xs-12 col-12 col-md-6">
           <pager
-            [totalItems]="totalItems"
-            [(ngModel)]="currentPager"
             (pageChanged)="pageChanged($event)"
-            pageBtnClass="btn"
+            [(ngModel)]="currentPager"
             [itemsPerPage]="10"
-            class="pull-left">
+            [totalItems]="totalItems"
+            class="pull-left"
+            pageBtnClass="btn">
           </pager>
         </div>
       </div>

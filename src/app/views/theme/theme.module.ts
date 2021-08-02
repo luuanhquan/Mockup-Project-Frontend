@@ -18,4 +18,5 @@ import {ThemeRoutingModule} from './theme-routing.module';
     TypographyComponent
   ]
 })
-export class ThemeModule { }
+export class ThemeModule {
+}

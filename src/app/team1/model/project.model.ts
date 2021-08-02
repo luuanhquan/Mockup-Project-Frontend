@@ -1,4 +1,4 @@
-export interface Project{
-    id: number,
-    name: String
+export interface Project {
+  id: number,
+  name: String
 }

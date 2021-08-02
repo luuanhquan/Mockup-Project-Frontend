@@ -1,7 +1,7 @@
 export interface Register {
   email: string;
   username: string;
-  password:string;
+  password: string;
   phone: string;
   emailVerified: number;
 }

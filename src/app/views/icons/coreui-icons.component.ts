@@ -16,7 +16,8 @@ export class CoreUIIconsComponent implements OnInit {
     public platform: Platform,
     private route: ActivatedRoute,
     public iconSet: IconSetService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     const path = this.route.routeConfig.path;

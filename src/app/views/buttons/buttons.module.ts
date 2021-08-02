@@ -27,4 +27,5 @@ import {ButtonsRoutingModule} from './buttons-routing.module';
     BrandButtonsComponent
   ]
 })
-export class ButtonsModule { }
+export class ButtonsModule {
+}

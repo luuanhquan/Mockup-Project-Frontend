@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
 })
 export class CardsComponent {
 
-  constructor() { }
+  constructor() {
+  }
 
 }

@@ -1,31 +1,32 @@
-.img-project{
+.img-project {
   max-width: 50%;
 }
-.title-project{
+
+.title-project {
   font-weight: bolder;
   text-align: center !important;
   font-size: 20px;
 }
 
-#form-summary{
+#form-summary {
   height: 400px;
   width: 100%;
   overflow-y: auto;
 }
 
-#form-members{
+#form-members {
   height: 400px;
   width: 100%;
   overflow-y: auto;
 }
 
-#form-issues{
+#form-issues {
   height: 400px;
   width: 100%;
   overflow-y: auto;
 }
 
-#btn-add{
-margin-top: 20px;
-margin-bottom: 20px;  
+#btn-add {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

@@ -6,7 +6,7 @@ import {Component, OnDestroy} from '@angular/core';
 })
 export class DropdownsComponent implements OnDestroy {
 
-  status: { isOpen: boolean } = { isOpen: false };
+  status: { isOpen: boolean } = {isOpen: false};
   disabled: boolean = false;
   isDropup: boolean = true;
   autoClose: boolean = false;
@@ -17,18 +17,21 @@ export class DropdownsComponent implements OnDestroy {
     'but wait! A third!'
   ];
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnDestroy () {
+  ngOnDestroy() {
     this.status.isOpen = false;
   }
 
   onHidden(): void {
     console.log('Dropdown is hidden');
   }
+
   onShown(): void {
     console.log('Dropdown is shown');
   }
+
   isOpenChange(): void {
     console.log('Dropdown state is changed');
   }

@@ -13,13 +13,13 @@
         <div class="card-body">
           <carousel [interval]="false">
             <slide>
-              <img src="https://picsum.photos/id/1/900/500" alt="First slide" style="display: block; width: 100%;">
+              <img alt="First slide" src="https://picsum.photos/id/1/900/500" style="display: block; width: 100%;">
             </slide>
             <slide>
-              <img src="https://picsum.photos/id/1026/900/500" alt="Second slide" style="display: block; width: 100%;">
+              <img alt="Second slide" src="https://picsum.photos/id/1026/900/500" style="display: block; width: 100%;">
             </slide>
             <slide>
-              <img src="https://picsum.photos/id/1031/900/500" alt="Third slide" style="display: block; width: 100%;">
+              <img alt="Third slide" src="https://picsum.photos/id/1031/900/500" style="display: block; width: 100%;">
             </slide>
           </carousel>
         </div>
@@ -34,21 +34,21 @@
         <div class="card-body">
           <carousel [interval]="false">
             <slide>
-              <img src="https://picsum.photos/id/1032/900/500" alt="First slide" style="display: block; width: 100%;">
+              <img alt="First slide" src="https://picsum.photos/id/1032/900/500" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
                 <h3>First slide label</h3>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
             </slide>
             <slide>
-              <img src="https://picsum.photos/id/1036/900/500" alt="Second slide" style="display: block; width: 100%;">
+              <img alt="Second slide" src="https://picsum.photos/id/1036/900/500" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
                 <h3>Second slide label</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </slide>
             <slide>
-              <img src="https://picsum.photos/id/1043/900/500" alt="Third slide" style="display: block; width: 100%;">
+              <img alt="Third slide" src="https://picsum.photos/id/1043/900/500" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
                 <h3>Third slide label</h3>
                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -69,21 +69,21 @@
         <div class="card-body">
           <carousel [interval]="false">
             <slide>
-              <img src="https://picsum.photos/id/1054/900/500" alt="First slide" style="display: block; width: 100%;">
+              <img alt="First slide" src="https://picsum.photos/id/1054/900/500" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
                 <h3>First slide label</h3>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
             </slide>
             <slide>
-              <img src="https://picsum.photos/id/1059/900/500" alt="Second slide" style="display: block; width: 100%;">
+              <img alt="Second slide" src="https://picsum.photos/id/1059/900/500" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
                 <h3>Second slide label</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </slide>
             <slide>
-              <img src="https://picsum.photos/id/1065/900/500" alt="Third slide" style="display: block; width: 100%;">
+              <img alt="Third slide" src="https://picsum.photos/id/1065/900/500" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
                 <h3>Third slide label</h3>
                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -100,7 +100,7 @@
           <small> dynamic slides</small>
         </div>
         <div class="card-body">
-          <carousel [interval]="myInterval" [noWrap]="noWrapSlides" [(activeSlide)]="activeSlideIndex">
+          <carousel [(activeSlide)]="activeSlideIndex" [interval]="myInterval" [noWrap]="noWrapSlides">
             <slide *ngFor="let slide of slides; let index=index">
               <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;">
 
@@ -112,23 +112,23 @@
           </carousel>
           <br/>
           <div>
-            <button type="button" class="btn btn-info"
-                    (click)="addSlide()">Add Slide
+            <button (click)="addSlide()" class="btn btn-info"
+                    type="button">Add Slide
             </button>
-            <button type="button" class="btn btn-info"
-                    (click)="removeSlide()">Remove Current
+            <button (click)="removeSlide()" class="btn btn-info"
+                    type="button">Remove Current
             </button>
-            <button type="button" class="btn btn-info"
-                    (click)="removeSlide(2)">Remove #3
+            <button (click)="removeSlide(2)" class="btn btn-info"
+                    type="button">Remove #3
             </button>
           </div>
           <div>
             <div class="checkbox">
-              <label><input type="checkbox" [(ngModel)]="noWrapSlides">Disable Slide Looping</label>
+              <label><input [(ngModel)]="noWrapSlides" type="checkbox">Disable Slide Looping</label>
             </div>
 
             <span>Interval, in milliseconds (Enter a negative number or 0 to stop the interval.): </span>
-            <input type="number" class="form-control" [(ngModel)]="myInterval">
+            <input [(ngModel)]="myInterval" class="form-control" type="number">
           </div>
         </div>
       </div>

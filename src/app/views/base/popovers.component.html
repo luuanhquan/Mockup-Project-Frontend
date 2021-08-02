@@ -9,8 +9,8 @@
       </div>
     </div>
     <div class="card-body">
-      <button type="button" class="btn btn-primary"
-              popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      <button class="btn btn-primary" popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+              type="button">
         Live demo
       </button>
     </div>
@@ -21,38 +21,38 @@
       <small>positioning</small>
     </div>
     <div class="card-body">
-      <button type="button" class="btn btn-default btn-secondary"
+      <button class="btn btn-default btn-secondary" placement="top"
               popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
               popoverTitle="Popover on top"
-              placement="top">
+              type="button">
         Popover on top
       </button>
 
-      <button type="button" class="btn btn-default btn-secondary"
+      <button class="btn btn-default btn-secondary" placement="right"
               popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
               popoverTitle="Popover on right"
-              placement="right">
+              type="button">
         Popover on right
       </button>
 
-      <button type="button" class="btn btn-default btn-secondary"
+      <button class="btn btn-default btn-secondary" placement="auto"
               popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
               popoverTitle="Popover auto"
-              placement="auto">
+              type="button">
         Popover auto
       </button>
 
-      <button type="button" class="btn btn-default btn-secondary"
+      <button class="btn btn-default btn-secondary" placement="left"
               popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
               popoverTitle="Popover on left"
-              placement="left">
+              type="button">
         Popover on left
       </button>
 
-      <button type="button" class="btn btn-default btn-secondary"
+      <button class="btn btn-default btn-secondary" placement="bottom"
               popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
               popoverTitle="Popover on bottom"
-              placement="bottom">
+              type="button">
         Popover on bottom
       </button>
     </div>
@@ -63,10 +63,10 @@
       <small><code>focus</code> trigger</small>
     </div>
     <div class="card-body">
-      <button type="button" class="btn btn-success"
-              popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+      <button class="btn btn-success" popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
               popoverTitle="Dismissible popover"
-              triggers="focus">
+              triggers="focus"
+              type="button">
         Dismissible popover
       </button>
     </div>
@@ -77,14 +77,14 @@
       <small>dynamic content</small>
     </div>
     <div class="card-body">
-      <button type="button" class="btn btn-info"
-              [popover]="content" [popoverTitle]="title">
+      <button [popoverTitle]="title" [popover]="content"
+              class="btn btn-info" type="button">
         Simple binding
       </button>
 
       <ng-template #popTemplate>Just another: {{content}}</ng-template>
-      <button type="button" class="btn btn-warning"
-              [popover]="popTemplate" popoverTitle="Template ref content inside">
+      <button [popover]="popTemplate" class="btn btn-warning"
+              popoverTitle="Template ref content inside" type="button">
         TemplateRef binding
       </button>
     </div>
@@ -98,8 +98,8 @@
       <ng-template #popTemplateHtml>Here we go:
         <div [innerHtml]="html"></div>
       </ng-template>
-      <button type="button" class="btn btn-success"
-              [popover]="popTemplateHtml" popoverTitle="Dynamic html inside">
+      <button [popover]="popTemplateHtml" class="btn btn-success"
+              popoverTitle="Dynamic html inside" type="button">
         Show me popover with html
       </button>
     </div>
@@ -112,13 +112,13 @@
     <div class="card-body">
       <div class="row panel" style="position: relative; overflow: hidden;">
         <div class="card-body panel-body">
-          <button type="button" class="btn btn-danger"
-                  popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+          <button class="btn btn-danger" popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                  type="button">
             Default popover
           </button>
-          <button type="button" class="btn btn-success"
+          <button class="btn btn-success" container="body"
                   popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                  container="body">
+                  type="button">
             Popover appended to body
           </button>
         </div>
@@ -131,9 +131,9 @@
       <small>custom triggers</small>
     </div>
     <div class="card-body">
-      <button type="button" class="btn btn-info"
-              popover="I will hide on blur"
-              triggers="mouseenter:mouseleave">
+      <button class="btn btn-info" popover="I will hide on blur"
+              triggers="mouseenter:mouseleave"
+              type="button">
         Hover over me!
       </button>
     </div>
@@ -145,15 +145,15 @@
     </div>
     <div class="card-body">
       <p>
-        <span popover="Hello there! I was triggered manually"
-              triggers="" #pop="bs-popover">
+        <span #pop="bs-popover"
+              popover="Hello there! I was triggered manually" triggers="">
         This text has attached popover
         </span>
       </p>
-      <button type="button" class="btn btn-success" (click)="pop.show()">
+      <button (click)="pop.show()" class="btn btn-success" type="button">
         Show
       </button>
-      <button type="button" class="btn btn-warning" (click)="pop.hide()">
+      <button (click)="pop.hide()" class="btn btn-warning" type="button">
         Hide
       </button>
     </div>

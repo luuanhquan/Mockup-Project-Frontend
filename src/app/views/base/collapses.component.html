@@ -8,18 +8,20 @@
         </a>
       </div>
     </div>
-    <div class="card-body"
-         (collapsed)="collapsed($event)"
+    <div (collapsed)="collapsed($event)"
          (expanded)="expanded($event)"
-         [collapse]="isCollapsed">
+         [collapse]="isCollapsed"
+         class="card-body">
       <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+        dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+        suscipit lobortis nisl ut aliquip ex ea commodo
         consequat.
       </p>
     </div>
     <div class="card-footer">
-      <button type="button" class="btn btn-primary"
-              (click)="isCollapsed = !isCollapsed">Toggle collapse
+      <button (click)="isCollapsed = !isCollapsed" class="btn btn-primary"
+              type="button">Toggle collapse
       </button>
     </div>
   </div>

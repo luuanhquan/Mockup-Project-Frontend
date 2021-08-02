@@ -1,179 +1,179 @@
 <div class="animated fadeIn">
-        <div class="row">
-          <div class="col-md-12 col-sm-12">
-            <div class="card m-0">
-              <div class="card-header">
-                <strong>Register Form</strong>
-              </div>
-              <div class="card-body">
-                <form
-                  [formGroup]="register_form"
-                  action=""
-                  method="post"
-                  enctype="multipart/form-data"
-                  class="form-horizontal"
-                  style="display: flex"
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <div class="card m-0">
+        <div class="card-header">
+          <strong>Register Form</strong>
+        </div>
+        <div class="card-body">
+          <form
+            [formGroup]="register_form"
+            action=""
+            class="form-horizontal"
+            enctype="multipart/form-data"
+            method="post"
+            style="display: flex"
+          >
+            <div class="col-md-6 m-auto">
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input"
+                >User Name</label
                 >
-                  <div class="col-md-6 m-auto" >
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="text-input"
-                        >User Name</label
-                      >
 
-                      <div class="col-md-9">
-                        <input
-                          type="text"
-                          class="form-control"
-                          formControlName="username"
-                          placeholder="User name"
-                          minlength="5"
-                          required
-                        />
-                        <div
-                          *ngIf="
+                <div class="col-md-9">
+                  <input
+                    class="form-control"
+                    formControlName="username"
+                    minlength="5"
+                    placeholder="User name"
+                    required
+                    type="text"
+                  />
+                  <div
+                    *ngIf="
                             username.invalid &&
                             (username.dirty || username.touched)
                           "
-                        >
-                          <div *ngIf="username.errors.required">
-                            User Name is required.
-                          </div>
-                          <div *ngIf="username.errors.minlength">
-                            Username must be at least 5 characters long.
-                          </div>
-                        </div>
-                      </div>
+                  >
+                    <div *ngIf="username.errors.required">
+                      User Name is required.
                     </div>
+                    <div *ngIf="username.errors.minlength">
+                      Username must be at least 5 characters long.
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-                    <div class="form-group row">
-                      <label
-                        class="col-md-3 col-form-label"
-                        for="password-input"
-                        >Password</label
-                      >
-                      <div class="col-md-9">
-                        <input
-                          type="password"
-                          class="form-control"
-                          formControlName="password"
-                          placeholder="Password"
-                          minlength="6"
-                          required
-                        />
-                        <div
-                          *ngIf="
+              <div class="form-group row">
+                <label
+                  class="col-md-3 col-form-label"
+                  for="password-input"
+                >Password</label
+                >
+                <div class="col-md-9">
+                  <input
+                    class="form-control"
+                    formControlName="password"
+                    minlength="6"
+                    placeholder="Password"
+                    required
+                    type="password"
+                  />
+                  <div
+                    *ngIf="
                             password.invalid &&
                             (password.dirty || password.touched)
                           "
-                        >
-                          <div *ngIf="password.errors.required">
-                            Password is required.
-                          </div>
-                          <div *ngIf="password.errors.minlength">
-                            Password must be at least 6 characters long.
-                          </div>
-                          <div *ngIf="password.errors.pattern">
-                            Your password must contain at least one uppercase,
-                            one lowercase, and one number.
-                          </div>
-                        </div>
-                      </div>
+                  >
+                    <div *ngIf="password.errors.required">
+                      Password is required.
                     </div>
-
-                    <!-- <div class="form-group row">
-                      <label class="col-md-3 col-form-label"
-                        >Confirm password</label
-                      >
-                      <div class="col-md-9">
-                        <input
-                          type="password"
-                          class="form-control"
-                          formControlName="confirm_password"
-                          placeholder="Password"
-                          minlength="6"
-                          required
-                        />
-                        <div
-                          *ngIf="
-                            confirm_password.invalid &&
-                            (confirm_password.dirty || confirm_password.touched)
-                          "
-                        >
-                          <div *ngIf="confirm_password.errors.required">
-                            Confirm password is required.
-                          </div>
-                          <div *ngIf="confirm_password.errors.areEqual">
-                            Password mismatch.
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
-
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="email-input"
-                        >Email
-                      </label>
-                      <div class="col-md-9">
-                        <input
-                          type="email"
-                          class="form-control"
-                          formControlName="email"
-                          placeholder="Enter email"
-                          email
-                          required
-                          autofocus
-                        />
-                        <div
-                          *ngIf="
-                            email.invalid && (email.dirty || email.touched)
-                          "
-                        >
-                          <div *ngIf="email.errors.required">
-                            Email is required.
-                          </div>
-                          <div *ngIf="email.errors.email">Invalid Email.</div>
-                        </div>
-                      </div>
+                    <div *ngIf="password.errors.minlength">
+                      Password must be at least 6 characters long.
                     </div>
-
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="phone-input"
-                        >Phone
-                      </label>
-                      <div class="col-md-9">
-                        <input
-                          type="text"
-                          class="form-control"
-                          formControlName="phone"
-                          placeholder="Phone"
-                          required
-                        />
-                        <div
-                          *ngIf="
-                            phone.invalid && (phone.dirty || phone.touched)
-                          "
-                        >
-                          <div *ngIf="phone.errors.required">
-                            Phone is required.
-                          </div>
-                        </div>
-                      </div>
+                    <div *ngIf="password.errors.pattern">
+                      Your password must contain at least one uppercase,
+                      one lowercase, and one number.
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
-              <div class="card-footer">
-                <button
-                  (click)="clicksub()"
-                  [disabled]="register_form.invalid"
-                  type="button"
-                  class="btn btn-sm btn-primary d-block m-auto p-2"
+
+              <!-- <div class="form-group row">
+                <label class="col-md-3 col-form-label"
+                  >Confirm password</label
                 >
-                  <i class="fa fa-dot-circle-o"></i> Submit
-                </button>
+                <div class="col-md-9">
+                  <input
+                    type="password"
+                    class="form-control"
+                    formControlName="confirm_password"
+                    placeholder="Password"
+                    minlength="6"
+                    required
+                  />
+                  <div
+                    *ngIf="
+                      confirm_password.invalid &&
+                      (confirm_password.dirty || confirm_password.touched)
+                    "
+                  >
+                    <div *ngIf="confirm_password.errors.required">
+                      Confirm password is required.
+                    </div>
+                    <div *ngIf="confirm_password.errors.areEqual">
+                      Password mismatch.
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="email-input"
+                >Email
+                </label>
+                <div class="col-md-9">
+                  <input
+                    autofocus
+                    class="form-control"
+                    email
+                    formControlName="email"
+                    placeholder="Enter email"
+                    required
+                    type="email"
+                  />
+                  <div
+                    *ngIf="
+                            email.invalid && (email.dirty || email.touched)
+                          "
+                  >
+                    <div *ngIf="email.errors.required">
+                      Email is required.
+                    </div>
+                    <div *ngIf="email.errors.email">Invalid Email.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="phone-input"
+                >Phone
+                </label>
+                <div class="col-md-9">
+                  <input
+                    class="form-control"
+                    formControlName="phone"
+                    placeholder="Phone"
+                    required
+                    type="text"
+                  />
+                  <div
+                    *ngIf="
+                            phone.invalid && (phone.dirty || phone.touched)
+                          "
+                  >
+                    <div *ngIf="phone.errors.required">
+                      Phone is required.
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
-        <!--/.col-->
+        <div class="card-footer">
+          <button
+            (click)="clicksub()"
+            [disabled]="register_form.invalid"
+            class="btn btn-sm btn-primary d-block m-auto p-2"
+            type="button"
+          >
+            <i class="fa fa-dot-circle-o"></i> Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
 </div>

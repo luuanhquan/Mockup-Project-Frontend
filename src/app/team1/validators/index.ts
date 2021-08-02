@@ -1,2 +1,1 @@
-
-export { UsernameValidator } from './username.validator';
+export {UsernameValidator} from './username.validator';

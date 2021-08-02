@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {LeaveRequests} from './leaverequests';
+import {LeaveRequests} from '../model/leaverequests';
 import {environment} from '../../../environments/environment';
 
 

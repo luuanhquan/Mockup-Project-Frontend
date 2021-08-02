@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
 })
 export class SimpleLineIconsComponent {
 
-  constructor() { }
+  constructor() {
+  }
 
 }

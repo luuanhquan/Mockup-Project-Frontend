@@ -11,13 +11,14 @@
     <div class="card-body">
       <div class="row">
         <div class="col-sm-4">
-          <progressbar class="progress" [value]="55" [max]="100"></progressbar>
+          <progressbar [max]="100" [value]="55" class="progress"></progressbar>
         </div>
         <div class="col-sm-4">
-          <progressbar class="progress progress-striped" [value]="22" [max]="100" type="warning">22%</progressbar>
+          <progressbar [max]="100" [value]="22" class="progress progress-striped" type="warning">22%</progressbar>
         </div>
         <div class="col-sm-4">
-          <progressbar class="progress progress-striped active" [max]="200" [value]="166" type="danger"><i>166 / 200</i></progressbar>
+          <progressbar [max]="200" [value]="166" class="progress progress-striped active" type="danger"><i>166 / 200</i>
+          </progressbar>
         </div>
       </div>
     </div>
@@ -27,19 +28,21 @@
       Progress <small>dynamic</small>
     </div>
     <div class="card-body">
-      <progressbar class="progress progress-striped progress-animated" [max]="max" [value]="dynamic">
+      <progressbar [max]="max" [value]="dynamic" class="progress progress-striped progress-animated">
         <span style="color:white; white-space:nowrap;">{{dynamic}} / {{max}}</span>
       </progressbar>
 
       <small><em>No animation</em></small>
-      <progressbar class="progress progress-success" [value]="dynamic" [max]="100" type="success"><b>{{dynamic}}%</b></progressbar>
+      <progressbar [max]="100" [value]="dynamic" class="progress progress-success" type="success"><b>{{dynamic}}%</b>
+      </progressbar>
 
       <small><em>Object (changes type based on value)</em></small>
-      <progressbar class="progress-bar progress-bar-striped progress-bar-animated" [value]="dynamic" [max]="max" [type]="type">
+      <progressbar [max]="max" [type]="type" [value]="dynamic"
+                   class="progress-bar progress-bar-striped progress-bar-animated">
         {{type}} <i *ngIf="showWarning">!!! Watch out !!!</i>
       </progressbar>
       <br>
-      <button type="button" class="btn btn-sm btn-primary" (click)="random()">Randomize</button>
+      <button (click)="random()" class="btn btn-sm btn-primary" type="button">Randomize</button>
     </div>
   </div>
   <div class="card">
@@ -48,11 +51,11 @@
     </div>
     <div class="card-body">
       <div class="row col-lg-12">
-        <progressbar class="progress" [value]="stacked" [max]="100"></progressbar>
+        <progressbar [max]="100" [value]="stacked" class="progress"></progressbar>
       </div>
       <br>
       <div class="row col-md-12">
-        <button type="button" class="btn btn-sm btn-primary" (click)="randomize()">{{buttonCaption}} randomize</button>
+        <button (click)="randomize()" class="btn btn-sm btn-primary" type="button">{{buttonCaption}} randomize</button>
       </div>
     </div>
   </div>

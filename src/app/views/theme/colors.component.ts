@@ -6,7 +6,8 @@ import {getStyle, rgbToHex} from '@coreui/coreui/dist/js/coreui-utilities';
   templateUrl: 'colors.component.html'
 })
 export class ColorsComponent implements OnInit {
-  constructor(@Inject(DOCUMENT) private _document: any) {}
+  constructor(@Inject(DOCUMENT) private _document: any) {
+  }
 
   public themeColors(): void {
     Array.from(this._document.querySelectorAll('.theme-color')).forEach((el: HTMLElement) => {

@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
 })
 export class ButtonsComponent {
 
-  constructor() { }
+  constructor() {
+  }
 
 }

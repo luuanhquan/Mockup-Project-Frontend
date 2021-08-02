@@ -77,4 +77,5 @@ import {BaseRoutingModule} from './base-routing.module';
     NavbarsComponent
   ]
 })
-export class BaseModule { }
+export class BaseModule {
+}

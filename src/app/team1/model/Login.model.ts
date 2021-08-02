@@ -1,7 +1,7 @@
 export interface LoginModel {
-  username: string ;
+  username: string;
   role: string;
   avartar: string;
-  loggedin: boolean
+  loggedin: boolean;
 }
 

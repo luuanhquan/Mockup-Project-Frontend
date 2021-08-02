@@ -1,7 +1,7 @@
-export interface IssueList{
+export interface IssueList {
   id: number;
   creator: string;
-  assignee:string;
+  assignee: string;
   parent: number;
   status: string;
 }

@@ -7,18 +7,17 @@ import {Component, ViewEncapsulation} from '@angular/core';
 })
 export class PaginationsComponent {
 
-  constructor() { }
-
   totalItems: number = 64;
-  currentPage: number   = 4;
+  currentPage: number = 4;
   smallnumPages: number = 0;
-
   maxSize: number = 5;
   bigTotalItems: number = 675;
   bigCurrentPage: number = 1;
   numPages: number = 0;
+  currentPager: number = 4;
 
-  currentPager: number   = 4;
+  constructor() {
+  }
 
   setPage(pageNo: number): void {
     this.currentPage = pageNo;

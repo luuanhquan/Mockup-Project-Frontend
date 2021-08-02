@@ -1,10 +1,9 @@
+import {HttpErrorResponse} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {Users} from './users';
 
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Users } from './users';
-
-import { UserService } from './employee.service';
+import {UserService} from './employee.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +16,9 @@ export class EmployeeComponent implements OnInit {
   public moveUser: Users;
   p: number = 1;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+  }
+
   ngOnInit() {
     this.getUsers();
   }
@@ -58,7 +59,8 @@ export class EmployeeComponent implements OnInit {
       }
     );
   }
-  // edit 
+
+  // edit
   // public onMoveEmloyee(employee: Employee): void {
   //   this.employeeService.moveEmployee(employee).subscribe(
   //     (response: Employee) => {
@@ -96,7 +98,7 @@ export class EmployeeComponent implements OnInit {
     }
     this.users = results;
     if (results.length === 0 || !key) {
-      return
+      return;
     }
   }
 

@@ -1,23 +1,26 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { LeaveRequests } from './leaverequests';
-import{LeaveRequestService} from './leaverequests.service';
-import { ModalDirective } from "ngx-bootstrap/modal";
+import {HttpErrorResponse} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {LeaveRequests} from '../model/leaverequests';
+import {LeaveRequestService} from '../service/leaverequests.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'request.component.html'
 })
-export class RequestComponent implements OnInit{
+export class RequestComponent implements OnInit {
   public leaveRequests: LeaveRequests[];
   public approveRequest: LeaveRequests;
   public cancelRequest: LeaveRequests;
   public refuseRequest: LeaveRequests;
 
-  constructor(private leaveRequestService: LeaveRequestService) {}
+  constructor(private leaveRequestService: LeaveRequestService) {
+  }
+
   ngOnInit() {
     this.getLeaveRequests();
   }
+
 // all Request
   public getLeaveRequests(): void {
     this.leaveRequestService.getLeaveRequests().subscribe(
@@ -94,7 +97,7 @@ export class RequestComponent implements OnInit{
       button.setAttribute('data-target', '#addRequestModal');
     }
 
-     if (mode === 'approve') {
+    if (mode === 'approve') {
       this.approveRequest = leaveRequests;
       button.setAttribute('data-target', '#approveRequestModal');
     }

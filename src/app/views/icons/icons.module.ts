@@ -23,4 +23,5 @@ import {IconsRoutingModule} from './icons-routing.module';
     SimpleLineIconsComponent
   ]
 })
-export class IconsModule { }
+export class IconsModule {
+}

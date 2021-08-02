@@ -1,12 +1,6 @@
-
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import{
-
-  UsernameValidator,
-
-
-} from '../validators';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UsernameValidator,} from '../validators';
 
 
 @Component({
@@ -20,10 +14,26 @@ export class RegisterComponent implements OnInit {
   register_form: FormGroup;
 
 
-  constructor() { }
+  constructor() {
+  }
+
+  get username() {
+    return this.register_form.get('username');
+  }
+
+  get email() {
+    return this.register_form.get('email');
+  }
+
+  get phone() {
+    return this.register_form.get('phone');
+  }
+
+  get password() {
+    return this.register_form.get('password');
+  }
 
   ngOnInit() {
-
 
 
     this.register_form = new FormGroup({
@@ -34,12 +44,12 @@ export class RegisterComponent implements OnInit {
         Validators.minLength(5),
         Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
         Validators.required
-       ])),
+      ])),
 
 
       // 'username' : new FormControl('', Validators.required),
-      'email' : new FormControl('', [Validators.required, Validators.email]),
-      'phone' : new FormControl(
+      'email': new FormControl('', [Validators.required, Validators.email]),
+      'phone': new FormControl(
         null,
         [
           Validators.required,
@@ -47,37 +57,21 @@ export class RegisterComponent implements OnInit {
         ]),
 
 
-        'password': new FormControl ('',[Validators.compose([Validators.required,Validators.minLength(6)])]),
+      'password': new FormControl('', [Validators.compose([Validators.required, Validators.minLength(6)])]),
 
 
-
-        'confirm_password': new FormControl ('',[Validators.compose([Validators.required,Validators.minLength(6)])]),
-
+      'confirm_password': new FormControl('', [Validators.compose([Validators.required, Validators.minLength(6)])]),
 
 
     });
-    }
-
-
-    clicksub() {
-      console.log(this.register_form.value);
-      this.register_form.reset();
-    }
-    get username() {
-      return this.register_form.get('username');
-    }
-    get email() {
-      return this.register_form.get('email');
-    }
-    get phone() {
-      return this.register_form.get('phone');
-    }
-    get password() {
-      return this.register_form.get('password');
-    }
-
-
-    onSubmitRegister(value){
-      console.log(value);
-    }
   }
+
+  clicksub() {
+    console.log(this.register_form.value);
+    this.register_form.reset();
+  }
+
+  onSubmitRegister(value) {
+    console.log(value);
+  }
+}

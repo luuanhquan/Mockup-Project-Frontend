@@ -1,24 +1,25 @@
-import { Input, OnInit, ViewChild } from "@angular/core";
-import { Component } from "@angular/core";
-import { Project } from "./project";
-import { HttpErrorResponse } from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {Project} from '../model/project';
+import {HttpErrorResponse} from '@angular/common/http';
 
-import { ProjectService } from "./project.service";
-import { ModalDirective } from "ngx-bootstrap/modal";
-import { Router } from "@angular/router";
-import { NgForm } from '@angular/forms';
-import { Project2 } from "./project2";
+import {ProjectService} from '../service/project.service';
+import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
+import {Project2} from '../model/project2';
 
 declare var $: any;
+
 @Component({
-  templateUrl: "project.component.html",
-  styleUrls: ["./project.component.css"],
+  templateUrl: 'project.component.html',
+  styleUrls: ['./project.component.css'],
 })
 export class ProjectComponent implements OnInit {
   public project: Project[];
 
   constructor(private projectService: ProjectService,
-    private router: Router) { }
+              private router: Router) {
+  }
+
   ngOnInit() {
     this.getProject();
   }
@@ -34,6 +35,7 @@ export class ProjectComponent implements OnInit {
       }
     );
   }
+
   // public onOpen( project:Project,node:String):void{
   //     const con=document.getElementById('container');
   //     const button= document.createElement('button');
@@ -48,7 +50,7 @@ export class ProjectComponent implements OnInit {
   // }
 
   showModal(): void {
-    $("#myModal").modal('show');
+    $('#myModal').modal('show');
   }
 
   hideModal(): void {
