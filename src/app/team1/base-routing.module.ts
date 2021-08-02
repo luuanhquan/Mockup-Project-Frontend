@@ -6,7 +6,7 @@ import {EmployeeComponent} from './employee/employee.component';
 import {IssueComponent} from './issue/issue.component';
 import {ProjectComponent} from './project/project.component';
 import {RegisterComponent} from './register/register.component';
-import {RequestComponent} from './request/request.component';
+import {ReportComponent} from './report/report.component';
 import {IssueDetailComponent} from './issue-detail/issue-detail.component';
 
 const routes: Routes = [
@@ -64,7 +64,7 @@ const routes: Routes = [
       },
       {
         path: 'request',
-        component: RequestComponent,
+        component: ReportComponent,
         data: {
           title: 'Requests'
         }

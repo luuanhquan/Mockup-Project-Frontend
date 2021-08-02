@@ -8,7 +8,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { IssueComponent } from './issue/issue.component';
 import { ProjectComponent } from './project/project.component';
 import { RegisterComponent } from './register/register.component';
-import { RequestComponent } from './request/request.component';
+import { ReportComponent } from './report/report.component';
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
 
 // Tabs Component
@@ -38,7 +38,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     IssueComponent,
     ProjectComponent,
     IssueComponent,
-    RequestComponent,
+    ReportComponent,
     RegisterComponent,
     NavbarsComponent,
     IssueDetailComponent

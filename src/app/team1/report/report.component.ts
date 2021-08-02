@@ -1,32 +1,37 @@
 import { Component, OnInit, OnDestroy, NgModule } from '@angular/core';
 // import { type } from 'os';
-import { Request } from './request';
-import { ReportService } from './request.service';
+import { Report } from '../model/report';
+import { ReportService } from '../service/report.service';
 import { NgForm } from '@angular/forms';
-import { Project } from './project.model';
+import { Project } from '../model/project.model';
 import { CommonModule } from '@angular/common';
 import { report } from 'process';
 import { HttpErrorResponse } from '@angular/common/http';
 
-export class RequestComponent implements OnInit, OnDestroy {
-  public reports: Request[];
-  public readrequest: Request;
+@Component({
+  templateUrl: 'report.component.html'
+})
+
+export class ReportComponent implements OnInit, OnDestroy {
+  public reports: Report[];
+  public readrequest: Report;
   public project: Project[] = [];
-  activeProject: number = 0;
+  private active_project;
 
   changeItem(id: number) {
+    this.active_project=id;
     this.getReport(id);
   }
 
 
   constructor(private reportService: ReportService) { }
   ngOnInit(): void {
-    Promise.resolve(this.getProject()).then(() => this.getReport(this.project[0].id));
+    this.getProject();
   }
 
   public getReport(id: number): void {
     this.reportService.getReport(id).subscribe(
-      (response: Request[]) => {
+      (response: Report[]) => {
         this.reports = response;
       },
       (error: HttpErrorResponse) => {
@@ -34,11 +39,11 @@ export class RequestComponent implements OnInit, OnDestroy {
       }
     );
   }
-  public writeReport(report: Request): void {
+  public writeReport(report: Report): void {
     this.reportService.readReport(report).subscribe(
-      (response: Request) => {
+      (response: Report) => {
         console.log(report);
-        this.getReport(this.activeProject);
+        this.getReport(this.active_project);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -46,7 +51,7 @@ export class RequestComponent implements OnInit, OnDestroy {
     );
   }
 
-  public onOpenModal(report: Request, node: string): void {
+  public onOpenModal(report: Report, node: string): void {
     const container = document.getElementById('reportWeek')
     const button = document.createElement('button');
     button.type = 'button';
@@ -82,7 +87,6 @@ export class RequestComponent implements OnInit, OnDestroy {
 
   status: { isOpen: boolean } = { isOpen: false };
   disabled: boolean = false;
-  isDropup: boolean = true;
   autoClose: boolean = false;
 
 

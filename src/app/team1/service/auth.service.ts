@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {map} from 'rxjs/operators';
-import {LoginModel} from '../../model/Login.model';
+import {LoginModel} from '../model/Login.model';
 import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'

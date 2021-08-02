@@ -2,7 +2,7 @@ import {Component, Input, OnInit, Output} from '@angular/core';
 import {navItems} from '../../_nav';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../../team1/service/auth.service'
-import {LoginModel} from '../../model/Login.model';
+import {LoginModel} from '../../team1/model/Login.model';
 
 @Component({
   selector: 'app-dashboard',

@@ -27,7 +27,7 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import {ChartsModule} from 'ng2-charts';
 import {FormsModule} from '@angular/forms';
-import {LoginModel} from './model/Login.model';
+import {LoginModel} from './team1/model/Login.model';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../service/auth.service';
-import {LoginModel} from '../../model/Login.model';
+import {LoginModel} from '../model/Login.model';
 import {EventEmitter} from '@angular/core';
 
 @Component({

@@ -18,18 +18,18 @@
                 <table class="table table-striped text-center" style="word-break: break-word;">
                     <thead>
                         <tr>
-                            
+
                             <th>DỰ ÁN</th>
                             <th >ID BÁO CÁO</th>
                             <th>NGÀY TẠO</th>
                             <th>TRẠNG THÁI</th>
                             <th>Nguoi Tao</th>
-                            
-                        
+
+
                         </tr>
                     </thead>
-                    <tbody > 
-                        
+                    <tbody >
+
                         <tr *ngFor="let report of reports">
                             <ng-container *ngIf="report.type=='WEEKLY'">
                             <td >{{report.projectId}}</td>
@@ -37,25 +37,25 @@
                             <td>{{report.dateCreat}}</td>
                             <td>{{report.type}}</td>
                             <td>{{report.creater}}</td>
-                            <td style="display:none" >{{report.isweek}}</td>
-                            
-                            
-                                
-                              
-                            
-                           
+                            <td style="display:none" >{{report.status}}</td>
+
+
+
+
+
+
                             </ng-container>
                         </tr>
                         <div>
                           <a role="button" class="badge badge-warning" (click)="onOpenModal(null,'report')">Write report</a>
                       </div>
-                       
-                        
-                      
-                        
+
+
+
+
                     </tbody>
                 </table>
-              
+
             </div>
         </div>
     </div>
@@ -69,41 +69,41 @@
                 <table class="table table-striped text-center" style="word-break: break-word;">
                     <thead>
                         <tr>
-                            
+
                             <th>DỰ ÁN</th>
                             <th>ID BÁO CÁO</th>
                             <th>NGÀY TẠO</th>
                             <th>TRẠNG THÁI</th>
                             <th>Nguoi Tao</th>
-                           
-                            
+
+
                         </tr>
                     </thead>
                     <tbody>
-                       
+
                         <tr *ngFor="let report of reports"   >
                            <ng-container *ngIf="report.type=='PROJECT'" >
-                            
-                            <td>{{report.id}}</td>
-                            <td>{{report.role}}</td>
-                            <td>{{report.type}}</td>
-                            <td>{{report.fullname}}</td>
-                            <td>{{report.username}}</td>
 
-                            
-                            <td style="display:none" >{{report.isweek}}</td>
-                            
-                           
+                            <td>{{report.id}}</td>
+                            <td>{{report.advantage}}</td>
+                            <td>{{report.type}}</td>
+                            <td>{{report.creater}}</td>
+                            <td>{{report.difficuly}}</td>
+
+
+                            <td style="display:none" >{{report.type}}</td>
+
+
                             </ng-container>
                         </tr>
-                        
+
                     </tbody>
                 </table>
-               
+
             </div>
         </div>
     </div>
-    
+
 </section>
 <ul class="pagination">
   <li class="page-item"><a class="page-link" href="#">Prev</a></li>
@@ -122,39 +122,39 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Read Report</h5>
+          <h5 class="modal-title" >Read Report</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <form #readForm ="ngForm">
         <div class="modal-body">
-          
+
           <label for="message-text" class="col-form-label">Du An</label>
-              <input ngModel="{{readrequest?.projectId}}" name="projectId" type="text" class="form-control" id="message-text">
+              <input ngModel="{{readrequest?.projectId}}" name="projectId" type="text" class="form-control" />
               <label for="message-text" class="col-form-label">Id Bao Cao:</label>
-              <input ngModel="{{readrequest?.id}}" name="id" type="text"  class="form-control" id="message-text">
+              <input ngModel="{{readrequest?.id}}" name="id" type="text" class="form-control" />
               <label for="message-text" class="col-form-label">Ngay Tao:</label>
-              <input ngModel="{{readrequest?.dateCreat}}" name="dateCreat" type="text"  class="form-control" id="message-text">
+              <input ngModel="{{readrequest?.dateCreat}}" name="dateCreat" type="text"  class="form-control" />
               <label for="message-text" class="col-form-label">Da Doc:</label>
-              <input ngModel="{{readrequest?.type}}" name="type" type="text"  class="form-control" id="message-text">
+              <input ngModel="{{readrequest?.type}}" name="type" type="text"  class="form-control" />
               <label for="message-text" class="col-form-label">Loai Bao Cao</label>
-              <input ngModel="{{readrequest?.status}}" name="isweek" type="text" class="form-control" id="message-text">
+              <input ngModel="{{readrequest?.status}}" name="isweek" type="text" class="form-control" />
               <label for="message-text" class="col-form-label">Nguoi Tao:</label>
-              <input ngModel="{{readrequest?.creater}}" name="creater" type="text"  class="form-control" id="message-text">
+              <input ngModel="{{readrequest?.creater}}" name="creater" type="text"  class="form-control"/> >
               <label for="message-text" class="col-form-label">advantage:</label>
-              <input ngModel="{{readrequest?.advantage}}" name="advantage" type="text"  class="form-control" id="message-text">
+              <input ngModel="{{readrequest?.advantage}}" name="advantage" type="text"  class="form-control"/> >
               <label for="message-text" class="col-form-label">disadvantage:</label>
-              <input ngModel="{{readrequest?.disadvantage}}" name="disadvantage" type="text"  class="form-control" id="message-text">
+              <input ngModel="{{readrequest?.disadvantage}}" name="disadvantage" type="text"  class="form-control"/>
               <label for="message-text" class="col-form-label">difficuly:</label>
-              <input ngModel="{{readrequest?.difficuly}}" name="difficuly" type="text"  class="form-control" id="message-text">
+              <input ngModel="{{readrequest?.difficuly}}" name="difficuly" type="text"  class="form-control" />
               <label for="message-text" class="col-form-label">propose:</label>
-              <input ngModel="{{readrequest?.propose}}" name="propose" type="text"  class="form-control" id="message-text">
-            
+              <input ngModel="{{readrequest?.propose}}" name="propose" type="text"  class="form-control"/>
+
         </div>
       </form>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="writeReport(readForm.value)">Close</button>    
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="writeReport(readForm.value)">Close</button>
         </div>
       </div>
     </div>
@@ -177,14 +177,14 @@
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">ADVANTAGE:</label>
-              <input type="text"ngModel name="advantage" class="form-control" id="message-text">
+              <input type="text"ngModel name="advantage" class="form-control" >
             </div>
             <label for="message-text" class="col-form-label">DISADVANTAGE:</label>
-              <input type="text"  ngModel name="disadvantage"class="form-control" id="message-text">
+              <input type="text"  ngModel name="disadvantage"class="form-control" >
               <label for="message-text" class="col-form-label">DIFFICULTY:</label>
-              <input type="text" ngModel name="difficuly" class="form-control" id="message-text">
+              <input type="text" ngModel name="difficuly" class="form-control">
               <label for="message-text" class="col-form-label">PROPOSE:</label>
-              <input type="text" ngModel name="propose" class="form-control" id="message-text">
+              <input type="text" ngModel name="propose" class="form-control" >
           </form>
         </div>
         <div class="modal-footer">
