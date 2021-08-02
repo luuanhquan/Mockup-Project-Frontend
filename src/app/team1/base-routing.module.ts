@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {EmployeeComponent} from './employee/employee.component';
 import {IssueComponent} from './issue/issue.component';
 import {LoginComponent} from './login/login.component';
 import {ProjectComponent} from './project/project.component';
 import {RegisterComponent} from './register/register.component';
+import { ReportComponent } from './report/report.component';
 import {RequestComponent} from './request/request.component';
+
 
 const routes: Routes = [
   {
@@ -69,10 +70,16 @@ const routes: Routes = [
           title: 'Requests'
         }
       },
+      {
+        path: 'report',
+        component: ReportComponent,
+        data: {
+          title: 'Report'
+        }
+      }
     ]
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
