@@ -84,21 +84,21 @@ export class EmployeeComponent implements OnInit{
   }
 
 
-  // public searchEmployees(key: string): void {
-  //   console.log(key);
-  //   const results: Employee[] = [];
-  //   for (const employee of this.employees) {
-  //     if(employee.CLASS_NAME.toLowerCase().indexOf(key.toLowerCase()) !== -1
-  //     || employee.personId.toLowerCase().indexOf(key.toLowerCase()) !== -1
-  //     ){
-  //       results.push(employee);
-  //     }
-  //   }
-  //   this.employees = results;
-  //   if (results.length === 0 || !key) {
-  //     return
-  //   }
-  // }
+  public searchEmployees(key: string): void {
+    console.log(key);
+    const results: Users[] = [];
+    for (const user of this.users) {
+      if(user.fullname.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      // || employee.personId.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      ){
+        results.push(user);
+      }
+    }
+    this.users = results;
+    if (results.length === 0 || !key) {
+      return
+    }
+  }
 
   public onOpenModal(user: Users, mode: string): void {
     const container = document.getElementById('main-container');
