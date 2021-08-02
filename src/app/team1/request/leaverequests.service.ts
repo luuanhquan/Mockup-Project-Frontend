@@ -22,17 +22,16 @@ export class LeaveRequestService {
   }
 //// chap nhan
   public approveRequest(leaveRequests: LeaveRequests): Observable<LeaveRequests> {
-    return this.http.put<LeaveRequests>(`${this.apiServerUrl}/leaverequest/approve`, leaveRequests);
+    return this.http.put<LeaveRequests>(`${this.apiServerUrl}/leaverequest/{id}/true`, leaveRequests);
+  }
+  public refuseRequest(leaveRequests: LeaveRequests): Observable<LeaveRequests> {
+    return this.http.put<LeaveRequests>(`${this.apiServerUrl}/leaverequest/{id}/false`, leaveRequests);
   }
 
-//// tu choi
-public refuseRequest(leaveRequests: LeaveRequests): Observable<LeaveRequests> {
-  return this.http.put<LeaveRequests>(`${this.apiServerUrl}/leaverequest/refuse`, leaveRequests);
-}
 
 
   ///---------------thu hoi
   public cancelRequest (id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/leaverequest/cancel/${id}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/leaverequest/${id}/cancel`);
   }
 }

@@ -1,23 +1,10 @@
-<<<<<<< Updated upstream
-import { Component } from '@angular/core';
 
-@Component({
-  templateUrl: 'register.component.html'
-})
-export class RegisterComponent {
-
-  constructor() { }
-
-
-}
-=======
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import{
 
   UsernameValidator,
-  PasswordValidator,
-  ParentErrorStateMatcher,
+
 
 } from '../validators';
 
@@ -31,24 +18,12 @@ import{
 export class RegisterComponent implements OnInit {
 
   register_form: FormGroup;
-  matching_passwords: FormGroup;
+
 
   constructor() { }
 
   ngOnInit() {
 
-     // matching passwords validation
-    //  this.matching_passwords = new FormGroup({
-    //   password: new FormControl('', Validators.compose([
-    //     Validators.minLength(5),
-    //     Validators.required,
-    //     Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
-    //   ])),
-
-    //   confirm_password: new FormControl('', Validators.required)
-    // }, (formGroup: FormGroup) => {
-    //   return PasswordValidator.areEqual(formGroup);
-    // });
 
 
     this.register_form = new FormGroup({
@@ -70,7 +45,7 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')
         ]),
-        // matching_passwords: this.matching_passwords,
+
 
         'password': new FormControl ('',[Validators.compose([Validators.required,Validators.minLength(6)])]),
 
@@ -82,6 +57,7 @@ export class RegisterComponent implements OnInit {
 
     });
     }
+
 
     clicksub() {
       console.log(this.register_form.value);
@@ -99,12 +75,9 @@ export class RegisterComponent implements OnInit {
     get password() {
       return this.register_form.get('password');
     }
-    get confirm_password() {
-      return this.register_form.get('confirm_password');
-    }
+
 
     onSubmitRegister(value){
       console.log(value);
     }
   }
->>>>>>> Stashed changes

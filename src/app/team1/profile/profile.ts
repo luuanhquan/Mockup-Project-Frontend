@@ -2,10 +2,10 @@ export interface Profile{
   username:string
   password:string
   email:string
-  phone:string   //string
+  phone:string
   type:number
-  avatar:string   //files
-  personalid:string //string
+  avatar:string
+  personalid:string
   firstname:string
   middlename:string
   lastname:string

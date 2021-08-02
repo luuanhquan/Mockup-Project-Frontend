@@ -6,8 +6,7 @@ import { ProfileService } from './profile.service';
 import{
 
   UsernameValidator,
-  PasswordValidator,
-  ParentErrorStateMatcher,
+
 
 } from '../validators';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -22,34 +21,21 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class ProfileComponent implements OnInit {
 
   profile_form: FormGroup;
-  matching_passwords: FormGroup;
+
 
   public profile:Profile[];
   public updateProfile: Profile;
-  // userData: User
-  // isDisable :boolean = true
+
 
   constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
 
 
-    // this.userData = JSON.parse(localStorage.getItem("user data"));
 
 
 this.getProfile();
-     // matching passwords validation
-    //  this.matching_passwords = new FormGroup({
-    //   password: new FormControl('', Validators.compose([
-    //     Validators.minLength(5),
-    //     Validators.required,
-    //     Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
-    //   ])),
 
-    //   confirm_password: new FormControl('', Validators.required)
-    // }, (formGroup: FormGroup) => {
-    //   return PasswordValidator.areEqual(formGroup);
-    // });
 
 
     this.profile_form = new FormGroup({
@@ -71,7 +57,7 @@ this.getProfile();
           Validators.required,
           Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')
         ]),
-        // matching_passwords: this.matching_passwords,
+
 
         'password': new FormControl ('',[Validators.compose([Validators.required,Validators.minLength(6)])]),
 

@@ -8,11 +8,10 @@ import {LoginComponent} from './login/login.component';
 import {ProjectComponent} from './project/project.component';
 import {RegisterComponent} from './register/register.component';
 import {RequestComponent} from './request/request.component';
-<<<<<<< Updated upstream
-=======
+
 import {ProfileComponent} from './profile/profile.component';
 
->>>>>>> Stashed changes
+
 
 const routes: Routes = [
   {
@@ -68,8 +67,7 @@ const routes: Routes = [
         }
       },
       {
-<<<<<<< Updated upstream
-=======
+
         path: 'profile',
         component: ProfileComponent,
         data: {
@@ -77,7 +75,6 @@ const routes: Routes = [
         }
       },
       {
->>>>>>> Stashed changes
         path: 'request',
         component: RequestComponent,
         data: {
