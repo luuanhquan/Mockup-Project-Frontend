@@ -40,6 +40,9 @@ const APP_CONTAINERS = [
 ];
 
 
+
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ const APP_CONTAINERS = [
     LoginComponent,
     RegisterComponent
   ],
+
   providers: [
     {
       provide: LocationStrategy,

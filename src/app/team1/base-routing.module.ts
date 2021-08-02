@@ -10,6 +10,10 @@ import { ReportComponent } from './report/report.component';
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
 
 
+import {ProfileComponent} from './profile/profile.component';
+
+
+
 const routes: Routes = [
   {
     path: '',
@@ -61,6 +65,14 @@ const routes: Routes = [
         component: RegisterComponent,
         data: {
           title: 'Register'
+        }
+      },
+      {
+
+        path: 'profile',
+        component: ProfileComponent,
+        data: {
+          title: 'Profile'
         }
       },
       {

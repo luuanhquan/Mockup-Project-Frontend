@@ -17,13 +17,16 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
 import { NavbarsComponent } from './navbars/navbars.component';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ProfileComponent } from './profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 // Collapse Component
 
 // Dropdowns Component
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   imports: [
@@ -31,7 +34,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     FormsModule,
     TabsModule,
     BaseRoutingModule,
-    CollapseModule
+    CollapseModule,
+    BaseRoutingModule,
+    ReactiveFormsModule
+
   ],
   declarations: [DashboardComponent,
     EmployeeComponent,
@@ -41,8 +47,14 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     IssueComponent,
     ReportComponent,
     RegisterComponent,
+    ProfileComponent,
+    NavbarsComponent,
     NavbarsComponent,
     ReportComponent
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+
   ]
 })
 
