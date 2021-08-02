@@ -10,14 +10,14 @@ import { UserService } from './employee.service';
   selector: 'app-root',
   templateUrl: 'employee.component.html'
 })
-export class EmployeeComponent implements OnInit{
+export class EmployeeComponent implements OnInit {
   public users: Users[];
   public editUser: Users;
   public deleteUser: Users;
   public moveUser: Users;
-  p:number=1;
-  
-  constructor(private userService: UserService) {}
+  p: number = 1;
+
+  constructor(private userService: UserService) { }
   ngOnInit() {
     this.getUsers();
   }
@@ -88,9 +88,9 @@ export class EmployeeComponent implements OnInit{
     console.log(key);
     const results: Users[] = [];
     for (const user of this.users) {
-      if(user.fullname.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      // || employee.personId.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      ){
+      if (user.fullname.toLowerCase().indexOf(key.toLowerCase()) !== -1
+        // || employee.personId.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      ) {
         results.push(user);
       }
     }

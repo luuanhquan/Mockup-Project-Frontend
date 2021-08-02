@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { NavbarsComponent } from './navbars.component';
+import {NavbarsComponent} from './navbars.component';
 
 describe('NavbarsComponent', () => {
   let component: NavbarsComponent;

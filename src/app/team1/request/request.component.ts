@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, OnDestroy, NgModule } from '@angular/core';
 // import { type } from 'os';
 import { Request } from './request';
@@ -7,27 +6,25 @@ import { NgForm } from '@angular/forms';
 import { Project } from './project.model';
 import { CommonModule } from '@angular/common';
 import { report } from 'process';
+import { HttpErrorResponse } from '@angular/common/http';
 
-@Component({
-  templateUrl: 'request.component.html'
-})
 export class RequestComponent implements OnInit, OnDestroy {
   public reports: Request[];
   public readrequest: Request;
-  public project: Project[]=[];
-  activeProject:number=0;
+  public project: Project[] = [];
+  activeProject: number = 0;
 
-  changeItem(id:number){
+  changeItem(id: number) {
     this.getReport(id);
   }
 
-  
+
   constructor(private reportService: ReportService) { }
   ngOnInit(): void {
-    Promise.resolve(this.getProject()).then(()=>this.getReport(this.project[0].id)) ;
+    Promise.resolve(this.getProject()).then(() => this.getReport(this.project[0].id));
   }
 
-  public getReport(id:number): void {
+  public getReport(id: number): void {
     this.reportService.getReport(id).subscribe(
       (response: Request[]) => {
         this.reports = response;
@@ -48,18 +45,18 @@ export class RequestComponent implements OnInit, OnDestroy {
       }
     );
   }
- 
-  public  onOpenModal(  report:Request,node:string): void {
-    const container=document.getElementById('reportWeek')
+
+  public onOpenModal(report: Request, node: string): void {
+    const container = document.getElementById('reportWeek')
     const button = document.createElement('button');
-    button.type='button';
+    button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
-    if(node==='read'){
-      button.setAttribute('data-target','#modalread')
+    if (node === 'read') {
+      button.setAttribute('data-target', '#modalread')
     }
-    if(node==='report'){
-      button.setAttribute('data-target','#modalreport')
+    if (node === 'report') {
+      button.setAttribute('data-target', '#modalreport')
 
     }
     container.appendChild(button);
@@ -67,10 +64,10 @@ export class RequestComponent implements OnInit, OnDestroy {
 
   }
 
-  public getProject(){
-     this.reportService.getProject().subscribe(
+  public getProject() {
+    this.reportService.getProject().subscribe(
       (response: Project[]) => {
-        this.project=response;
+        this.project = response;
         console.log(response);
         console.log(this.project);
       },
@@ -89,7 +86,7 @@ export class RequestComponent implements OnInit, OnDestroy {
   autoClose: boolean = false;
 
 
-  ngOnDestroy () {
+  ngOnDestroy() {
     this.status.isOpen = false;
   }
 

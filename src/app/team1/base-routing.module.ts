@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {EmployeeComponent} from './employee/employee.component';
 import {IssueComponent} from './issue/issue.component';
-import {LoginComponent} from './login/login.component';
 import {ProjectComponent} from './project/project.component';
 import {RegisterComponent} from './register/register.component';
 import {RequestComponent} from './request/request.component';
+import {IssueDetailComponent} from './issue-detail/issue-detail.component';
 
 const routes: Routes = [
   {
@@ -42,10 +42,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'login',
-        component: LoginComponent,
+        path: 'issue-detail',
+        component: IssueDetailComponent,
         data: {
-          title: 'Login'
+          title: 'Issues Detail'
         }
       },
       {

@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  templateUrl: '404.component.html'
+  templateUrl: 'issue-detail.component.html'
 })
-export class P404Component {
+export class IssueDetailComponent {
 
   constructor() { }
 
