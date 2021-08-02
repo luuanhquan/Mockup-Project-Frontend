@@ -84,11 +84,13 @@
                         <tr *ngFor="let report of reports"   >
                            <ng-container *ngIf="report.type=='PROJECT'" >
                             
-                            <td>{{report.projectId}}</td>
                             <td>{{report.id}}</td>
-                            <td>{{report.dateCreat}}</td>
+                            <td>{{report.role}}</td>
                             <td>{{report.type}}</td>
-                            <td>{{report.creater}}</td>
+                            <td>{{report.fullname}}</td>
+                            <td>{{report.username}}</td>
+
+                            
                             <td style="display:none" >{{report.isweek}}</td>
                             
                            
