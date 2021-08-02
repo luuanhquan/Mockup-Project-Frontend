@@ -6,11 +6,10 @@ import {NgModule} from '@angular/core';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {EmployeeComponent} from './employee/employee.component';
 import {IssueComponent} from './issue/issue.component';
-import {LoginComponent} from './login/login.component';
 import {ProjectComponent} from './project/project.component';
 import {RegisterComponent} from './register/register.component';
 import {RequestComponent} from './request/request.component';
-
+import {IssueDetailComponent} from './issue-detail/issue-detail.component';
 
 // Tabs Component
 import {TabsModule} from 'ngx-bootstrap/tabs';
@@ -30,14 +29,14 @@ import {CollapseModule} from 'ngx-bootstrap/collapse';
     ],
   declarations: [DashboardComponent,
     EmployeeComponent,
-    LoginComponent,
+    EmployeeComponent,
     IssueComponent,
     ProjectComponent,
     IssueComponent,
-    LoginComponent,
     RequestComponent,
     RegisterComponent,
     NavbarsComponent,
+    IssueDetailComponent
   ]
 })
 export class BaseModule {

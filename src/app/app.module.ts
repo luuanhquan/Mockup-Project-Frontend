@@ -13,7 +13,7 @@ import {DefaultLayoutComponent} from './containers';
 
 import {P404Component} from './views/error/404.component';
 import {P500Component} from './views/error/500.component';
-import {LoginComponent} from './views/login/login.component';
+import {LoginComponent} from './team1/login/login.component';
 import {RegisterComponent} from './views/register/register.component';
 
 import {HttpClientModule} from '@angular/common/http';
@@ -27,6 +27,7 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import {ChartsModule} from 'ng2-charts';
 import {FormsModule} from '@angular/forms';
+import {LoginModel} from './model/Login.model';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -35,6 +36,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 const APP_CONTAINERS = [
   DefaultLayoutComponent
 ];
+
 
 @NgModule({
     imports: [
@@ -72,4 +74,6 @@ const APP_CONTAINERS = [
   ],
   bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+  user: LoginModel ;
+}

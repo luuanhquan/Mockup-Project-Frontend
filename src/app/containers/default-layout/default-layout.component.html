@@ -12,8 +12,12 @@
         <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"/>
       </a>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
-        <a class="dropdown-item" href="#/login"><i class="fa fa-wrench"></i> Login</a>
-        <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+        <a *ngIf="!user.loggedin" class="dropdown-item" (click)="handleLogin('login')"><i class="fa fa-wrench"></i> Login</a>
+        <a *ngIf="!user.loggedin" class="dropdown-item" (click)="handleLogin('forgot')"><i class="fa fa-wrench"></i> Forgot Password</a>
+        <a *ngIf="!user.loggedin" class="dropdown-item" (click)="handleLogin('register')"><i class="fa fa-wrench"></i> Register</a>
+        <a *ngIf="user.loggedin" class="dropdown-item" (click)="handleLogin('profile')"><i class="fa fa-wrench"></i> Welcome {{user.username}}</a>
+        <a *ngIf="user.loggedin" class="dropdown-item" (click)="handleLogin('change')"><i class="fa fa-wrench"></i> Change password</a>
+        <a *ngIf="user.loggedin" class="dropdown-item" (click)="handleLogin('logout')"><i class="fa fa-lock"></i> Logout</a>
       </div>
     </li>
   </ul>
