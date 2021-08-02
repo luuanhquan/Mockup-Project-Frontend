@@ -60,7 +60,7 @@ export class ProjectComponent implements OnInit {
     // document.getElementById('add-project-form').click();
     this.projectService.createProject(addForm.value).subscribe(
       (response: Project2) => {
-        console.log(response);
+        // console.log(response);
         this.getProject();
         addForm.reset();
       },

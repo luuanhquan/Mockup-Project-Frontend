@@ -22,4 +22,8 @@ export class ProjectService {
     public createProject(project:Project2): Observable<Project2>{
       return this.http.post<Project2>(`${this.apiServerUrl}/project/create-pj`,project)
     }
+
+    // public deleteProject(project: Project): Observable<Project>{
+
+    // }
 }
