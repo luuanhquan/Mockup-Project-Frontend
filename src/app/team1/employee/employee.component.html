@@ -16,7 +16,8 @@
                      <option value="Type">Type</option>
 
                    </select>
-                   <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
+                   <!-- (ngModelChange)="searchEmployees(key.value)" -->
+                   <input type="search"  #key="ngModel" ngModel
          name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required style="float:left;margin-left: 400px;">
                  </div>
                  
@@ -48,14 +49,14 @@
           </thead>
           <tbody  >
             
-            <tr *ngFor="let employee of employees|paginate:{itemsPerPage:5,currentPage:p};">
+            <tr *ngFor="let user of users|paginate:{itemsPerPage:5,currentPage:p};">
               
              
               <td><input type="checkbox" id="checkd"></td>
-              <td>{{ employee. id}}</td>
-              <td>{{ employee. FULL_NAME}}</td>
-              <td>{{ employee. CLASS_NAME}}</td>
-              <td>{{ employee. personId}}</td>
+              <td>{{ user. id}}</td>
+              <td>{{ user. role}}</td>
+              <td>{{ user. CLASS_NAME}}</td>
+              <td>{{ user. personId}}</td>
               <td></td>
               <td></td>
               <td></td>
@@ -63,11 +64,11 @@
               <td></td>
               <td >
                 <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center" >
-                  <a class="btn btn-primary" (click)="onOpenModal(employee, 'edit')" role="button">Edit</a>
+                  <a class="btn btn-primary" (click)="onOpenModal(user, 'edit')" role="button">Edit</a>
                  
                   <!-- <span class="sr-only">(current)</span> -->
-          <button type="button" class="btn btn-ghost-success" (click)="onOpenModal(employee, 'delete')" role="button"><i class="fa fa-lightbulb-o"></i>Delete</button>
-          <div style="float:left;"> <a class="btn btn-outline-success" (click)="onOpenModal(employee,'move')" role="button" style="float:left">Description </a> </div>
+          <button type="button" class="btn btn-ghost-success" (click)="onOpenModal(user, 'delete')" role="button"><i class="fa fa-lightbulb-o"></i>Delete</button>
+          <div style="float:left;"> <a class="btn btn-outline-success" (click)="onOpenModal(user,'move')" role="button" style="float:left">Description </a> </div>
         </div>
         
               </td>
@@ -120,7 +121,7 @@
           </button>
        </div>
        <div class="modal-body">
-          <form #addForm="ngForm" (ngSubmit)="onAddEmloyee(addForm)" >
+          <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm)" >
           
             
           <div class="form-group">
@@ -185,23 +186,57 @@
            <form #editForm ="ngForm">
               <div class="form-group">
                  <label for="name">ID</label>
-                 <input type="text" ngModel="{{editEmployee?.id}}" name="id" class="form-control" id="id" placeholder="Name">
+                 <input type="text" ngModel="{{editUser?.id}}" name="id" class="form-control" id="id" placeholder="Name">
                  
               </div>
               <label for="name">Fullname</label>
-              <input ngModel="{{editEmployee?.FULL_NAME}}"  name="FULL_NAME" class="form-control" id="FULL_NAME" placeholder="FULL_NAME">
+              <input ngModel="{{editUser?.role}}"  name="role" class="form-control" id="FULL_NAME" placeholder="FULL_NAME">
               <label for="name">class_NAME</label>
-              <input ngModel="{{editEmployee?.CLASS_NAME}}"  name="CLASS_NAME" class="form-control" id="CLASS_NAME" placeholder="CLASS_NAME">
+              <input ngModel="{{editUser?.username}}"  name="username" class="form-control" id="CLASS_NAME" placeholder="CLASS_NAME">
               
               <div class="form-group">
                  <label for="email">personId</label>
-                 <input type="text" ngModel="{{editEmployee?.personId}}"  name="personId" class="form-control" id="personId" placeholder="personId">
+                 <input type="text" ngModel="{{editUser?.password}}"  name="password" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.email}}"  name="email" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.phone}}"  name="phone" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.firstname}}"  name="firstname" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.middlename}}"  name="middlename" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.lastname}}"  name="lastname" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.type}}"  name="type" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.personalid}}"  name="personalid" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.hometown}}"  name="hometown" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.education}}"  name="education" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.school}}"  name="school" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.major}}"  name="major" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.status}}"  name="status" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.dayOffLastYear}}"  name="dayOffLastYear" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.dateCreated}}"  name="dateCreated" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.gender}}"  name="gender" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.birthday}}"  name="birthday" class="form-control" id="personId" placeholder="personId">
+                 <label for="email">personId</label>
+                 <input type="text" ngModel="{{editUser?.avatar}}"  name="avatar" class="form-control" id="personId" placeholder="personId">
                 
               </div>
              
               <div class="modal-footer">
                  <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                 <button (click)="onUpdateEmloyee(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>s
+                 <button (click)="onUpdateUser(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>s
                  
               </div>
            </form>
@@ -225,7 +260,7 @@
            
            <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-              <button  class="btn btn-danger" data-dismiss="modal" (click)="onDeleteEmloyee(deleteEmployee.id)">Yes</button>
+              <button  class="btn btn-danger" data-dismiss="modal" (click)="onDeleteUser(deleteUser.id)">Yes</button>
               
            </div>
         </div>
@@ -235,7 +270,7 @@
 
 
 <!-- Move-Modal -->
-<div class="modal" tabindex="-1" role="dialog" id="moveEmployeeModal">
+<!-- <div class="modal" tabindex="-1" role="dialog" id="moveEmployeeModal">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
        <div class="modal-header">
@@ -266,7 +301,7 @@
      </div>
    </div>
    </div>
- </div>
+ </div> -->
  
  
 

@@ -1,0 +1,23 @@
+export interface Users{
+    id:number;
+    role:number
+    username:String
+    password:String
+    email:String
+    phone:String
+    firstname:String
+    middlename:String
+    lastname:String
+    type:number
+    personalid:number
+    hometown:String
+    education:String
+    school:String
+    major:String
+    status:number
+    dayOffLastYear:Date
+    dateCreated:Date
+    gender:boolean
+    birthday:Date
+    avatar:String
+}

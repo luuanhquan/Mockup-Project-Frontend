@@ -2,30 +2,30 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Employee } from './employee';
+import { Users } from './users';
 
-import { EmployeeService } from './employee.service';
+import { UserService } from './employee.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'employee.component.html'
 })
 export class EmployeeComponent implements OnInit{
-  public employees: Employee[];
-  public editEmployee: Employee;
-  public deleteEmployee: Employee;
-  public moveEmployee: Employee;
+  public users: Users[];
+  public editUser: Users;
+  public deleteUser: Users;
+  public moveUser: Users;
   p:number=1;
   
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private userService: UserService) {}
   ngOnInit() {
-    this.getEmployees();
+    this.getUsers();
   }
 
-  public getEmployees(): void {
-    this.employeeService.getEmployees().subscribe(
-      (response: Employee[]) => {
-        this.employees = response;
+  public getUsers(): void {
+    this.userService.getUser().subscribe(
+      (response: Users[]) => {
+        this.users = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -33,11 +33,11 @@ export class EmployeeComponent implements OnInit{
     );
   }
 
-  public onAddEmloyee(addForm: NgForm): void {
+  public onAddUser(addForm: NgForm): void {
     document.getElementById('add-employee-form').click();
-    this.employeeService.addEmployee(addForm.value).subscribe(
-      (response: Employee) => {
-        this.getEmployees();
+    this.userService.addUser(addForm.value).subscribe(
+      (response: Users) => {
+        this.getUsers();
         addForm.reset();
       },
       (error: HttpErrorResponse) => {
@@ -47,11 +47,11 @@ export class EmployeeComponent implements OnInit{
     );
   }
 
-  public onUpdateEmloyee(employee: Employee): void {
-    this.employeeService.updateEmployee(employee).subscribe(
-      (response: Employee) => {
-        console.log(employee);
-        this.getEmployees();
+  public onUpdateUser(users: Users): void {
+    this.userService.updateUser(users).subscribe(
+      (response: Users) => {
+        console.log(users);
+        this.getUsers();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -59,23 +59,23 @@ export class EmployeeComponent implements OnInit{
     );
   }
   // edit 
-  public onMoveEmloyee(employee: Employee): void {
-    this.employeeService.moveEmployee(employee).subscribe(
-      (response: Employee) => {
-        console.log(employee);
-        this.getEmployees();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
+  // public onMoveEmloyee(employee: Employee): void {
+  //   this.employeeService.moveEmployee(employee).subscribe(
+  //     (response: Employee) => {
+  //       console.log(employee);
+  //       this.getEmployees();
+  //     },
+  //     (error: HttpErrorResponse) => {
+  //       alert(error.message);
+  //     }
+  //   );
+  // }
 
-  public onDeleteEmloyee(employeeId: number): void {
-    this.employeeService.deleteEmployee(employeeId).subscribe(
+  public onDeleteUser(userId: number): void {
+    this.userService.deleteUser(userId).subscribe(
       (response: void) => {
         console.log(response);
-        this.getEmployees();
+        this.getUsers();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -83,23 +83,24 @@ export class EmployeeComponent implements OnInit{
     );
   }
 
-  public searchEmployees(key: string): void {
-    console.log(key);
-    const results: Employee[] = [];
-    for (const employee of this.employees) {
-      if(employee.CLASS_NAME.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || employee.personId.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      ){
-        results.push(employee);
-      }
-    }
-    this.employees = results;
-    if (results.length === 0 || !key) {
-      return
-    }
-  }
 
-  public onOpenModal(employee: Employee, mode: string): void {
+  // public searchEmployees(key: string): void {
+  //   console.log(key);
+  //   const results: Employee[] = [];
+  //   for (const employee of this.employees) {
+  //     if(employee.CLASS_NAME.toLowerCase().indexOf(key.toLowerCase()) !== -1
+  //     || employee.personId.toLowerCase().indexOf(key.toLowerCase()) !== -1
+  //     ){
+  //       results.push(employee);
+  //     }
+  //   }
+  //   this.employees = results;
+  //   if (results.length === 0 || !key) {
+  //     return
+  //   }
+  // }
+
+  public onOpenModal(user: Users, mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
@@ -109,15 +110,15 @@ export class EmployeeComponent implements OnInit{
       button.setAttribute('data-target', '#addEmployeeModal');
     }
     if (mode === 'edit') {
-      this.editEmployee = employee;
+      this.editUser = user;
       button.setAttribute('data-target', '#updateEmployeeModal');
     }
     if (mode === 'delete') {
-      this.deleteEmployee = employee;
+      this.deleteUser = user;
       button.setAttribute('data-target', '#deleteEmployeeModal');
     }
     if (mode === 'move') {
-      this.moveEmployee = employee;
+      this.moveUser = user;
       button.setAttribute('data-target', '#moveEmployeeModal');
     }
     container.appendChild(button);
