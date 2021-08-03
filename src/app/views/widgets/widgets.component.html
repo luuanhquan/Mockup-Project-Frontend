@@ -4,10 +4,10 @@
       <div class="card text-white bg-primary">
         <div class="card-body pb-0">
           <div class="btn-group float-right" dropdown>
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+            <button class="btn btn-transparent dropdown-toggle p-0" dropdownToggle type="button">
               <i class="icon-settings"></i>
             </button>
-            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+            <div *dropdownMenu class="dropdown-menu dropdown-menu-right">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
@@ -18,33 +18,33 @@
           <div>Members online</div>
         </div>
         <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-          <canvas baseChart class="chart"
-          [datasets]="lineChart1Data"
-          [labels]="lineChart1Labels"
-          [options]="lineChart1Options"
-          [colors]="lineChart1Colours"
-          [legend]="lineChart1Legend"
-          [chartType]="lineChart1Type"></canvas>
+          <canvas [chartType]="lineChart1Type" [colors]="lineChart1Colours"
+                  [datasets]="lineChart1Data"
+                  [labels]="lineChart1Labels"
+                  [legend]="lineChart1Legend"
+                  [options]="lineChart1Options"
+                  baseChart
+                  class="chart"></canvas>
         </div>
       </div>
     </div><!--/.col-->
     <div class="col-sm-6 col-lg-3">
       <div class="card text-white bg-info">
         <div class="card-body pb-0">
-          <button type="button" class="btn btn-transparent p-0 float-right">
+          <button class="btn btn-transparent p-0 float-right" type="button">
             <i class="icon-location-pin"></i>
           </button>
           <div class="text-value">9.823</div>
           <div>Members online</div>
         </div>
         <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-          <canvas baseChart class="chart"
-          [datasets]="lineChart2Data"
-          [labels]="lineChart2Labels"
-          [options]="lineChart2Options"
-          [colors]="lineChart2Colours"
-          [legend]="lineChart2Legend"
-          [chartType]="lineChart2Type"></canvas>
+          <canvas [chartType]="lineChart2Type" [colors]="lineChart2Colours"
+                  [datasets]="lineChart2Data"
+                  [labels]="lineChart2Labels"
+                  [legend]="lineChart2Legend"
+                  [options]="lineChart2Options"
+                  baseChart
+                  class="chart"></canvas>
         </div>
       </div>
     </div><!--/.col-->
@@ -52,10 +52,10 @@
       <div class="card text-white bg-warning">
         <div class="card-body pb-0">
           <div class="btn-group float-right" dropdown>
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+            <button class="btn btn-transparent dropdown-toggle p-0" dropdownToggle type="button">
               <i class="icon-settings"></i>
             </button>
-            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+            <div *dropdownMenu class="dropdown-menu dropdown-menu-right">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
@@ -65,13 +65,13 @@
           <div>Members online</div>
         </div>
         <div class="chart-wrapper mt-3" style="height:70px;">
-          <canvas baseChart class="chart"
-          [datasets]="lineChart3Data"
-          [labels]="lineChart3Labels"
-          [options]="lineChart3Options"
-          [colors]="lineChart3Colours"
-          [legend]="lineChart3Legend"
-          [chartType]="lineChart3Type"></canvas>
+          <canvas [chartType]="lineChart3Type" [colors]="lineChart3Colours"
+                  [datasets]="lineChart3Data"
+                  [labels]="lineChart3Labels"
+                  [legend]="lineChart3Legend"
+                  [options]="lineChart3Options"
+                  baseChart
+                  class="chart"></canvas>
         </div>
       </div>
     </div><!--/.col-->
@@ -79,10 +79,10 @@
       <div class="card text-white bg-danger">
         <div class="card-body pb-0">
           <div class="btn-group float-right" dropdown>
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+            <button class="btn btn-transparent dropdown-toggle p-0" dropdownToggle type="button">
               <i class="icon-settings"></i>
             </button>
-            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+            <div *dropdownMenu class="dropdown-menu dropdown-menu-right">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
@@ -92,13 +92,13 @@
           <div>Members online</div>
         </div>
         <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-          <canvas baseChart class="chart"
-          [datasets]="barChart1Data"
-          [labels]="barChart1Labels"
-          [options]="barChart1Options"
-          [colors]="barChart1Colours"
-          [legend]="barChart1Legend"
-          [chartType]="barChart1Type"></canvas>
+          <canvas [chartType]="barChart1Type" [colors]="barChart1Colours"
+                  [datasets]="barChart1Data"
+                  [labels]="barChart1Labels"
+                  [legend]="barChart1Legend"
+                  [options]="barChart1Options"
+                  baseChart
+                  class="chart"></canvas>
         </div>
       </div>
     </div><!--/.col-->
@@ -120,22 +120,22 @@
             </span>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
-            [datasets]="lineChart4Data"
-            [labels]="lineChart4Labels"
-            [options]="lineChart4Options"
-            [colors]="lineChart4Colours"
-            [legend]="lineChart4Legend"
-            [chartType]="lineChart4Type"></canvas>
+            <canvas [chartType]="lineChart4Type" [colors]="lineChart4Colours"
+                    [datasets]="lineChart4Data"
+                    [labels]="lineChart4Labels"
+                    [legend]="lineChart4Legend"
+                    [options]="lineChart4Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
-            [datasets]="barChart2Data"
-            [labels]="barChart2Labels"
-            [options]="barChart2Options"
-            [colors]="barChart2Colours"
-            [legend]="barChart2Legend"
-            [chartType]="barChart2Type"></canvas>
+            <canvas [chartType]="barChart2Type" [colors]="barChart2Colours"
+                    [datasets]="barChart2Data"
+                    [labels]="barChart2Labels"
+                    [legend]="barChart2Legend"
+                    [options]="barChart2Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
         </div>
       </div>
@@ -156,22 +156,22 @@
             </span>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
-            [datasets]="lineChart4Data"
-            [labels]="lineChart4Labels"
-            [options]="lineChart4Options"
-            [colors]="lineChart4Colours"
-            [legend]="lineChart4Legend"
-            [chartType]="lineChart4Type"></canvas>
+            <canvas [chartType]="lineChart4Type" [colors]="lineChart4Colours"
+                    [datasets]="lineChart4Data"
+                    [labels]="lineChart4Labels"
+                    [legend]="lineChart4Legend"
+                    [options]="lineChart4Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
-            [datasets]="barChart2Data"
-            [labels]="barChart2Labels"
-            [options]="barChart2Options"
-            [colors]="barChart2Colours"
-            [legend]="barChart2Legend"
-            [chartType]="barChart2Type"></canvas>
+            <canvas [chartType]="barChart2Type" [colors]="barChart2Colours"
+                    [datasets]="barChart2Data"
+                    [labels]="barChart2Labels"
+                    [legend]="barChart2Legend"
+                    [options]="barChart2Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
         </div>
       </div>
@@ -192,22 +192,22 @@
             </span>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
-            [datasets]="lineChart4Data"
-            [labels]="lineChart4Labels"
-            [options]="lineChart4Options"
-            [colors]="lineChart4Colours"
-            [legend]="lineChart4Legend"
-            [chartType]="lineChart4Type"></canvas>
+            <canvas [chartType]="lineChart4Type" [colors]="lineChart4Colours"
+                    [datasets]="lineChart4Data"
+                    [labels]="lineChart4Labels"
+                    [legend]="lineChart4Legend"
+                    [options]="lineChart4Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
-            [datasets]="barChart2Data"
-            [labels]="barChart2Labels"
-            [options]="barChart2Options"
-            [colors]="barChart2Colours"
-            [legend]="barChart2Legend"
-            [chartType]="barChart2Type"></canvas>
+            <canvas [chartType]="barChart2Type" [colors]="barChart2Colours"
+                    [datasets]="barChart2Data"
+                    [labels]="barChart2Labels"
+                    [legend]="barChart2Legend"
+                    [options]="barChart2Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
         </div>
       </div>
@@ -228,22 +228,22 @@
             </span>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
-            [datasets]="lineChart4Data"
-            [labels]="lineChart4Labels"
-            [options]="lineChart4Options"
-            [colors]="lineChart4Colours"
-            [legend]="lineChart4Legend"
-            [chartType]="lineChart4Type"></canvas>
+            <canvas [chartType]="lineChart4Type" [colors]="lineChart4Colours"
+                    [datasets]="lineChart4Data"
+                    [labels]="lineChart4Labels"
+                    [legend]="lineChart4Legend"
+                    [options]="lineChart4Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
-            [datasets]="barChart2Data"
-            [labels]="barChart2Labels"
-            [options]="barChart2Options"
-            [colors]="barChart2Colours"
-            [legend]="barChart2Legend"
-            [chartType]="barChart2Type"></canvas>
+            <canvas [chartType]="barChart2Type" [colors]="barChart2Colours"
+                    [datasets]="barChart2Data"
+                    [labels]="barChart2Labels"
+                    [legend]="barChart2Legend"
+                    [options]="barChart2Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
         </div>
       </div>
@@ -257,7 +257,8 @@
           <div class="h4 m-0">89.9%</div>
           <div>Lorem ipsum...</div>
           <div class="progress progress-xs my-3">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-success"
+                 role="progressbar" style="width: 25%"></div>
           </div>
           <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
         </div>
@@ -269,7 +270,8 @@
           <div class="h4 m-0">12.124</div>
           <div>Lorem ipsum...</div>
           <div class="progress progress-xs my-3">
-            <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-info" role="progressbar"
+                 style="width: 25%"></div>
           </div>
           <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
         </div>
@@ -281,7 +283,8 @@
           <div class="h4 m-0">$98.111,00</div>
           <div>Lorem ipsum...</div>
           <div class="progress progress-xs my-3">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-warning"
+                 role="progressbar" style="width: 25%"></div>
           </div>
           <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
         </div>
@@ -293,7 +296,8 @@
           <div class="h4 m-0">2 TB</div>
           <div>Lorem ipsum...</div>
           <div class="progress progress-xs my-3">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-danger"
+                 role="progressbar" style="width: 25%"></div>
           </div>
           <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
         </div>
@@ -308,7 +312,8 @@
           <div class="h4 m-0">89.9%</div>
           <div>Lorem ipsum...</div>
           <div class="progress progress-white progress-xs my-3">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+                 style="width: 25%"></div>
           </div>
           <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
         </div>
@@ -320,7 +325,8 @@
           <div class="h4 m-0">12.124</div>
           <div>Lorem ipsum...</div>
           <div class="progress progress-white progress-xs my-3">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+                 style="width: 25%"></div>
           </div>
           <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
         </div>
@@ -332,7 +338,8 @@
           <div class="h4 m-0">$98.111,00</div>
           <div>Lorem ipsum...</div>
           <div class="progress progress-white progress-xs my-3">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+                 style="width: 25%"></div>
           </div>
           <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
         </div>
@@ -344,7 +351,8 @@
           <div class="h4 m-0">2 TB</div>
           <div>Lorem ipsum...</div>
           <div class="progress progress-white progress-xs my-3">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+                 style="width: 25%"></div>
           </div>
           <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
         </div>
@@ -359,13 +367,13 @@
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
           <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
-            [datasets]="barChart3Data"
-            [labels]="barChart3Labels"
-            [options]="barChart3Options"
-            [colors]="barChart3Primary"
-            [legend]="barChart3Legend"
-            [chartType]="barChart3Type"></canvas>
+            <canvas [chartType]="barChart3Type" [colors]="barChart3Primary"
+                    [datasets]="barChart3Data"
+                    [labels]="barChart3Labels"
+                    [legend]="barChart3Legend"
+                    [options]="barChart3Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
         </div>
       </div>
@@ -376,13 +384,13 @@
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
           <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
-            [datasets]="barChart3Data"
-            [labels]="barChart3Labels"
-            [options]="barChart3Options"
-            [colors]="barChart3Danger"
-            [legend]="barChart3Legend"
-            [chartType]="barChart3Type"></canvas>
+            <canvas [chartType]="barChart3Type" [colors]="barChart3Danger"
+                    [datasets]="barChart3Data"
+                    [labels]="barChart3Labels"
+                    [legend]="barChart3Legend"
+                    [options]="barChart3Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
         </div>
       </div>
@@ -393,13 +401,13 @@
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
           <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
-            [datasets]="barChart3Data"
-            [labels]="barChart3Labels"
-            [options]="barChart3Options"
-            [colors]="barChart3Success"
-            [legend]="barChart3Legend"
-            [chartType]="barChart3Type"></canvas>
+            <canvas [chartType]="barChart3Type" [colors]="barChart3Success"
+                    [datasets]="barChart3Data"
+                    [labels]="barChart3Labels"
+                    [legend]="barChart3Legend"
+                    [options]="barChart3Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
         </div>
       </div>
@@ -410,13 +418,13 @@
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
           <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
-            [datasets]="lineChart5Data"
-            [labels]="lineChart5Labels"
-            [options]="lineChart5Options"
-            [colors]="lineChart5Info"
-            [legend]="lineChart5Legend"
-            [chartType]="lineChart5Type"></canvas>
+            <canvas [chartType]="lineChart5Type" [colors]="lineChart5Info"
+                    [datasets]="lineChart5Data"
+                    [labels]="lineChart5Labels"
+                    [legend]="lineChart5Legend"
+                    [options]="lineChart5Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
         </div>
       </div>
@@ -427,13 +435,13 @@
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
           <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
-            [datasets]="lineChart5Data"
-            [labels]="lineChart5Labels"
-            [options]="lineChart5Options"
-            [colors]="lineChart5Success"
-            [legend]="lineChart5Legend"
-            [chartType]="lineChart5Type"></canvas>
+            <canvas [chartType]="lineChart5Type" [colors]="lineChart5Success"
+                    [datasets]="lineChart5Data"
+                    [labels]="lineChart5Labels"
+                    [legend]="lineChart5Legend"
+                    [options]="lineChart5Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
         </div>
       </div>
@@ -444,13 +452,13 @@
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
           <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
-            [datasets]="lineChart5Data"
-            [labels]="lineChart5Labels"
-            [options]="lineChart5Options"
-            [colors]="lineChart5Warning"
-            [legend]="lineChart5Legend"
-            [chartType]="lineChart5Type"></canvas>
+            <canvas [chartType]="lineChart5Type" [colors]="lineChart5Warning"
+                    [datasets]="lineChart5Data"
+                    [labels]="lineChart5Labels"
+                    [legend]="lineChart5Legend"
+                    [options]="lineChart5Options"
+                    baseChart
+                    class="chart"></canvas>
           </div>
         </div>
       </div>
@@ -505,7 +513,8 @@
           <div class="text-muted text-uppercase font-weight-bold font-xs">Income</div>
         </div>
         <div class="card-footer px-3 py-2">
-          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More <i
+            class="fa fa-angle-right float-right font-lg"></i></a>
         </div>
       </div>
     </div>
@@ -518,7 +527,8 @@
           <div class="text-muted text-uppercase font-weight-bold font-xs">Income</div>
         </div>
         <div class="card-footer px-3 py-2">
-          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More <i
+            class="fa fa-angle-right float-right font-lg"></i></a>
         </div>
       </div>
     </div>
@@ -531,7 +541,8 @@
           <div class="text-muted text-uppercase font-weight-bold font-xs">Income</div>
         </div>
         <div class="card-footer px-3 py-2">
-          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More <i
+            class="fa fa-angle-right float-right font-lg"></i></a>
         </div>
       </div>
     </div>
@@ -544,7 +555,8 @@
           <div class="text-muted text-uppercase font-weight-bold font-xs">Income</div>
         </div>
         <div class="card-footer px-3 py-2">
-          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More <i
+            class="fa fa-angle-right float-right font-lg"></i></a>
         </div>
       </div>
     </div>
@@ -714,7 +726,8 @@
         <div class="h4 mb-0">87.500</div>
         <small class="text-muted text-uppercase font-weight-bold">Visitors</small>
         <div class="progress progress-xs mt-3 mb-0">
-          <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-info" role="progressbar"
+               style="width: 25%"></div>
         </div>
       </div>
     </div>
@@ -726,7 +739,8 @@
         <div class="h4 mb-0">385</div>
         <small class="text-muted text-uppercase font-weight-bold">New Clients</small>
         <div class="progress progress-xs mt-3 mb-0">
-          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-success"
+               role="progressbar" style="width: 25%"></div>
         </div>
       </div>
     </div>
@@ -738,7 +752,8 @@
         <div class="h4 mb-0">1238</div>
         <small class="text-muted text-uppercase font-weight-bold">Products sold</small>
         <div class="progress progress-xs mt-3 mb-0">
-          <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-warning"
+               role="progressbar" style="width: 25%"></div>
         </div>
       </div>
     </div>
@@ -750,7 +765,8 @@
         <div class="h4 mb-0">28%</div>
         <small class="text-muted text-uppercase font-weight-bold">Returning Visitors</small>
         <div class="progress progress-xs mt-3 mb-0">
-          <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+               style="width: 25%"></div>
         </div>
       </div>
     </div>
@@ -762,7 +778,8 @@
         <div class="h4 mb-0">5:34:11</div>
         <small class="text-muted text-uppercase font-weight-bold">Avg. Time</small>
         <div class="progress progress-xs mt-3 mb-0">
-          <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-danger" role="progressbar"
+               style="width: 25%"></div>
         </div>
       </div>
     </div>
@@ -778,7 +795,8 @@
           <div class="h4 mb-0">87.500</div>
           <small class="text-muted text-uppercase font-weight-bold">Visitors</small>
           <div class="progress progress-xs mt-3 mb-0">
-            <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-info" role="progressbar"
+                 style="width: 25%"></div>
           </div>
         </div>
       </div>
@@ -792,7 +810,8 @@
           <div class="h4 mb-0">385</div>
           <small class="text-muted text-uppercase font-weight-bold">New Clients</small>
           <div class="progress progress-xs mt-3 mb-0">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-success"
+                 role="progressbar" style="width: 25%"></div>
           </div>
         </div>
       </div>
@@ -806,7 +825,8 @@
           <div class="h4 mb-0">1238</div>
           <small class="text-muted text-uppercase font-weight-bold">Products sold</small>
           <div class="progress progress-xs mt-3 mb-0">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-warning"
+                 role="progressbar" style="width: 25%"></div>
           </div>
         </div>
       </div>
@@ -820,7 +840,8 @@
           <div class="h4 mb-0">28%</div>
           <small class="text-muted text-uppercase font-weight-bold">Returning Visitors</small>
           <div class="progress progress-xs mt-3 mb-0">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+                 style="width: 25%"></div>
           </div>
         </div>
       </div>
@@ -834,7 +855,8 @@
           <div class="h4 mb-0">5:34:11</div>
           <small class="text-muted text-uppercase font-weight-bold">Avg. Time</small>
           <div class="progress progress-xs mt-3 mb-0">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-danger"
+                 role="progressbar" style="width: 25%"></div>
           </div>
         </div>
       </div>
@@ -848,7 +870,8 @@
           <div class="h4 mb-0">972</div>
           <small class="text-muted text-uppercase font-weight-bold">Comments</small>
           <div class="progress progress-xs mt-3 mb-0">
-            <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-info" role="progressbar"
+                 style="width: 25%"></div>
           </div>
         </div>
       </div>
@@ -865,7 +888,8 @@
           <div class="h4 mb-0">87.500</div>
           <small class="text-muted text-uppercase font-weight-bold">Visitors</small>
           <div class="progress progress-white progress-xs mt-3">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+                 style="width: 25%"></div>
           </div>
         </div>
       </div>
@@ -879,7 +903,8 @@
           <div class="h4 mb-0">385</div>
           <small class="text-muted text-uppercase font-weight-bold">New Clients</small>
           <div class="progress progress-white progress-xs mt-3">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+                 style="width: 25%"></div>
           </div>
         </div>
       </div>
@@ -893,7 +918,8 @@
           <div class="h4 mb-0">1238</div>
           <small class="text-muted text-uppercase font-weight-bold">Products sold</small>
           <div class="progress progress-white progress-xs mt-3">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+                 style="width: 25%"></div>
           </div>
         </div>
       </div>
@@ -907,7 +933,8 @@
           <div class="h4 mb-0">28%</div>
           <small class="text-muted text-uppercase font-weight-bold">Returning Visitors</small>
           <div class="progress progress-white progress-xs mt-3">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+                 style="width: 25%"></div>
           </div>
         </div>
       </div>
@@ -921,7 +948,8 @@
           <div class="h4 mb-0">5:34:11</div>
           <small class="text-muted text-uppercase font-weight-bold">Avg. Time</small>
           <div class="progress progress-white progress-xs mt-3">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+                 style="width: 25%"></div>
           </div>
         </div>
       </div>
@@ -935,7 +963,8 @@
           <div class="h4 mb-0">972</div>
           <small class="text-muted text-uppercase font-weight-bold">Comments</small>
           <div class="progress progress-white progress-xs mt-3">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar"
+                 style="width: 25%"></div>
           </div>
         </div>
       </div>

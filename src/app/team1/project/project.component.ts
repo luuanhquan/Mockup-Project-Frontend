@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Project} from '../model/project';
+import {Project} from '../_model/project';
 import {HttpErrorResponse} from '@angular/common/http';
 
-import {ProjectService} from '../service/project.service';
+import {ProjectService} from '../_service/project.service';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
-import {Project2} from '../model/project2';
+import {Project2Model} from '../_model/project2.model';
 
 declare var $: any;
 
@@ -61,7 +61,7 @@ export class ProjectComponent implements OnInit {
   public saveProject(addForm: NgForm): void {
     // document.getElementById('add-project-form').click();
     this.projectService.createProject(addForm.value).subscribe(
-      (response: Project2) => {
+      (response: Project2Model) => {
         // console.log(response);
         this.getProject();
         addForm.reset();

@@ -7,7 +7,6 @@ import {IssueComponent} from './issue/issue.component';
 import {ProjectComponent} from './project/project.component';
 import {RegisterComponent} from './register/register.component';
 import {ReportComponent} from './report/report.component';
-import {IssueDetailComponent} from './issue-detail/issue-detail.component';
 
 
 import {ProfileComponent} from './profile/profile.component';
@@ -43,13 +42,6 @@ const routes: Routes = [
         component: IssueComponent,
         data: {
           title: 'Issues'
-        }
-      },
-      {
-        path: 'issue-detail',
-        component: IssueDetailComponent,
-        data: {
-          title: 'Issues Detail'
         }
       },
       {

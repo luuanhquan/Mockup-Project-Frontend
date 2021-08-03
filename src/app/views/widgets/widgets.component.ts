@@ -230,7 +230,7 @@ export class WidgetsComponent {
         display: false,
       }]
     },
-    elements: { point: { radius: 0 } },
+    elements: {point: {radius: 0}},
     legend: {
       display: false
     }
@@ -360,7 +360,7 @@ export class WidgetsComponent {
         display: false,
       }]
     },
-    elements: { point: { radius: 0 } },
+    elements: {point: {radius: 0}},
     legend: {
       display: false
     }

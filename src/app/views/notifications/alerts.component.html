@@ -34,16 +34,20 @@
         </div>
         <div class="card-body">
           <alert type="success">
-            <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+            <strong>Well done!</strong> You successfully read <a class="alert-link" href="#">this important alert
+            message</a>.
           </alert>
           <alert type="info">
-            <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
+            <strong>Heads up!</strong> This <a class="alert-link" href="#">alert needs your attention</a>, but it's not
+            super important.
           </alert>
           <alert type="warning">
-            <strong>Warning!</strong> Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
+            <strong>Warning!</strong> Better check yourself, you're <a class="alert-link" href="#">not looking too
+            good</a>.
           </alert>
           <alert type="danger">
-            <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+            <strong>Oh snap!</strong> <a class="alert-link" href="#">Change a few things up</a> and try submitting
+            again.
           </alert>
         </div>
       </div>
@@ -58,7 +62,8 @@
         <div class="card-body">
           <alert type="success">
             <h4 class="alert-heading">Well done!</h4>
-            <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+            <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit
+              longer so that you can see how spacing within an alert works with this kind of content.</p>
             <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
           </alert>
         </div>
@@ -71,10 +76,10 @@
         </div>
         <div class="card-body">
           <div *ngFor="let alert of alerts">
-            <alert [type]="alert.type" [dismissible]="dismissible">{{ alert.msg }}</alert>
+            <alert [dismissible]="dismissible" [type]="alert.type">{{ alert.msg }}</alert>
           </div>
-          <button type="button" class="btn btn-primary" (click)="dismissible = !dismissible">Toggle dismissible</button>
-          <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+          <button (click)="dismissible = !dismissible" class="btn btn-primary" type="button">Toggle dismissible</button>
+          <button (click)="reset()" class="btn btn-primary" type="button">Reset</button>
         </div>
       </div>
     </div>
@@ -101,10 +106,10 @@
           <alert type="success">{{messages[index]}}</alert>
 
           <div *ngIf="index !== messages.length -1; else elseBlock">
-            <button class="btn btn-primary" (click)="changeText()">Change text</button>
+            <button (click)="changeText()" class="btn btn-primary">Change text</button>
           </div>
           <ng-template #elseBlock>
-            <button class="btn btn-primary" (click)="index = 0">Reset</button>
+            <button (click)="index = 0" class="btn btn-primary">Reset</button>
           </ng-template>
         </div>
       </div>
@@ -117,15 +122,15 @@
           <strong>Alerts</strong> <small>dismiss on timeout</small>
         </div>
         <div class="card-body">
-          <alert type="success" dismissOnTimeout="5000">
+          <alert dismissOnTimeout="5000" type="success">
             <strong>Well done!</strong> You successfully read this important alert message.
           </alert>
 
           <p>If you missed alert on top of me, just press <code>Add more</code> button</p>
           <div *ngFor="let alert of alertsDismiss">
-            <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+            <alert [dismissOnTimeout]="alert.timeout" [type]="alert.type">{{ alert.msg }}</alert>
           </div>
-          <button type="button" class="btn btn-primary" (click)="add()">Add more</button>
+          <button (click)="add()" class="btn btn-primary" type="button">Add more</button>
         </div>
       </div>
     </div>

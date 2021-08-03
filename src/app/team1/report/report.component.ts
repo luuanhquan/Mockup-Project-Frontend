@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 // import { type } from 'os';
-import {Report} from '../model/report';
-import {ReportService} from '../service/report.service';
-import {Project} from '../model/project.model';
+import {ReportModel} from '../_model/report.model';
+import {ReportService} from '../_service/report.service';
+import {Project} from '../_model/project.model';
 import {report} from 'process';
 import {HttpErrorResponse} from '@angular/common/http';
 
@@ -11,8 +11,8 @@ import {HttpErrorResponse} from '@angular/common/http';
 })
 
 export class ReportComponent implements OnInit, OnDestroy {
-  public reports: Report[];
-  public readrequest: Report;
+  public reports: ReportModel[];
+  public readrequest: ReportModel;
   public project: Project[] = [];
   status: { isOpen: boolean } = {isOpen: false};
   disabled: boolean = false;
@@ -33,7 +33,7 @@ export class ReportComponent implements OnInit, OnDestroy {
 
   public getReport(id: number): void {
     this.reportService.getReport(id).subscribe(
-      (response: Report[]) => {
+      (response: ReportModel[]) => {
         this.reports = response;
       },
       (error: HttpErrorResponse) => {
@@ -42,9 +42,9 @@ export class ReportComponent implements OnInit, OnDestroy {
     );
   }
 
-  public writeReport(report: Report): void {
+  public writeReport(report: ReportModel): void {
     this.reportService.readReport(report).subscribe(
-      (response: Report) => {
+      (response: ReportModel) => {
         console.log(report);
         this.getReport(this.active_project);
       },
@@ -54,7 +54,7 @@ export class ReportComponent implements OnInit, OnDestroy {
     );
   }
 
-  public onOpenModal(report: Report, node: string): void {
+  public onOpenModal(report: ReportModel, node: string): void {
     const container = document.getElementById('reportWeek');
     const button = document.createElement('button');
     button.type = 'button';

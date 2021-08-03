@@ -1,8 +1,8 @@
 import {HttpErrorResponse} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {LeaveRequests} from '../model/leaverequests';
-import {LeaveRequestService} from '../service/leaverequests.service';
+import {LeaveRequests} from '../_model/leaverequests';
+import {LeaveRequestService} from '../_service/leaverequests.service';
 
 @Component({
   selector: 'app-root',

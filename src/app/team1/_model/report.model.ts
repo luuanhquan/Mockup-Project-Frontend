@@ -1,4 +1,4 @@
-export interface Report {
+export interface ReportModel {
   projectId: String;
   id: number;
   dateCreat: String;

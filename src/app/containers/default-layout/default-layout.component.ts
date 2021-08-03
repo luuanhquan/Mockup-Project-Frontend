@@ -1,28 +1,31 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {navItems} from '../../_nav';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthenticationService} from '../../team1/service/auth.service'
-import {LoginModel} from '../../team1/model/Login.model';
+import {AuthenticationService} from '../../team1/_service/auth.service';
+import {LoginModel} from '../../team1/_model/Login.model';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './default-layout.component.html'
 })
-export class DefaultLayoutComponent implements OnInit{
+export class DefaultLayoutComponent implements OnInit {
   public sidebarMinimized = false;
   public navItems = navItems;
-  toggleMinimize(e) {
-    this.sidebarMinimized = e;
-  }
+  user: LoginModel;
+  loggedin: boolean;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService
-  ) {
+  ) {if(authenticationService.userValue) this.loggedin=true;
   }
 
-  user:LoginModel ;
-  handleLogin(command:String) {
+  toggleMinimize(e) {
+    this.sidebarMinimized = e;
+  }
+
+  handleLogin(command: String) {
     switch (command) {
       case 'login':
         this.router.navigate(['/login']);
@@ -43,6 +46,8 @@ export class DefaultLayoutComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.authenticationService.currentUserLogin.subscribe(user => this.user=user);
+
+    // this.authenticationService.userLogin.subscribe(x=>this.user=x);
+      this.user = {loggedin:false,authdata:'',role:'',username:'',avartar:'',password:'',id:0}
   }
 }

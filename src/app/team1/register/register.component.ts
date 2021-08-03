@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UsernameValidator,} from '../validators';
+import {UsernameValidator,} from '../_validators';
 
 
 @Component({

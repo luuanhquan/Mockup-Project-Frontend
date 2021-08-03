@@ -1,4 +1,4 @@
-export interface Project2 {
+export interface Project2Model {
   name: string,
   des: string,
   date_start: Date,

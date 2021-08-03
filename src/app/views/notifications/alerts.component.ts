@@ -5,7 +5,7 @@ import {AlertConfig} from 'ngx-bootstrap/alert';
 // such override allows to keep some initial values
 
 export function getAlertConfig(): AlertConfig {
-  return Object.assign(new AlertConfig(), { type: 'success' });
+  return Object.assign(new AlertConfig(), {type: 'success'});
 }
 
 @Component({
@@ -20,16 +20,10 @@ export function getAlertConfig(): AlertConfig {
   }
   `
   ],
-  providers: [{ provide: AlertConfig, useFactory: getAlertConfig }]
+  providers: [{provide: AlertConfig, useFactory: getAlertConfig}]
 })
 export class AlertsComponent {
 
-  constructor(sanitizer: DomSanitizer) {
-    this.alertsHtml = this.alertsHtml.map((alert: any) => ({
-      type: alert.type,
-      msg: sanitizer.sanitize(SecurityContext.HTML, alert.msg)
-    }));
-  }
   dismissible = true;
   alerts: any = [
     {
@@ -45,7 +39,6 @@ export class AlertsComponent {
       msg: `Better check yourself, you're not looking too good.`
     }
   ];
-
   alertsHtml: any = [
     {
       type: 'success',
@@ -60,15 +53,20 @@ export class AlertsComponent {
       msg: `<strong>Warning!</strong> Better check yourself, you're not looking too good.`
     }
   ];
-
   index = 0;
   messages = [
     'You successfully read this important alert message.',
     'Now this text is different from what it was before. Go ahead and click the button one more time',
     'Well done! Click reset button and you\'ll see the first message'
   ];
-
   alertsDismiss: any = [];
+
+  constructor(sanitizer: DomSanitizer) {
+    this.alertsHtml = this.alertsHtml.map((alert: any) => ({
+      type: alert.type,
+      msg: sanitizer.sanitize(SecurityContext.HTML, alert.msg)
+    }));
+  }
 
   reset(): void {
     this.alerts = this.alerts.map((alert: any) => Object.assign({}, alert));

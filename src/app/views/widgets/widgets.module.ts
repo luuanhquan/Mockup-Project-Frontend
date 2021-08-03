@@ -11,6 +11,7 @@ import {WidgetsRoutingModule} from './widgets-routing.module';
     ChartsModule,
     BsDropdownModule
   ],
-  declarations: [ WidgetsComponent ]
+  declarations: [WidgetsComponent]
 })
-export class WidgetsModule { }
+export class WidgetsModule {
+}

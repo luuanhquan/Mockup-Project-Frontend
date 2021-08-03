@@ -28,4 +28,5 @@ import {NotificationsRoutingModule} from './notifications-routing.module';
     ModalsComponent
   ]
 })
-export class NotificationsModule { }
+export class NotificationsModule {
+}

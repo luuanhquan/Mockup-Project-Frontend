@@ -1,30 +1,37 @@
 <app-header
-  [navbarBrandRouterLink]="['/dashboard']"
+  [asideMenuToggler]="'lg'"
   [fixed]="true"
   [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
   [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
-  [sidebarToggler]="'lg'"
-  [asideMenuToggler]="'lg'">
+  [navbarBrandRouterLink]="['/dashboard']"
+  [sidebarToggler]="'lg'">
   <ul class="nav navbar-nav ml-auto">
 
     <li class="nav-item dropdown" dropdown placement="bottom right">
-      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
-        <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"/>
+      <a (click)="false" aria-expanded="false" aria-haspopup="true" class="nav-link" data-toggle="dropdown" dropdownToggle
+         href="#" role="button">
+        <img alt="admin@bootstrapmaster.com" class="img-avatar" src="assets/img/avatars/6.jpg"/>
       </a>
-      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
-        <a *ngIf="!user.loggedin" class="dropdown-item" (click)="handleLogin('login')"><i class="fa fa-wrench"></i> Login</a>
-        <a *ngIf="!user.loggedin" class="dropdown-item" (click)="handleLogin('forgot')"><i class="fa fa-wrench"></i> Forgot Password</a>
-        <a *ngIf="!user.loggedin" class="dropdown-item" (click)="handleLogin('register')"><i class="fa fa-wrench"></i> Register</a>
-        <a *ngIf="user.loggedin" class="dropdown-item" (click)="handleLogin('profile')"><i class="fa fa-wrench"></i> Welcome {{user.username}}</a>
-        <a *ngIf="user.loggedin" class="dropdown-item" (click)="handleLogin('change')"><i class="fa fa-wrench"></i> Change password</a>
-        <a *ngIf="user.loggedin" class="dropdown-item" (click)="handleLogin('logout')"><i class="fa fa-lock"></i> Logout</a>
+      <div *dropdownMenu aria-labelledby="simple-dropdown" class="dropdown-menu dropdown-menu-right">
+        <a (click)="handleLogin('login')" *ngIf="!loggedin" class="dropdown-item"><i class="fa fa-wrench"></i>
+          Login</a>
+        <a (click)="handleLogin('forgot')" *ngIf="!loggedin" class="dropdown-item"><i class="fa fa-wrench"></i>
+          Forgot Password</a>
+        <a (click)="handleLogin('register')" *ngIf="!loggedin" class="dropdown-item"><i class="fa fa-wrench"></i>
+          Register</a>
+        <a (click)="handleLogin('profile')" *ngIf="loggedin" class="dropdown-item"><i class="fa fa-wrench"></i>
+          Welcome {{user.username}}</a>
+        <a (click)="handleLogin('change')" *ngIf="loggedin" class="dropdown-item"><i class="fa fa-wrench"></i>
+          Change password</a>
+        <a (click)="handleLogin('logout')" *ngIf="loggedin" class="dropdown-item"><i class="fa fa-lock"></i> Logout</a>
       </div>
     </li>
   </ul>
 </app-header>
 <div class="app-body">
-  <app-sidebar #appSidebar [fixed]="true" [display]="'lg'" [minimized]="sidebarMinimized" (minimizedChange)="toggleMinimize($event)">
-    <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="appSidebar.minimized"></app-sidebar-nav>
+  <app-sidebar #appSidebar (minimizedChange)="toggleMinimize($event)" [display]="'lg'" [fixed]="true"
+               [minimized]="sidebarMinimized">
+    <app-sidebar-nav [disabled]="appSidebar.minimized" [navItems]="navItems" [perfectScrollbar]></app-sidebar-nav>
     <app-sidebar-minimizer></app-sidebar-minimizer>
   </app-sidebar>
   <!-- Main content -->

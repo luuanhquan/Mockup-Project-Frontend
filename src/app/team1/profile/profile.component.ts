@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Profile} from '../model/profile';
-import {ProfileService} from '../service/profile.service';
-import {UsernameValidator,} from '../validators';
+import {Profile} from '../_model/profile.model';
+import {ProfileService} from '../_service/profile.service';
+import {UsernameValidator,} from '../_validators';
 
 
 @Component({
