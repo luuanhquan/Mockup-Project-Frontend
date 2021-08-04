@@ -1,9 +1,10 @@
+<div>
 <button (click)="showModal()" class="btn btn-primary" data-target="#myModal" data-toggle="modal" id="btn-add"
-        type="button">
+  type="button">
   Add Project
 </button>
 <div class="modal fade" id="myModal">
-  <form #addForm="ngForm" (ngSubmit)="saveProject(addForm)">
+  <form #addForm="ngForm" (ngSubmit)="addProject(addForm)">
     <div class="modal-dialog">
       <div class="modal-content">
         <!-- Modal Header -->
@@ -17,7 +18,7 @@
           <div class="form-group row">
             <label class="col-md-4 col-form-label" for="text-input">Tên đơn vị</label>
             <div class="col-md-8">
-              <input class="form-control" id="text-input" name="name" ngModel placeholder="Tên đơn vị" type="text"/>
+              <input class="form-control" id="text-input" name="name" ngModel placeholder="Tên đơn vị" type="text" />
             </div>
           </div>
           <!-- Mô tả dự án: Description -->
@@ -25,7 +26,7 @@
             <label class="col-md-4 col-form-label" for="textarea-input">Mô tả dự án</label>
             <div class="col-md-8">
               <textarea class="form-control" id="textarea-input" name="des" ngModel placeholder="Tổng quan dự án"
-                        rows="3"></textarea>
+                rows="3"></textarea>
             </div>
           </div>
           <!-- Ngày bắt đầu dự án -->
@@ -33,20 +34,21 @@
             <label class="col-md-4 col-form-label" for="text-input">Ngày bắt đầu dự án</label>
             <div class="col-md-8">
               <input class="form-control" id="text-input" name="date_start" ngModel placeholder="Ngày bắt đầu dự án"
-                     type="date"/>
+                type="date" />
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-4 col-form-label" for="text-input">Ngày kết thúc dự án</label>
             <div class="col-md-8">
               <input class="form-control" id="text-input" name="date_end" ngModel placeholder="Ngày kết thúc dự án"
-                     type="date"/>
+                type="date" />
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-4 col-form-label" for="text-input">Status</label>
             <div class="col-md-8">
-              <input class="form-control" id="text-input" name="status" ngModel placeholder="Status" type="text"/>
+              <input disabled class="form-control" id="text-input" name="status" ngModel placeholder="Active"
+                type="text" />Active
             </div>
           </div>
         </div>
@@ -54,19 +56,17 @@
         <div class="modal-footer">
           <button class="btn btn-primary" type="submit">Add</button>
           <button (click)="hideModal()" class="btn btn-danger" type="button">Close</button>
-          <!-- this button is hidden, used to close from typescript -->
           <button data-dismiss="modal" id="close-modal" style="display: none" type="button">Close</button>
         </div>
       </div>
     </div>
   </form>
-
 </div>
 
 
 <!-- table -->
 <div class="row" id="container">
-  <div *ngFor="let project of project" class="col-md-6 mb-4">
+  <div *ngFor="let project of projectList" class="col-md-6 mb-4">
     <tabset>
       <tab heading="Summary">
         <form action="" id="form-summary">
@@ -74,64 +74,69 @@
             <label class="col-md-4 col-form-label" for="text-input">Tên đơn vị</label>
             <div class="col-md-8">
               <input [value]="project.name" class="form-control" disabled id="text-input" name="text-input"
-                     type="text"/>
+                type="text" />
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-4 col-form-label" for="textarea-input">Mô tả dự án</label>
             <div class="col-md-8">
-              <textarea [value]="project.description" class="form-control" disabled id="textarea-input" name="textarea-input"
-                        placeholder="Tổng quan dự án" rows="3"></textarea>
+              <textarea [value]="project.description" class="form-control" disabled id="textarea-input"
+                name="textarea-input" placeholder="Tổng quan dự án" rows="3"></textarea>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-4 col-form-label" for="text-input">Ngày bắt đầu dự án</label>
             <div class="col-md-8">
               <input [value]="project.dateStated" class="form-control" disabled id="text-input" name="text-input"
-                     type="text"/>
+                type="text" />
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-4 col-form-label" for="text-input">Ngày kết thúc dự án</label>
             <div class="col-md-8">
               <input [value]="project.dateEnded" class="form-control" disabled id="text-input" name="text-input"
-                     type="text"/>
+                type="text" />
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-4 col-form-label" for="text-input">Trạng thái</label>
             <div class="col-md-8">
               <input [value]="project.status" class="form-control" disabled id="text-input" name="text-input"
-                     type="text"/>
+                type="text" />
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-4 col-form-label" for="text-input">Tổng số bug</label>
             <div class="col-md-8">
               <input [value]="project.totalIssues" class="form-control" disabled id="text-input" name="text-input"
-                     type="text"/>
+                type="text" />
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-4 col-form-label" for="text-input">Tổng số nhân viên</label>
             <div class="col-md-8">
               <input [value]="project.totalMember" class="form-control" disabled id="text-input" name="text-input"
-                     type="text"/>
+                type="text" />
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-4 col-form-label" for="text-input">Now phase</label>
             <div class="col-md-8">
               <input [value]="project.nowPhase" class="form-control" disabled id="text-input" name="text-input"
-                     type="text"/>
+                type="text" />
             </div>
           </div>
         </form>
+        <!-- button Modal Delete -->
+        <button type="button" class="btn btn-secondary mr-1" data-toggle="modal-delete"
+          (click)="showModalDelete(project)">
+          Delete
+        </button>
+
       </tab>
       <tab heading="Members">
         <form action="" id="form-members">
-          <img [src]="project.thumbnail" alt="" class="img-project d-block m-auto"/>
-          <p class="title-project">{{project.nameProject}}</p>
+          <p class="title-project">{{project.name}}</p>
           <div class="card">
             <div class="card-header">
               <i class="fa fa-align-justify"></i> LIST MEMBERS
@@ -139,32 +144,32 @@
             <div class="card-body">
               <table class="table">
                 <thead>
-                <tr class="text-center">
-                  <th>ID USER</th>
-                  <th>USER NAME</th>
-                  <th>EMAIL</th>
-                  <th>TELEPHONE</th>
-                  <th>ROLE</th>
-                </tr>
+                  <tr class="text-center">
+                    <th>ID USER</th>
+                    <th>USER NAME</th>
+                    <th>EMAIL</th>
+                    <th>TELEPHONE</th>
+                    <th>ROLE</th>
+                  </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of project.listMember" class="text-center">
-                  <td>{{item.id }}</td>
-                  <td>{{item.username }}</td>
-                  <td>{{item.email }}</td>
-                  <td>{{item.phone }}</td>
-                  <td>{{item.role}}</td>
-                </tr>
+                  <tr *ngFor="let item of project.listMember" class="text-center">
+                    <td>{{item.id }}</td>
+                    <td>{{item.username }}</td>
+                    <td>{{item.email }}</td>
+                    <td>{{item.phone }}</td>
+                    <td>{{item.role}}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </form>
+
       </tab>
       <tab heading="Issues">
         <form action="" id="form-issues">
-          <img [src]="project.thumbnail" alt="" class="img-project d-block m-auto"/>
-          <p class="title-project">{{project.nameProject}}</p>
+          <p class="title-project">{{project.name}}</p>
           <div class="card">
             <div class="card-header">
               <i class="fa fa-align-justify"></i> LIST ISSUES
@@ -172,20 +177,20 @@
             <div class="card-body">
               <table class="table">
                 <thead>
-                <tr class="text-center">
-                  <th>ID ISSUES</th>
-                  <th>NGƯỜI TẠO</th>
-                  <th>NGƯỜI ĐƯỢC GIAO</th>
-                </tr>
+                  <tr class="text-center">
+                    <th>ID ISSUES</th>
+                    <th>NGƯỜI TẠO</th>
+                    <th>NGƯỜI ĐƯỢC GIAO</th>
+                  </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of project.listIssues" class="text-center">
-                  <a class="text-decoration-none" href="" style="color: #333;">
-                    <td>{{item.id }}</td>
-                  </a>
-                  <td>{{item.creator }}</td>
-                  <td>{{item.asignee }}</td>
-                </tr>
+                  <tr *ngFor="let item of project.listIssues" class="text-center">
+                    <a class="text-decoration-none" href="" style="color: #333;">
+                      <td>{{item.id }}</td>
+                    </a>
+                    <td>{{item.creator }}</td>
+                    <td>{{item.asignee }}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -194,4 +199,31 @@
       </tab>
     </tabset>
   </div>
+</div>
+
+
+
+<div class="modal fade" id="modal-delete">
+  <form #delete="ngForm" (ngSubmit)="deleteProject()">
+    <!-- #deleteForm="ngDelete" (ngSubmit)="saveProject(addForm)" -->
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete Project</h4>
+          <button type="button" class="close" (click)="hideModalDelete()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Bạn có muốn xóa Project: <strong>{{message}}</strong></p>
+        </div>
+        <div class="modal-footer">
+          <button (click)="deleteProject()" type="button" class="btn btn-primary">Đồng ý</button>
+          <button (click)="hideModalDelete()" class="btn btn-danger" type="button">Close</button>
+          <button data-dismiss="modal" id="close-ModalDelete" style="display: none" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
 </div>

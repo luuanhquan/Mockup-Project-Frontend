@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 // import { Users } from '../employee/users';
-import {Project} from '../_model/project.model';
+import {ProjectList} from '../_model/projectList.model';
 import {ReportModel} from '../_model/report.model';
 import {LoginModel} from '../_model/Login.model';
 
@@ -25,8 +25,8 @@ export class ReportService {
     return this.http.put<ReportModel>(`${this.apiServerUrl}/project/update/${report.id}`,report);
   }
 
-  public getProject(): Observable<Project[]> {
-    return this.http.get<Project[]>(`${this.apiServerUrl}/project/all`);
+  public getProject(): Observable<ProjectList[]> {
+    return this.http.get<ProjectList[]>(`${this.apiServerUrl}/project/all`);
   }
 
 

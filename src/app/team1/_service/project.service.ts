@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {Project} from '../_model/project';
+import {Project} from '../_model/project.model';
 import {Observable} from 'rxjs';
 import {Project2Model} from '../_model/project2.model';
 
@@ -22,10 +22,10 @@ export class ProjectService {
   };
 
   public createProject(project: Project2Model): Observable<Project2Model> {
-    return this.http.post<Project2Model>(`${this.apiServerUrl}/project/create-pj`, project);
+    return this.http.post<Project2Model>(`${this.apiServerUrl}/project/create`, project);
   }
 
-  // public deleteProject(project: Project): Observable<Project>{
-
-  // }
+  public deleteProject(id: number): Observable<Project>{
+    return this.http.delete<Project>(`${this.apiServerUrl}/project/delete/${id}`)
+  }
 }
