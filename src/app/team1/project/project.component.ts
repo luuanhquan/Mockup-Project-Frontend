@@ -51,8 +51,7 @@ export class ProjectComponent implements OnInit {
   public addProject(addForm: NgForm): void {
     // document.getElementById('add-project-form').click();
     this.projectService.createProject(addForm.value).subscribe(
-      (response: Project2Model) => {
-        // console.log(response);
+      () => {
         this.getProject();
         addForm.reset();
         const button = document.createElement('button');
@@ -60,38 +59,24 @@ export class ProjectComponent implements OnInit {
         button.style.display = 'block';
       },
       (error: HttpErrorResponse) => {
-        alert('error.message');
+        alert(error.message);
         addForm.reset();
       }
     );
   }
 
   selectModel:Project;
-  message: string ='';
+  message: string="";
   showModalDelete(model:Project): void{
     this.selectModel=model;
-    this.message = this.selectModel.nameProject;
-    console.log(this.message)
-    console.log(this.selectModel);
+    this.message = model.name;
+    console.log(this.message);
     $('#modal-delete').modal('show');
   }
 
-  public deleteProject():void{
-    // this.projectService.deleteProject(id).subscribe(
-    //   (response: void) => {
-    //     console.log('response');
-    //     this.getProject();
-    //   },
-    //   (error: HttpErrorResponse) => {
-    //     alert(error.message);
-    //   }
-    // ); 
+  DeleteProject(){
+    this.projectService.deleteProject(this.selectModel.id).subscribe (data =>{
+      console.log(this.selectModel.id)
+    })
   }
-
-  // deleteProject(id : number){
-  //   this.projectService.deleteProject(id).subscribe (data =>{
-  //     console.log(data)
-  //     this.getProject();
-  //   })
-  // }
 }
