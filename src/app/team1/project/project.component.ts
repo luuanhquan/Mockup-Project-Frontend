@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Project} from '../_model/project.model'
+import {Project} from '../_model/project.model';
 import {HttpErrorResponse} from '@angular/common/http';
 
 import {ProjectService} from '../_service/project.service';
 import {Router} from '@angular/router';
-import {NgForm} from '@angular/forms';
+import {FormControl, NgForm} from '@angular/forms';
 import {Project2Model} from '../_model/project2.model';
 
 declare var $: any;
@@ -15,7 +15,7 @@ declare var $: any;
 })
 export class ProjectComponent implements OnInit {
   public projectList: Project[];
-  public projectModel: Project2Model[];
+
 
   constructor(private projectService: ProjectService,
               private router: Router) {
@@ -44,19 +44,38 @@ export class ProjectComponent implements OnInit {
   hideModal(): void {
     document.getElementById('close-modal').click();
   }
+
   hideModalDelete(): void {
     document.getElementById('close-ModalDelete').click();
   }
 
+  hideModalEdit(): void {
+    document.getElementById('close-ModalEdit').click();
+  }
+
+  selectModel: Project;
+  message: string = '';
+
+  showModalDelete(model: Project): void {
+    this.selectModel = model;
+    this.message = model.name;
+    console.log(this.message);
+    $('#modal-delete').modal('show');
+  }
+
+  selectModelEdit: Project;
+  showModalEdit(modelEdit: Project): void {
+    this.selectModelEdit = modelEdit;
+    this.message = modelEdit.name;
+    console.log(this.selectModelEdit);
+    $('#modal-edit').modal('show');
+  }
+
   public addProject(addForm: NgForm): void {
-    // document.getElementById('add-project-form').click();
     this.projectService.createProject(addForm.value).subscribe(
       () => {
         this.getProject();
-        addForm.reset();
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.style.display = 'block';
+        window.location.reload();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -65,18 +84,34 @@ export class ProjectComponent implements OnInit {
     );
   }
 
-  selectModel:Project;
-  message: string="";
-  showModalDelete(model:Project): void{
-    this.selectModel=model;
-    this.message = model.name;
-    console.log(this.message);
-    $('#modal-delete').modal('show');
+  public DeleteProject() {
+    this.projectService.deleteProject(this.selectModel.id).subscribe(data => {
+      console.log(this.selectModel.id);
+    });
+    window.location.reload();
   }
 
-  DeleteProject(){
-    this.projectService.deleteProject(this.selectModel.id).subscribe (data =>{
-      console.log(this.selectModel.id)
-    })
+  public updateSummit(editForm:NgForm): void {
+    // this.selectModelEdit=editForm.value;
+    // this.setModel2(this.selectModelEdit);
+    this.projectService.updateProject(this.selectModelEdit.id,editForm.value).subscribe(
+      () => {
+        this.getProject();
+        window.location.reload();
+      },
+      (error:HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    );
   }
+
+  // selectModel2:Project2Model;
+  // setModel2(project:Project){
+  //   this.selectModel2.id=project.id;
+  //   this.selectModel2.name = project.name;
+  //   this.selectModel2.description = project.description;
+  //   this.selectModel2.date_start = project.dateStated;
+  //   this.selectModel2.date_end = project.dateEnded;
+  // }
+
 }

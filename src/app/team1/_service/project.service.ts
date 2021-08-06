@@ -26,6 +26,11 @@ export class ProjectService {
     return this.http.post<Project2Model>(`${this.apiServerUrl}/project/create`, project);
   }
 
+  public  updateProject(id: number,project: Project2Model): Observable<Project2Model>{
+    console.log(project)
+    return this.http.put<Project2Model>(`${this.apiServerUrl}/project/update/${id}`,project)
+  }
+
   public deleteProject(id: number): Observable<Project>{
     return this.http.delete<Project>(`${this.apiServerUrl}/project/delete/${id}`)
   }
