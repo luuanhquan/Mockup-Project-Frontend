@@ -13,22 +13,22 @@
         <img alt="admin@bootstrapmaster.com" class="img-avatar" src="assets/img/avatars/6.jpg"/>
       </a>
       <div *dropdownMenu aria-labelledby="simple-dropdown" class="dropdown-menu dropdown-menu-right">
-        <a (click)="handleLogin('login')" *ngIf="!loggedin" class="dropdown-item"><i class="fa fa-wrench"></i>
+        <a (click)="handleLogin('login')" *ngIf="!authentication.userValue" class="dropdown-item"><i class="fa fa-wrench"></i>
           Login</a>
-        <a (click)="handleLogin('forgot')" *ngIf="!loggedin" class="dropdown-item"><i class="fa fa-wrench"></i>
+        <a (click)="handleLogin('forgot')" *ngIf="!authentication.userValue" class="dropdown-item"><i class="fa fa-wrench"></i>
           Forgot Password</a>
-        <a (click)="handleLogin('register')" *ngIf="!loggedin" class="dropdown-item"><i class="fa fa-wrench"></i>
+        <a (click)="handleLogin('register')" *ngIf="!authentication.userValue" class="dropdown-item"><i class="fa fa-wrench"></i>
           Register</a>
-        <a (click)="handleLogin('profile')" *ngIf="loggedin" class="dropdown-item"><i class="fa fa-wrench"></i>
-          Welcome {{user.username}}</a>
-        <a (click)="handleLogin('change')" *ngIf="loggedin" class="dropdown-item"><i class="fa fa-wrench"></i>
+<!--        <a (click)="handleLogin('profile')" *ngIf="authentication.userValue" class="dropdown-item"><i class="fa fa-wrench"></i>-->
+<!--          Welcome {{authentication.userValue.username}}</a>-->
+        <a (click)="handleLogin('change')" *ngIf="authentication.userValue" class="dropdown-item"><i class="fa fa-wrench"></i>
           Change password</a>
-        <a (click)="handleLogin('logout')" *ngIf="loggedin" class="dropdown-item"><i class="fa fa-lock"></i> Logout</a>
+        <a (click)="handleLogin('logout')" *ngIf="authentication.userValue" class="dropdown-item"><i class="fa fa-lock"></i> Logout</a>
       </div>
     </li>
   </ul>
 </app-header>
-<div class="app-body">
+<div class="app-body"  *ngIf="authentication.userValue" >
   <app-sidebar #appSidebar (minimizedChange)="toggleMinimize($event)" [display]="'lg'" [fixed]="true"
                [minimized]="sidebarMinimized">
     <app-sidebar-nav [disabled]="appSidebar.minimized" [navItems]="navItems" [perfectScrollbar]></app-sidebar-nav>

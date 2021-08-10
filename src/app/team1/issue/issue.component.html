@@ -1,371 +1,281 @@
 <div class="animated fadeIn">
   <div class="row">
-    <div class="col-sm-6 col-md-4">
+    <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-        <div class="card-footer">Card footer</div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          <i class="fa fa-check"></i>Card with icon
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Card with switch
-          <div class="card-header-actions" style="height: 21px;">
-            <label class="switch switch-sm switch-label switch-info">
-              <input checked class="switch-input" type="checkbox">
-              <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-            </label>
-          </div>
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Card with label
+          ISSUE DETAIL
           <div class="card-header-actions">
-            <span class="badge badge-success">Success</span>
+            <!--            <button type="button" class="card-header-action btn btn-link btn-setting"><i class="icon-settings"></i>-->
+            <!--            </button>-->
+            <!--            <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i-->
+            <!--              class={{iconCollapse}}></i></button>-->
+            <!--            <button type="button" class="card-header-action btn btn-link btn-close"><i class="icon-close"></i></button>-->
           </div>
         </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Card with label
-          <div class="card-header-actions">
-            <span class="badge badge-pill badge-danger">42</span>
+        <div (collapsed)="collapsed($event)"
+             (expanded)="expanded($event)"
+             [collapse]="isCollapsed"
+             class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <input type="text" class="form-control text-center" ngModel="{{data?.id}}" disabled/>
+            </div>
+            <div class="col-md-6">
+              <strong><input type="text" class="form-control text-center" ngModel="{{data?.issueChangeLogDTO[0].title}}"
+                             disabled/></strong>
+            </div>
+            <div class="col-md-3">
+              <strong><input type="text" class="form-control text-center" disabled
+                             ngModel="{{data?.issueChangeLogDTO[0].type}} / {{data.issueChangeLogDTO[0].priority}}"/></strong>
+            </div>
           </div>
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-primary">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-secondary">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-success">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-info">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-warning">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card border-danger">
-        <div class="card-header">
-          Card outline
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
 
+
+          <div class="card-body col-sm-6 col-md-12" style="padding-left: 0px; padding-right: 0px">
+            <div class="card border-danger">
+              <div class="card-body">
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label"><Strong>STATUS</Strong></label>
+                  <label
+                    class="col-md-4 col-form-label">{{data.issueChangeLogDTO[0].status.replace('_', ' ')}}</label>
+                  <label class="col-md-2 col-form-label"><Strong>STARTED DATE</Strong></label>
+                  <label class="col-md-4 col-form-label">{{data.issueChangeLogDTO[0].date_start|date}}</label>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label"><Strong>ASSIGNEE</Strong></label>
+                  <label class="col-md-4 col-form-label">{{data.assignee}}</label>
+                  <label class="col-md-2 col-form-label"><Strong>DUE DATE</Strong></label>
+                  <label class="col-md-4 col-form-label">{{data.issueChangeLogDTO[0].date_due|date}}</label>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label"><Strong>TARGET</Strong></label>
+                  <label class="col-md-4 col-form-label">{{data.issueChangeLogDTO[0].target}}</label>
+                  <label class="col-md-2 col-form-label"><Strong>PROGRESS</Strong></label>
+                  <div class="col-sm-4">
+                    <progressbar class="progress progress-striped" [value]="data.issueChangeLogDTO[0].process"
+                                 [max]="100" type="info">{{data.issueChangeLogDTO[0].process}}%
+                    </progressbar>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label"><h5>DESCRIPTION</h5></label>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label">{{data.issueChangeLogDTO[0].description}}</label>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label"><Strong>ATTACHMENT</Strong></label>
+                  <div class="col-2" *ngFor="let file of data.files">
+                    <button type="button" tooltip="{{file.name}}" class="btn btn-block btn-outline-info" >{{file.id}}</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label"><Strong>PARENT TASK</Strong></label>
+                  <div class="col-2">
+                  <button type="button" (click)="changeModel(data.parent.id)" tooltip="{{data.parent.name}}" class="btn btn-block btn-outline-info" *ngIf="data.parent!=null">{{data.parent.id}}</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label   class="col-md-2 col-form-label"><Strong>SUB TASK</Strong></label>
+                  <div *ngFor="let task of data.subs" class="col-2">
+                    <button type="button"  (click)="changeModel(task.id)" tooltip="{{task.name}}" class="btn btn-block btn-outline-info" >{{ task.id }}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!--/.col-->
+          <div class="row">
+            <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"></div>
+            <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"></div>
+          <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+            <button type="button" class="btn btn-block btn-primary" (click)="showModal()"
+                    class="btn btn-primary col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0" data-target="#myModal" data-toggle="modal" id="btn-update">Update</button>
+          </div>
+          <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+            <button type="button" class="btn btn-block btn-primary">Delete</button>
+          </div>
+            <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+              <button type="button" class="btn btn-block btn-primary">Upload file</button>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"></div>
+            <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!--/.col-->
   <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-primary">
+    <div class="col-lg-12">
+      <div class="card">
         <div class="card-header">
-          Card with accent
+          HISTORY
+          <div class="card-header-actions">
+            <!--            <button type="button" class="card-header-action btn btn-link btn-setting"><i class="icon-settings"></i>-->
+            <!--            </button>-->
+            <!--            <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i-->
+            <!--              class={{iconCollapse}}></i></button>-->
+            <!--            <button type="button" class="card-header-action btn btn-link btn-close"><i class="icon-close"></i></button>-->
+          </div>
         </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-secondary">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-success">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-info">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-warning">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card card-accent-danger">
-        <div class="card-header">
-          Card with accent
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-primary text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-success text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-info text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-warning text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
+        <div (collapsed)="collapsed($event)"
+             (expanded)="expanded($event)"
+             [collapse]="isCollapsed"
+             class="card-body">
+
+          <div class="card-body col-sm-6 col-md-12" style="padding-left: 0px; padding-right: 0px"
+               *ngFor="let change of data.issueChangeLogDTO ; let i = index" [attr.data-index]="i">
+            <div class="card border-warning">
+              <div class="card-body">
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label"><Strong>USER</Strong></label>
+                  <label
+                    class="col-md-4 col-form-label">{{change.user}}</label>
+                  <label class="col-md-2 col-form-label"><Strong>TIME CHANGE</Strong></label>
+                  <label class="col-md-4 col-form-label">{{change.changedTime}}.</label>
+                </div>
+<!--                Xác định những thay đổi từ phần tử đầu đến phần tử n-1-->
+                <div class="form-group row" *ngIf="i+1<data.issueChangeLogDTO.length">
+                  <label class="col-md-2 col-form-label"><Strong>CHANGED</Strong></label>
+                </div>
+                <div class="form-group row" *ngIf="i+1<data.issueChangeLogDTO.length">
+                  <label class="col-md-12 col-form-label"
+                         *ngIf="data.issueChangeLogDTO[i+1].date_start!=data.issueChangeLogDTO[i].date_start">► <strong>Date
+                    started:</strong> change from <strong>{{data.issueChangeLogDTO[i + 1].date_start|date}}</strong> to
+                    <strong>{{change.date_start|date}}</strong></label>
+                  <label class="col-md-12 col-form-label"
+                         *ngIf="data.issueChangeLogDTO[i+1].date_due!=data.issueChangeLogDTO[i].date_due">► <strong>Date
+                    due:</strong> change from <strong>{{data.issueChangeLogDTO[i + 1].date_due|date}}</strong> to
+                    <strong>{{change.date_due|date}}</strong></label>
+                  <label class="col-md-12 col-form-label"
+                         *ngIf="data.issueChangeLogDTO[i+1].title!=data.issueChangeLogDTO[i].title">►
+                    <strong>Title:</strong> change from <strong>{{data.issueChangeLogDTO[i + 1].title}}</strong> to
+                    <strong>{{change.title}}</strong></label>
+                  <label class="col-md-12 col-form-label"
+                         *ngIf="data.issueChangeLogDTO[i+1].description!=data.issueChangeLogDTO[i].description">►
+                    <strong>Description:</strong> change from
+                    <strong>{{data.issueChangeLogDTO[i + 1].description}}</strong> to
+                    <strong>{{change.description}}</strong></label>
+                  <label class="col-md-12 col-form-label"
+                         *ngIf="data.issueChangeLogDTO[i+1].type!=data.issueChangeLogDTO[i].type">►
+                    <strong>Type:</strong> change from <strong>{{data.issueChangeLogDTO[i + 1].type}}</strong> to
+                    <strong>{{change.type}}</strong></label>
+                  <label class="col-md-12 col-form-label"
+                         *ngIf="data.issueChangeLogDTO[i+1].target!=data.issueChangeLogDTO[i].target">►
+                    <strong>Target:</strong> change from <strong>{{data.issueChangeLogDTO[i + 1].target}}</strong> to
+                    <strong>{{change.target}}</strong></label>
+                  <label class="col-md-12 col-form-label"
+                         *ngIf="data.issueChangeLogDTO[i+1].priority!=data.issueChangeLogDTO[i].priority">► <strong>Date
+                    due:</strong> change from <strong>{{data.issueChangeLogDTO[i + 1].priority}}</strong> to
+                    <strong>{{change.priority}}</strong></label>
+                  <label class="col-md-12 col-form-label"
+                         *ngIf="data.issueChangeLogDTO[i+1].process!=data.issueChangeLogDTO[i].process">► <strong>Process:</strong>
+                    change from <strong>{{data.issueChangeLogDTO[i + 1].process}}</strong> to
+                    <strong>{{change.process}}</strong></label>
+                  <label class="col-md-12 col-form-label"
+                         *ngIf="data.issueChangeLogDTO[i+1].solution!=data.issueChangeLogDTO[i].solution">► <strong>Solution:</strong>
+                    change from <strong>{{data.issueChangeLogDTO[i + 1].solution}}</strong> to
+                    <strong>{{change.solution}}</strong></label>
+                  <label class="col-md-12 col-form-label"
+                         *ngIf="data.issueChangeLogDTO[i+1].timespend!=data.issueChangeLogDTO[i].timespend">► <strong>Timespend:</strong>
+                    change from <strong>{{data.issueChangeLogDTO[i + 1].timespend}}</strong> to
+                    <strong>{{change.timespend}}</strong></label>
+                  <label class="col-md-12 col-form-label"
+                         *ngIf="data.issueChangeLogDTO[i+1].status!=data.issueChangeLogDTO[i].status">► <strong>Date
+                    due:</strong> change from <strong>{{data.issueChangeLogDTO[i + 1].status}}</strong> to
+                    <strong>{{change.status}}</strong></label>
+                </div>
+
+<!--                In ra thông tin khởi tạo-->
+                <div class="form-group row" *ngIf="i+1==data.issueChangeLogDTO.length">
+                  <label class="col-md-2 col-form-label"><Strong>CREATED</Strong></label>
+                </div>
+                <div class="form-group row" *ngIf="i+1==data.issueChangeLogDTO.length">
+                  <label class="col-md-12 col-form-label">► <strong>Date started:</strong> {{change.date_start|date}}</label>
+                  <label class="col-md-12 col-form-label">► <strong>Date due:</strong> {{change.date_due|date}}</label>
+                  <label class="col-md-12 col-form-label">► <strong>Title:</strong> {{change.title}}</label>
+                  <label class="col-md-12 col-form-label">► <strong>Description:</strong> {{change.description}}</label>
+                  <label class="col-md-12 col-form-label">► <strong>Type:</strong> {{change.type}}</label>
+                  <label class="col-md-12 col-form-label">► <strong>Target:</strong> {{change.target}}</label>
+                  <label class="col-md-12 col-form-label">► <strong>Priority:</strong> {{change.priority}}</label>
+                  <label class="col-md-12 col-form-label">► <strong>Process</strong> {{change.process}}</label>
+                  <label class="col-md-12 col-form-label">► <strong>Solution</strong> {{change.solution}}</label>
+                  <label class="col-md-12 col-form-label">► <strong>Time spend:</strong> {{change.timespend}}</label>
+                  <label class="col-md-12 col-form-label">► <strong>Status</strong> {{change.status}}</label>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label"><Strong>COMMENT</Strong></label>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-12 col-form-label">{{change.description}}</label>
+                </div>
+              </div>
+            </div>
+          </div><!--/.col-->
         </div>
       </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-danger text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="myModal">
+  <form #addForm="ngForm" (ngSubmit)="updateIssue(addForm)">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Project</h4>
+          <button (click)="hideModal()" class="close" type="button">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <!-- Tên đơn vị -->
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Tên đơn vị</label>
+            <div class="col-md-8">
+              <input class="form-control" id="text-input" name="name" ngModel placeholder="Tên đơn vị" type="text"/>
+            </div>
+          </div>
+          <!-- Mô tả dự án: Description -->
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="textarea-input">Mô tả dự án</label>
+            <div class="col-md-8">
+              <textarea class="form-control" id="textarea-input" name="des" ngModel placeholder="Tổng quan dự án"
+                        rows="3"></textarea>
+            </div>
+          </div>
+          <!-- Ngày bắt đầu dự án -->
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Ngày bắt đầu dự án</label>
+            <div class="col-md-8">
+              <input class="form-control" id="text-input" name="date_start" ngModel placeholder="Ngày bắt đầu dự án"
+                     type="date"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Ngày kết thúc dự án</label>
+            <div class="col-md-8">
+              <input class="form-control" id="text-input" name="date_end" ngModel placeholder="Ngày kết thúc dự án"
+                     type="date"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">Status</label>
+            <div class="col-md-8">
+              <input class="form-control" id="text-input" name="status" ngModel placeholder="Status" type="text"/>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit">Add</button>
+          <button (click)="hideModal()" class="btn btn-danger" type="button">Close</button>
+          <!-- this button is hidden, used to close from typescript -->
+          <button data-dismiss="modal" id="close-modal" style="display: none" type="button">Close</button>
         </div>
       </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-primary text-center">
-        <div class="card-body">
-          <blockquote class="card-bodyquote">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer>Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-primary">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-success">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-info">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-warning">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-4">
-      <div class="card text-white bg-danger">
-        <div class="card-header">
-          Card title
-        </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
+    </div>
+  </form>
+
 </div>

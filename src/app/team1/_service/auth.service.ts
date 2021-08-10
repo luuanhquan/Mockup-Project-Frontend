@@ -18,21 +18,30 @@ export class AuthenticationService {
     private http: HttpClient,
     private router: Router)
   {
-    this.userLogin = new BehaviorSubject<LoginModel>(JSON.parse(localStorage.getItem('user')));
+    this.userLogin = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('user')));
     this.currentUserLogin = this.userLogin.asObservable();
   }
 
   public get userValue(): LoginModel {
     return this.userLogin.value;
   }
+  isUserLoggedIn() {
+    let user = sessionStorage.getItem("user");
+    return !(user === null);
+  }
 
 
-  login(username: String, password: String):Observable<any> {
+  login(username: string, password: string):Observable<any> {
 
-    return this.http.post<LoginModel>(`${environment.apiBaseUrl}/auth`,{username,password})
+    return this.http.post<any>(`${environment.apiBaseUrl}/auth`,{username,password})
       .pipe(map(user => {
-        user.authdata = window.btoa(username + ':' + password);
-        localStorage.setItem('user', JSON.stringify(user));
+        let newUser: LoginModel=new LoginModel();
+        newUser.username=username;
+        newUser.jwtToken=user.jwtToken;
+        newUser.role=user.role.replace("[",'').replace("]",'');
+        this.userLogin.next(newUser);
+        localStorage.setItem('user', JSON.stringify(newUser));
+        console.log(newUser)
         this.userLogin.next(user);
         return user;
       })
@@ -43,7 +52,7 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem('user');
     this.userLogin.next(null);
-    // this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dashboard']);
   }
 
   // isUserLoggedIn() {
