@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService) {
-    if(this.authenticationService.userValue){
+    if(this.authenticationService.isUserLoggedIn()){
       this.router.navigate(['/'])
     }
   }
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading= true;
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
+    this.authenticationService.login(this.f.username.value, btoa(this.f.password.value))
       .pipe(first())
       .subscribe(
         data=>{

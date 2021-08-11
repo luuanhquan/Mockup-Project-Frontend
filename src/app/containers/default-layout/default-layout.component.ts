@@ -11,14 +11,15 @@ import {LoginModel} from '../../team1/_model/Login.model';
 export class DefaultLayoutComponent implements OnInit {
   public sidebarMinimized = false;
   public navItems = navItems;
-  user: LoginModel;
-  loggedin: boolean;
+  // user: LoginModel;
+  // loggedin: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
-  ) {if(authenticationService.userValue) this.loggedin=true;
+    private authentication: AuthenticationService
+  ) {
+    // if(authenticationService.userValue) this.loggedin=true;
   }
 
   toggleMinimize(e) {
@@ -31,7 +32,7 @@ export class DefaultLayoutComponent implements OnInit {
         this.router.navigate(['/login']);
         break;
       case 'logout':
-        this.authenticationService.logout();
+        this.authentication.logout();
         break;
       case 'forgot':
         this.router.navigate(['/forgot']);
@@ -46,8 +47,7 @@ export class DefaultLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    // this.authenticationService.userLogin.subscribe(x=>this.user=x);
-      this.user = {loggedin:false,authdata:'',role:'',username:'',avartar:'',password:'',id:0}
+    // this.authenticationService.currentUserLogin.subscribe(x=>this.user=x);
+      // this.user = {jwtToken:'',role:'',username:''}
   }
 }
