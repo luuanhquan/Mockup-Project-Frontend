@@ -1,11 +1,11 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {LoginModel} from '../_model/Login.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
-
+import { Register } from '../_model/register.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -46,16 +46,11 @@ export class AuthenticationService {
     // this.router.navigate(['/dashboard']);
   }
 
-  // isUserLoggedIn() {
-  //   const user:LoginModel = JSON.parse(sessionStorage.getItem(localStorage.getItem("user")));
-  //   return user.loggedin;
-  // }
-  //
-  // getLoggedInUserName() {
-  //   const user = JSON.parse(sessionStorage.getItem(localStorage.getItem("user")));
-  //   if (user === null) {
-  //     return '';
-  //   }
-  //   return user.username;
-  // }
+
+  register(register: Register) {
+    return this.http.post<any>('/users', register).pipe(
+      tap(register => console.log(register)),
+      map(register => register)
+    )
+  }
 }

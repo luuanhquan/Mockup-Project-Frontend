@@ -6,174 +6,77 @@
           <strong>Register Form</strong>
         </div>
         <div class="card-body">
-          <form
-            [formGroup]="register_form"
-            action=""
-            class="form-horizontal"
-            enctype="multipart/form-data"
-            method="post"
-            style="display: flex"
-          >
-            <div class="col-md-6 m-auto">
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="text-input"
-                >User Name</label
-                >
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+  <div class="col-md-6 m-auto">
 
-                <div class="col-md-9">
-                  <input
-                    class="form-control"
-                    formControlName="username"
-                    minlength="5"
-                    placeholder="User name"
-                    required
-                    type="text"
-                  />
-                  <div
-                    *ngIf="
-                            username.invalid &&
-                            (username.dirty || username.touched)
-                          "
-                  >
-                    <div *ngIf="username.errors.required">
-                      User Name is required.
-                    </div>
-                    <div *ngIf="username.errors.minlength">
-                      Username must be at least 5 characters long.
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="form-group row">
-                <label
-                  class="col-md-3 col-form-label"
-                  for="password-input"
-                >Password</label
-                >
-                <div class="col-md-9">
-                  <input
-                    class="form-control"
-                    formControlName="password"
-                    minlength="6"
-                    placeholder="Password"
-                    required
-                    type="password"
-                  />
-                  <div
-                    *ngIf="
-                            password.invalid &&
-                            (password.dirty || password.touched)
-                          "
-                  >
-                    <div *ngIf="password.errors.required">
-                      Password is required.
+      <mat-form-field class="form-group row">
+        <mat-label class="col-md-3 col-form-label">User Name</mat-label>
+        <div class="col-md-9">
+          <input matInput placeholder="Username" formControlName="username"  class="form-control">
+          <mat-error *ngIf="registerForm.get('username').errors ">Username is required</mat-error>
                     </div>
-                    <div *ngIf="password.errors.minlength">
-                      Password must be at least 6 characters long.
-                    </div>
-                    <div *ngIf="password.errors.pattern">
-                      Your password must contain at least one uppercase,
-                      one lowercase, and one number.
-                    </div>
-                  </div>
-                </div>
-              </div>
+      </mat-form-field>
 
-              <!-- <div class="form-group row">
-                <label class="col-md-3 col-form-label"
-                  >Confirm password</label
-                >
-                <div class="col-md-9">
-                  <input
-                    type="password"
-                    class="form-control"
-                    formControlName="confirm_password"
-                    placeholder="Password"
-                    minlength="6"
-                    required
-                  />
-                  <div
-                    *ngIf="
-                      confirm_password.invalid &&
-                      (confirm_password.dirty || confirm_password.touched)
-                    "
-                  >
-                    <div *ngIf="confirm_password.errors.required">
-                      Confirm password is required.
-                    </div>
-                    <div *ngIf="confirm_password.errors.areEqual">
-                      Password mismatch.
-                    </div>
-                  </div>
-                </div>
-              </div> -->
+      <!-- <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="email" required>
+          <mat-error *ngIf="registerForm.get('email').invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div> -->
 
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="email-input"
-                >Email
-                </label>
-                <div class="col-md-9">
-                  <input
-                    autofocus
-                    class="form-control"
-                    email
-                    formControlName="email"
-                    placeholder="Enter email"
-                    required
-                    type="email"
-                  />
-                  <div
-                    *ngIf="
-                            email.invalid && (email.dirty || email.touched)
-                          "
-                  >
-                    <div *ngIf="email.errors.required">
-                      Email is required.
-                    </div>
-                    <div *ngIf="email.errors.email">Invalid Email.</div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="phone-input"
-                >Phone
-                </label>
-                <div class="col-md-9">
-                  <input
-                    class="form-control"
-                    formControlName="phone"
-                    placeholder="Phone"
-                    required
-                    type="text"
-                  />
-                  <div
-                    *ngIf="
-                            phone.invalid && (phone.dirty || phone.touched)
-                          "
-                  >
-                    <div *ngIf="phone.errors.required">
-                      Phone is required.
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+      <mat-form-field class="form-group row">
+        <mat-label class="col-md-3 col-form-label">Email</mat-label>
+        <div class="col-md-9">
+          <input matInput placeholder="Email" formControlName="email" required  class="form-control">
+
+          <mat-error *ngIf="registerForm.get('email').errors">Email is required</mat-error>
             </div>
-          </form>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="form-group row">
+        <mat-label class="col-md-3 col-form-label">Password</mat-label>
+        <div class="col-md-9">
+          <input matInput type="password" placeholder="Password" formControlName="password"  class="form-control">
+          <mat-hint *ngIf="registerForm.get('password').errors">Password is required</mat-hint>
+          </div>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="form-group row">
+        <mat-label class="col-md-3 col-form-label">Confirm Email</mat-label>
+        <div class="col-md-9">
+          <input matInput type="password" placeholder="Password COnfirmation" formControlName="confirmPassword"  class="form-control">
+          <mat-hint *ngIf="registerForm.hasError('passwordsNotMatching')">Passwords not matching</mat-hint>
         </div>
-        <div class="card-footer">
-          <button
-            (click)="clicksub()"
-            [disabled]="register_form.invalid"
-            class="btn btn-sm btn-primary d-block m-auto p-2"
-            type="button"
-          >
-            <i class="fa fa-dot-circle-o"></i> Submit
-          </button>
-        </div>
-      </div>
-    </div>
+        </mat-form-field>
+
+
+
+        <mat-form-field class="form-group row">
+          <mat-label class="col-md-3 col-form-label">Phone</mat-label>
+          <div class="col-md-9">
+        <input matInput placeholder="Phone" formControlName="phone"  class="form-control">
+        <mat-hint *ngIf="registerForm.get('phone').errors">Phone is required</mat-hint>
+          </div>
+    </mat-form-field>
+
+
+    <!-- <mat-form-field>
+      <input matInput type="text" placeholder="Division name" formControlName="division">
+      <mat-hint *ngIf="registerForm.get('division').errors">Division is required</mat-hint>
+  </mat-form-field> -->
+
+      <button mat-flat-button color="primary" [disabled]="!registerForm.valid" type="submit">Register</button>
   </div>
-  <!--/.col-->
-</div>
+</form>
+<!--
+<h3 *ngIf="registerForm.invalid">Form contains following errors</h3>
+<small *ngIf="registerForm.get('password').hasError('passwordInvalid')">Password is not containing a number</small> <br>
+<small *ngIf="registerForm.hasError('passwordsNotMatching')">Passwords not matching</small> -->

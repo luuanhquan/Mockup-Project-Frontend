@@ -1,7 +1,11 @@
 export interface Register {
-  email: string;
-  username: string;
-  password: string;
-  phone: string;
-  emailVerified: number;
+
+  username?: string;
+  email?: string;
+  phone?: string,
+  password?: string;
+  confirmPassword?: string;
+  role?: string;
+  profileImage?: string;
+  // passwordConfirm?: string;
 }
