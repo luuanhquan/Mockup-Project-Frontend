@@ -8,7 +8,6 @@ import {ProjectComponent} from './project/project.component';
 import {RegisterComponent} from './register/register.component';
 import {ReportComponent} from './report/report.component';
 
-
 import {ProfileComponent} from './profile/profile.component';
 
 

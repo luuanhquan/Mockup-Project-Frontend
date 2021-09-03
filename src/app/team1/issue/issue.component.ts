@@ -20,7 +20,6 @@ export class IssueComponent implements OnInit {
   ) {
   route.params.subscribe(param=> this.issueID=param['id']);
     this.getData();
-  console.log(this.issueID)
   }
 
   ngOnInit(): void {
@@ -30,7 +29,7 @@ export class IssueComponent implements OnInit {
     this.service.getIssueDetail(this.issueID).subscribe(
       (response:IssueDetailModel) => {
         this.data=response;
-        console.log(this.data);
+        console.log('hello'+this.data);
       }
     )
   }

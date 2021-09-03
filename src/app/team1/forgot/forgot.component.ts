@@ -7,10 +7,10 @@ import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: 'login.component.html'
+  templateUrl: 'forgot.component.html'
 })
-export class LoginComponent implements OnInit {
-  loginForm:FormGroup;
+export class ForgotComponent implements OnInit {
+  forgotForm:FormGroup;
   loading = false;
   submitted=false;
   returnUrl:string;
@@ -27,40 +27,30 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+    this.forgotForm = this.formBuilder.group({
+      email: ['', Validators.required]
     });
     this.returnUrl=this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   get f(){
-    return this.loginForm.controls;
+    return this.forgotForm.controls;
   }
 
   onSubmit(){
     this.submitted = true;
 
-    if(this.loginForm.invalid){
+    if(this.forgotForm.invalid){
       return;
     }
 
     this.loading= true;
-    this.authenticationService.login(this.f.username.value, btoa(this.f.password.value))
-      .pipe(first())
-      .subscribe(
-        data=>{
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          this.error=error;
-          this.loading= false;
-        }
-      )
+    this.authenticationService.forgot(this.f.email.value);
+
+    alert("Please check your inbox!")
+    this.router.navigate(['/']);
+    this.loading= false;
   }
 
 
-  forgot() {
-    this.router.navigate(['/forgot']);
-  }
 }

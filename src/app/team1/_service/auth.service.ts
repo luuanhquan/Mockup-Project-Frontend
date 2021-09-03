@@ -67,4 +67,15 @@ export class AuthenticationService {
   //   }
   //   return user.username;
   // }
+  forgot(email: string) {
+    this.http.post<any>(`${environment.apiBaseUrl}/forgot-password/`,email)
+      .pipe(map(user => {
+          return user;
+        })
+      );
+  }
+
+  checkKey(key: string): Observable<void>  {
+    return this.http.get<any>(`${environment.apiBaseUrl}/forgot-password/${key}`);
+  }
 }

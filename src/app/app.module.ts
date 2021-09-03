@@ -14,8 +14,9 @@ import {DefaultLayoutComponent} from './containers';
 import {P404Component} from './views/error/404.component';
 import {P500Component} from './views/error/500.component';
 import {LoginComponent} from './team1/login/login.component';
+import {ForgotComponent} from './team1/forgot/forgot.component';
 import {RegisterComponent} from './views/register/register.component';
-
+import {RecoverComponent} from './team1/recover/recover.component';
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpInterceptor} from '@angular/common/http';
 import {AppAsideModule, AppBreadcrumbModule, AppFooterModule, AppHeaderModule, AppSidebarModule,} from '@coreui/angular';
 
@@ -67,7 +68,9 @@ const APP_CONTAINERS = [
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    ForgotComponent,
+    RegisterComponent,
+    RecoverComponent
   ],
 
   providers: [
