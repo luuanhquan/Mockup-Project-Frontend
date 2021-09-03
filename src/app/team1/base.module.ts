@@ -22,6 +22,8 @@ import {ProfileComponent} from './profile/profile.component';
 // Collapse Component
 // Dropdowns Component
 import {CollapseModule} from 'ngx-bootstrap/collapse';
+import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import {CollapseModule} from 'ngx-bootstrap/collapse';
     BaseRoutingModule,
     CollapseModule,
     BaseRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProgressbarModule,
+    TooltipModule
 
   ],
   declarations: [DashboardComponent,

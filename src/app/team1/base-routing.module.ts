@@ -38,7 +38,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'issue',
+        path: 'issue/:id',
         component: IssueComponent,
         data: {
           title: 'Issues'
