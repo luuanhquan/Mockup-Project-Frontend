@@ -1,28 +1,25 @@
 
-export interface Usersfull{
+export class Usersfull{
     id:number;
-    role:number;
+    // fullname:string;
+    role:String;
    username:string;
    password:string;
    email:string;
-   phone: number;
-   firstname:string;
-   middlename:string;
-   lasname:string;
-   type:number;
-   personId:string;
+   phone: String;
+   firstName:string;
+   middleName:string;
+   lastname:string;
+   type:String;
+   personalid:number;
    hometown:string;
    education:string;
    school:string;
    major:string;
    status:number;
    avatar:String
-   dayofflastyear:Date;
+   dayOffLastYear:number;
    gender:boolean;
-   dateCreat:Date;
-   birthday:Date;
-
-
-
-   
+   dateCreated:String;
+   birthday:String;
 }
