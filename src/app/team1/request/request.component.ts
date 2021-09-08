@@ -3,17 +3,18 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {LeaveRequests} from '../_model/leaverequests';
 import {LeaveRequestService} from '../_service/leaverequests.service';
-
+import {REQUEST_STATUS} from '../enums/REQUEST_STATUS';
 @Component({
   selector: 'app-root',
   templateUrl: 'request.component.html'
 })
 export class RequestComponent implements OnInit {
   public leaveRequests: LeaveRequests[];
-  public approveRequest: LeaveRequests;
+  public approvedRequest: LeaveRequests;
   public cancelRequest: LeaveRequests;
-  public refuseRequest: LeaveRequests;
+  public deniedRequest: LeaveRequests;
 
+  REQUEST_STATUS= REQUEST_STATUS;
   constructor(private leaveRequestService: LeaveRequestService) {
   }
 
@@ -34,12 +35,13 @@ export class RequestComponent implements OnInit {
     );
   }
 
-  // them add
+
+
   public onAddRequest(addForm: NgForm): void {
-    document.getElementById('add-request-form').click();
+    // document.getElementById('add-request-form').click();
     this.leaveRequestService.addNewRequest(addForm.value).subscribe(
       (response: LeaveRequests) => {
-        console.log(response);
+         console.log(response);
         this.getLeaveRequests();
         addForm.reset();
       },
@@ -50,42 +52,40 @@ export class RequestComponent implements OnInit {
     );
   }
 
-///xy ly approved
-  public onApproveRequest(leaveRequests: LeaveRequests): void {
-    this.leaveRequestService.approveRequest(leaveRequests).subscribe(
-      (response: LeaveRequests) => {
-        console.log(response);
-        this.getLeaveRequests();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
+  cancel(leaveRequests: LeaveRequests) {
+    this.leaveRequestService.cancel(leaveRequests.id).subscribe(res => {
+        if (res) {
+            leaveRequests.status = res.status;
+        }
+    });
+}
 
-  public onRefuseRequest(leaveRequests: LeaveRequests): void {
-    this.leaveRequestService.refuseRequest(leaveRequests).subscribe(
-      (response: LeaveRequests) => {
-        console.log(response);
-        this.getLeaveRequests();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
 
-  public onCancelRequest(id: number): void {
-    this.leaveRequestService.cancelRequest(id).subscribe(
-      (response: void) => {
-        console.log(response);
-        this.getLeaveRequests();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
+approved(leaveRequests: LeaveRequests) {
+  this.leaveRequestService.approved(leaveRequests.id).subscribe(res => {
+      if (res) {
+          leaveRequests.status = res.status;
       }
-    );
-  }
+  });
+}
+denied(leaveRequests: LeaveRequests) {
+  this.leaveRequestService.denied(leaveRequests.id).subscribe(res => {
+      if (res) {
+          leaveRequests.status = res.status;
+      }
+  });
+}
+
+
+
+showModal(): void {
+  $('#myModal').modal('show');
+}
+
+hideModal(): void {
+  document.getElementById('close-modal').click();
+}
+
 
   public onOpenModal(leaveRequests: LeaveRequests, mode: string): void {
     const container = document.getElementById('container-main');
@@ -97,13 +97,13 @@ export class RequestComponent implements OnInit {
       button.setAttribute('data-target', '#addRequestModal');
     }
 
-    if (mode === 'approve') {
-      this.approveRequest = leaveRequests;
-      button.setAttribute('data-target', '#approveRequestModal');
+    if (mode === 'approved') {
+      this.approvedRequest = leaveRequests;
+      button.setAttribute('data-target', '#approvedRequestModal');
     }
-    if (mode === 'refuse') {
-      this.refuseRequest = leaveRequests;
-      button.setAttribute('data-target', '#refuseRequestModal');
+    if (mode === 'denied') {
+      this.deniedRequest = leaveRequests;
+      button.setAttribute('data-target', '#deniedRequestModal');
     }
 
     if (mode === 'cancel') {

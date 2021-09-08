@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { AuthenticationService } from '../_service/auth.service';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import {Location} from '@angular/common';
+import { Register } from '../_model/register.model';
+
+
+
 
 class CustomValidators {
   static passwordContainsNumber(control: AbstractControl): ValidationErrors {
@@ -34,9 +38,15 @@ class CustomValidators {
 })
 export class RegisterComponent implements OnInit {
 
+  display = 'none';
+  modalObject = {};
+  errorMessage: string;
+
+  register :Register;
   registerForm: FormGroup;
 
   constructor(
+    private location: Location,
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,
     private router: Router
@@ -46,20 +56,6 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       phone: [ null, [ Validators.required]],
       username: [null, [Validators.required]],
-
-      // email : [null, [Validators.required, Validators.email]],
-      // getErrorMessage() {
-      //   if (this.email.hasError('required')) {
-      //     return 'You must enter a value';
-      //   }
-
-      //   return this.email.hasError('email') ? 'Not a valid email' : '';
-      // },
-
-
-
-
-
       email: [null, [
         Validators.required,
         Validators.email,
@@ -74,17 +70,51 @@ export class RegisterComponent implements OnInit {
     },{
        validators: CustomValidators.passwordsMatch
     })
-
-  }
-
-  onSubmit(){
-    if(this.registerForm.invalid) {
-      return;
+    this.modalObject = {
+      title: "",
+      body: ""
     }
-    console.log(this.registerForm.value);
-    this.authService.register(this.registerForm.value).pipe(
-      map(user => this.router.navigate(['login']))
-    ).subscribe()
   }
+
+  onSubmit() {
+    // if(this.registerForm.invalid) {
+    //        return;
+    //      }
+    //      console.log(this.registerForm.value);
+      this.authService.register(this.registerForm.value).subscribe(
+      response => {
+
+        this.errorMessage = null;
+        this.showModal();
+        console.log(response)
+      },
+      error => {
+        this.registerForm.reset();
+        if(error.error.message) {
+          this.errorMessage = error.error.message;
+        } else {
+          this.errorMessage = "Unknown error occured, try after some time..";
+        }
+      }
+    )
+  }
+
+  displayChange(value) {
+    this.display = 'none'
+  }
+
+  showModal() {
+    this.display = 'block';
+    this.modalObject = {
+      title: "SignUp Successful",
+      body: `Thanks for signing in!.
+            Account verification link is sent on your mail id
+            ${this.registerForm.value.email}.
+            Click on link to activate your account.`
+    }
+
+
+
+}
 
 }

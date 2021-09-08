@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Profile} from '../_model/profile.model';
+import { User } from '../_model/user';
 import {ProfileService} from '../_service/profile.service';
-import {UsernameValidator,} from '../_validators';
-
+import { AuthenticationService } from '../_service/auth.service';
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -15,175 +15,66 @@ import {UsernameValidator,} from '../_validators';
 export class ProfileComponent implements OnInit {
 
   profile_form: FormGroup;
+  id: any;
+  username:any;
+  email:any;
+  phone:any;
+  type: any;
+  avatar:any;
+  personalid: any;
+  firstname:any;
+  middlename:any;
+  lastname:any;
+  gender: any;
+  hometown:any;
+  birthday: any;
+  education:any;
+  school:any;
+  major:any;
+  profileUser:any
+ user = new User();
 
 
-  public profile: Profile[];
-  public updateProfile: Profile;
-
-
-  constructor(private profileService: ProfileService) {
-  }
-
-  get username() {
-    return this.profile_form.get('username');
-  }
-
-  get email() {
-    return this.profile_form.get('email');
-  }
-
-  get phone() {
-    return this.profile_form.get('phone');
-  }
-
-  get password() {
-    return this.profile_form.get('password');
-  }
-
-  // }
-  get type() {
-    return this.profile_form.get('type');
-  }
-
-  get home_town() {
-    return this.profile_form.get('home_town');
-  }
-
-  // get confirm_password() {
-  //   return this.profile_form.get('confirm_password');
-
-  get avatar() {
-    return this.profile_form.get('avatar');
-  }
-
-  get personal_id() {
-    return this.profile_form.get('personal_id');
-  }
-
-  get first_name() {
-    return this.profile_form.get('first_name');
-  }
-
-  get middle_name() {
-    return this.profile_form.get('middle_name');
-  }
-
-  get last_name() {
-    return this.profile_form.get('last_name');
-  }
-
-  get birthday() {
-    return this.profile_form.get('birthday');
-  }
-
-  get gender() {
-    return this.profile_form.get('gender');
-  }
-
-  get school() {
-    return this.profile_form.get('school');
-  }
-
-  get major() {
-    return this.profile_form.get('major');
+  constructor(private profileService: ProfileService,
+    private authService: AuthenticationService,
+    private router: Router
+    ) {
+      this.id = this.authService.getUsers().id;
   }
 
   ngOnInit() {
 
+      this.username = localStorage.getItem("userName");
+    this.email = localStorage.getItem("email");
+    this.profileService.getUser(this.id)
+      .subscribe(data => {
+        console.log(data)// format dob ở đây
 
-    this.getProfile();
-
-
-    this.profile_form = new FormGroup({
-
-      username: new FormControl('', Validators.compose([
-        UsernameValidator.validUsername,
-        Validators.maxLength(25),
-        Validators.minLength(5),
-        Validators.pattern('^(?=.*[a-zA-Z])+$'),
-        Validators.required
-      ])),
-
-
-      // 'username' : new FormControl('', Validators.required),
-      'email': new FormControl('', [Validators.required, Validators.email]),
-      'phone': new FormControl(
-        '',
-        [
-          Validators.required,
-          Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')
-        ]),
+        this.birthday = new Date().toLocaleDateString();
+        this.firstname = this.user.firstname,
+        this.lastname = this.user.lastname,
+        this.middlename = this.user.middlename,
+        this.education = this.user.education,
+        this.school = this.user.school,
+        this.major = this.user.major,
+        this.type = this.user.type,
+        this.hometown = this.user.hometown,
+        this.personalid = this.user.personalid,
+        this.phone = this.user.phone,
+        this.avatar= this.user.avatar,
+        this.gender= this.user.gender
 
 
-      'password': new FormControl('', [Validators.compose([Validators.required, Validators.minLength(6)])]),
+        this.profileUser = data;
 
-
-      // 'confirm_password': new FormControl ('',[Validators.compose([Validators.required,Validators.minLength(6)])]),
-      'home_town': new FormControl('', Validators.required),
-      'type': new FormControl('', Validators.required),
-      'personal_id': new FormControl(
-        '',
-        [
-          Validators.required,
-          Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')
-        ]),
-
-      'avatar': new FormControl('', Validators.required),
-      'first_name': new FormControl('', Validators.required),
-      'middle_name': new FormControl('', Validators.required),
-      'last_name': new FormControl('', Validators.required),
-      'birthday': new FormControl('', Validators.required),
-      'school': new FormControl('', Validators.required),
-      'major': new FormControl('', Validators.required),
-
-
-    });
+      }, error => console.log(error));
   }
 
-  clicksub() {
-    console.log(this.profile_form.value);
-    this.profile_form.reset();
+  public editProfile() {
+    this.router.navigate(['update']);
   }
 
-  // onSubmitProfile(value){
-  //   console.log(value);
-
-  // }
-  public getProfile(): void {
-    this.profileService.getProfile().subscribe(
-      (response: Profile[]) => {
-        this.profile = response;
-        console.log(this.profile);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
-
-/// chua xu ly xong
-  public onUpdateProfile(profile: Profile): void {
-    this.profileService.updateProfile(profile).subscribe(
-      (response: Profile) => {
-        console.log(profile);
-        this.getProfile();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
-
-  public onOpenModal(profile: Profile, mode: string): void {
-    const container = document.getElementById('container-main');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
-    if (mode === 'update') {
-      button.setAttribute('data-target', '#UpdateProfileModal');
-    }
-    container.appendChild(button);
-    button.click();
-  }
 }
+
+
+

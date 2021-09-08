@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Profile} from '../_model/profile.model';
+import {User} from '../_model/user';
 import {environment} from '../../../environments/environment';
 
 
@@ -15,14 +15,21 @@ export class ProfileService {
   }
 
   ///xem
-  public getProfile(): Observable<Profile[]> {
-    return this.http.get<Profile[]>(`${this.apiServerUrl}/profile/`);
+  public getProfile(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiServerUrl}/user/profile/`);
 
   }
 
-//// sua
-  public updateProfile(profile: Profile): Observable<Profile> {
-    return this.http.put<Profile>(`${this.apiServerUrl}/profile/update/`, profile);
-  }
+//// Put Profile
+  // public updateProfile(user: User): Observable<User> {
+  //   return this.http.put<User>(`${this.apiServerUrl}/user/profile/update`, user);
+  // }
 
+  public getUser(id: number): Observable<any>{
+    return this.http.get(`http://localhost:8888/user/profile/${id}`);
+
+  }
+  public updateProfile(formData: any): Observable<any>{
+    return this.http.put<User>(`${this.apiServerUrl}/user/profile/update`, formData);
+  }
 }
