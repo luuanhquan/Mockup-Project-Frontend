@@ -1,45 +1,85 @@
-import {HttpErrorResponse} from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {Users} from './users';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Users } from './users';
 
-import {UserService} from './employee.service';
+import { UserService } from './employee.service';
 import { Usersfull } from './users1';
+import { UserDivision } from './userdivision';
+import { searchCriteria } from './key';
+
+
+
 
 @Component({
   selector: 'app-root',
   templateUrl: 'employee.component.html'
 })
 export class EmployeeComponent implements OnInit {
+
+  indexPagination: number = 0;
+  totalPagination: number;
   public users: Users[];
   public editUser: Usersfull;
   public deleteUser: Usersfull;
-  public moveUser: Usersfull;
-  p: number = 1;
+  public moveUser: UserDivision;
+  public userDivision: UserDivision[];
+  public usersfull: Usersfull[] = [];
+  seach: searchCriteria = {
+    keyword1: "",
+    keyword2: "",
+    keyword3: ""
+  };
+
+
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.getUsers();
+    this.getUsersfull();
+
+
   }
 
-  public getUsers(): void {
-    this.userService.getUser().subscribe(
-      (response: Users[]) => {
-        this.users = response;
+
+
+
+  public getUsersfull(): void {
+    this.userService.getfullUser(this.indexPagination).subscribe(
+      (response: Usersfull[]) => {
+        this.usersfull = response;
       },
+
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     );
   }
 
+  // getuserdivision
+
+  public getUserdivision(): void {
+    this.userService.getUserdivision().subscribe(
+      (response: UserDivision[]) => {
+        this.userDivision = response;
+      },
+
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+
+
   public onAddUser(addForm: NgForm): void {
+    console.log(addForm.value);
     document.getElementById('add-employee-form').click();
     this.userService.addUser(addForm.value).subscribe(
       (response: Usersfull) => {
-        this.getUsers();
+        this.getUsersfull();
         addForm.reset();
       },
       (error: HttpErrorResponse) => {
@@ -52,8 +92,9 @@ export class EmployeeComponent implements OnInit {
   public onUpdateUser(usersfull: Usersfull): void {
     this.userService.updateUser(usersfull).subscribe(
       (response: Usersfull) => {
-        console.log(usersfull);
-        this.getUsers();
+
+        this.getUsersfull();
+
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -61,24 +102,27 @@ export class EmployeeComponent implements OnInit {
     );
   }
 
-  // edit
-  // public onMoveEmloyee(employee: Employee): void {
-  //   this.employeeService.moveEmployee(employee).subscribe(
-  //     (response: Employee) => {
-  //       console.log(employee);
-  //       this.getEmployees();
-  //     },
-  //     (error: HttpErrorResponse) => {
-  //       alert(error.message);
-  //     }
-  //   );
-  // }
+
+
+
+  // move
+  public onMoveEmloyee(userdivision: UserDivision): void {
+    this.userService.moveEmployee(userdivision).subscribe(
+      (response: UserDivision) => {
+        console.log(userdivision);
+        this.getUserdivision();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 
   public onDeleteUser(userId: number): void {
     this.userService.deleteUser(userId).subscribe(
       (response: void) => {
         console.log(response);
-        this.getUsers();
+        this.getUsersfull();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -87,23 +131,54 @@ export class EmployeeComponent implements OnInit {
   }
 
 
-  public searchEmployees(key: string): void {
-    console.log(key);
-    const results: Users[] = [];
-    for (const user of this.users) {
-      if (user.fullname.toLowerCase().indexOf(key.toLowerCase()) !== -1
-        // || employee.personId.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      ) {
-        results.push(user);
-      }
-    }
-    this.users = results;
-    if (results.length === 0 || !key) {
-      return;
+  firtPage() {
+    this.indexPagination = 0;
+    this.ngOnInit();
+  }
+
+  nextPage() {
+    this.indexPagination = this.indexPagination + 1;
+    if (this.usersfull.length == 0) {
+      this.indexPagination = this.indexPagination - 1;
+    } else {
+      this.userService.getfullUser(this.indexPagination).subscribe((data: Usersfull[]) => {
+        this.usersfull = data;
+      })
+
+
+
     }
   }
 
-  public onOpenModal(userfull: Usersfull, mode: string): void {
+  prviousPage() {
+    this.indexPagination = this.indexPagination - 1;
+    if (this.indexPagination <= 0) {
+      this.indexPagination = 0;
+      this.ngOnInit();
+    } else {
+      this.userService.getfullUser(this.indexPagination).subscribe((data: Usersfull[]) => {
+        this.usersfull = data;
+      })
+    }
+  }
+
+  // public searchEmployees(key: string): void {
+  //   console.log(key);
+  //   const results: Usersfull[] = [];
+  //   for (const user of this.usersfull) {
+  //     if (user.username.toLowerCase().indexOf(key.toLowerCase()) !== -1
+  //       // || user.personalid.toLowerCase().indexOf(key.toLowerCase()) !== -1
+  //     ) {
+  //       results.push(user);
+  //     }
+  //   }
+  //   this.usersfull = results;
+  //   if (results.length === 0 || !key) {
+  //     return;
+  //   }
+  // }
+
+  public onOpenModal(usersfull: Usersfull, mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
@@ -113,18 +188,50 @@ export class EmployeeComponent implements OnInit {
       button.setAttribute('data-target', '#addEmployeeModal');
     }
     if (mode === 'edit') {
-      this.editUser = userfull;
+      this.editUser = usersfull;
       button.setAttribute('data-target', '#updateEmployeeModal');
     }
     if (mode === 'delete') {
-      this.deleteUser = userfull;
+      this.deleteUser = usersfull;
       button.setAttribute('data-target', '#deleteEmployeeModal');
     }
-    if (mode === 'move') {
-      this.moveUser = userfull;
-      button.setAttribute('data-target', '#moveEmployeeModal');
-    }
+
     container.appendChild(button);
     button.click();
   }
+  public onOnpen(userdivision: UserDivision, mode: string): void {
+    const move = document.getElementById('move');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode === 'move') {
+      this.moveUser = userdivision;
+      button.setAttribute('data-target', '#moveEmployeeModal');
+    }
+    move.appendChild(button);
+    button.click();
+
+  }
+
+  search(search): void {
+
+    this.userService.search(search).subscribe((data: Usersfull[]) => {
+      console.log(data)
+      this.usersfull = data;
+
+
+
+    }
+    )
+  }
+
+
+
 }
+
+
+
+
+
+

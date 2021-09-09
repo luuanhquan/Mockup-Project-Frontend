@@ -1,24 +1,115 @@
+<style>
+
+  *{
+   
+    font-family: 'Times New Roman';
+  }
+
+  .table{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table td,.table th{
+  padding:12px 15px;
+  border:1px solid #ddd;
+  text-align: center;
+  font-size:16px;
+}
+
+.table th{
+	background-color: darkblue;
+	color:#ffffff;
+}
+
+.table tbody tr:nth-child(even){
+	background-color: #f5f5f5;
+}
+
+/*responsive*/
+
+@media(max-width: 768px){
+	.table thead{
+		display: none;
+	}
+
+	.table, .table tbody, .table tr, .table td{
+		display: block;
+		width: 100%;
+	}
+  .table tr{
+		margin-bottom:15px;
+}
+.table td{
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+		position: relative;
+	}
+  .table td::before{
+		content: attr(data-label);
+		position: absolute;
+		left:0;
+		width: 50%;
+		padding-left:15px;
+		font-size:15px;
+		font-weight: bold;
+		text-align: left;
+	}
+
+.input-group,.input-group input,.input-group button{
+ 
+  width: 100%;
+
+font-family: 'Courier New';
+
+}
+
+.btn-group{
+  float: none;
+  padding-left:20px
+}
+}
+	
+</style>
+
 <div class="row" id="main-container">
-  <div class="col-lg-12">
+  <div class="col-lg-12" id="move">
     <div class="card">
       <div class="card-header">
         <i class="fa fa-align-justify"></i> Combined All Table
       </div>
       <div>
-        <div class="card-body" style="margin-left: 30px;">
+        <div class="card-body" style="margin-left: 16px;">
           <div class="btn-group" dropdown>
-            <select id="seclec" style="width:80px; background-color:#0099FF; border-radius: 5px;">
-              <option value="Role">Role</option>
-              <option value="Division">Division</option>
-              <option value="Project">Project</option>
-              <option value="Type">Type</option>
+            <select id="seclec"    style="color: #000000;background-color:#DCDCDC; border-radius: 5px;" [(ngModel)]="seach.keyword1">
+            <option value="4" autoselected></option>
+            <option value="0">ADMIN</option>
+            <option value="1">MANAGER</option>
+            <option value="2">PM</option>
+            <option value="3">MEMBER</option>
 
             </select>
-            <!-- (ngModelChange)="searchEmployees(key.value)" -->
-            <input #key="ngModel" class="form-control mr-sm-2" id="searchName"
-                   name="key" ngModel placeholder="Search employees..." required style="float:left;margin-left: 400px;"
-                   type="search">
-          </div>
+
+            <div class="btn-group" dropdown style="float:left;margin-left: 16px;">
+              
+               <select     style="height: 50px;color: #000000;background-color:#DCDCDC; border-radius: 5px;" [(ngModel)]="seach.keyword3">
+              <option value="4" selected ></option>
+              <option value="0">INACTIVE</option>
+              <option value="1">ACTIVE</option>
+               </select>
+             
+  
+     
+              </div>
+
+            <div class="input-group" style="margin-left:200px">
+              <input [(ngModel)]="seach.keyword2" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" />
+              <button (click)="search(seach)" type="button" class="btn btn-outline-primary">search</button>
+            </div>
+       
+                  
 
         </div>
         <div>
@@ -26,42 +117,46 @@
 
         </div>
       </div>
-      <div class="card-body">
+      <!-- <h3 class="text-danger text-center" *ngIf="usersfull.length <=0 ;else an ">Không có kết quả tìm thấy</h3> -->
+      <div class="card-body" >
 
-        <table class="table table-bordered table-striped table-sm">
+
+
+       
+        <table class="table"  #an >
           <thead>
           <tr>
             <th></th>
             <th>ID</th>
             <th>Type</th>
             <th>Role</th>
-            <th>Fullname</th>
             <th>Username</th>
             <th>Gender</th>
             <th>Email</th>
-            <th>Phone</th>
+            <th>Birthday</th>
             <th>Status</th>
-            <th>i</th>
-
-
+            <th></th>
+          
           </tr>
           </thead>
           <tbody>
 
-          <tr *ngFor="let user of users">
-            <!-- |paginate:{itemsPerPage:4,currentPage:p}; -->
-            <td><input id="checkd" type="checkbox"></td>
-            <td>{{ user.id}}</td>
-            <td>{{ user.type}}</td>
-            <td>{{ user.role }}</td>
-            <td>{{ user.fullname }}</td>
-            <td>{{ user.username}}</td>
-            <td>{{ user.gender}}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.phone }}</td>
-            <td>{{ user.status }}</td>
+          <tr *ngFor="let user of usersfull">
+            
+            <td data-label=""><input id="checkd" type="checkbox"></td>
+            <td data-label="ID">{{ user.id}}</td>
+            <td data-label="Type">{{ user.type}}</td>
+            <td data-label="Role">{{ user.role }}</td>
+            <td data-label="Username">{{ user.username}}</td>
+            <td data-label="Gender" *ngIf="user.gender ;else a" >Nam</td>
+            
+            <ng-template #a>Nu</ng-template>
+            <td data-label="Email">{{ user.email }}</td>
+            <td data-label="Phone">{{ user.birthday }}</td>
+            <td data-label="Status">{{ user.status }}</td>
+            
 
-            <td>
+            <td data-label="">
               <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
                 <a (click)="onOpenModal(user, 'edit')" class="btn btn-primary" role="button">Edit</a>
 
@@ -69,8 +164,7 @@
                 <button (click)="onOpenModal(user, 'delete')" class="btn btn-ghost-success" role="button" type="button">
                   <i class="fa fa-lightbulb-o"></i>Delete
                 </button>
-                <div style="float:left;"><a (click)="onOpenModal(user,'move')" class="btn btn-outline-success"
-                                            role="button" style="float:left">Description </a></div>
+                
               </div>
 
             </td>
@@ -78,31 +172,33 @@
 
           </tbody>
         </table>
-        <!-- <nav style="float:right; padding-right: 30px;">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-            <li class="page-item active">
-              <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </nav> -->
-        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
-        <!-- <pagination-controls (pageChange)=" p= $event"></pagination-controls> -->
-
+       
         <div>
 
         </div>
         <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
           <a (click)="onOpenModal(null, 'add')" class="btn btn-outline-primary" role="button"
              style="float:left;margin-right:30px">Create </a>
+             <div style="float:left;"><a (click)="onOnpen(moveUser,'move')" class="btn btn-outline-success" role="button" style="float:left">Description </a></div>
 
         </div>
 
 
+
+ <!--    phân trang-->
+ <div class="mt-3">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination d-flex justify-content-md-end justify-content-center">
+      <li class="page-item"><a class="page-link" (click)="firtPage()">Đầu</a></li>
+      <li class="page-item"><a class="page-link" (click)="prviousPage()">Trang trước</a></li>
+        <li class="page-item"><a class="page-link" (click)="nextPage()">Trang kế</a></li>
+    </ul>
+  </nav>
+</div>
+</div>
+
+
+  
       </div>
 
     </div>
@@ -110,7 +206,7 @@
   </div>
 
 
-</div>
+<!-- </div> -->
 
 <!-- Add Employee Modal -->
 <div aria-hidden="true" aria-labelledby="addEmployeeModalLabel" class="modal fade" id="addEmployeeModal" role="dialog"
@@ -126,50 +222,145 @@
       <div class="modal-body">
         <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm)">
 
+<div style="float: left"  >
+         
+  <div class="form-group">
+    <label for="ID">ID</label>
+    <input class="form-control" name="id"  ngModel placeholder="ID"  type="text" required>
+  </div>
+          <div class="form-group">
+            <label for="ID">Password</label>
+            <input class="form-control" name="password" autocomplete="off" ngModel placeholder="ID"  type="password" >
+          </div>
+         
+          <div class="form-group">
+            <label for="email">Type</label>
+            <select class="selectpicker show-menu-arrow"  name="type" ngModel>
+              <option value="0">Thu Viec</option>
+              <option value="1">Thuc Tap</option>
+              <option value="2">NHan Vien Chinh Thuc</option>
+                 
+              </select><br>
 
-          <div class="form-group">
-            <label for="ID">ID</label>
-            <input class="form-control" id="id" name="id" ngModel placeholder="ID" required type="text">
+              
+            <!-- <input class="form-control" id="Type" name="type" ngModel placeholder="Type" required type="text"> -->
           </div>
           <div class="form-group">
-            <label for="Type">Type</label>
-            <input class="form-control" id="Type" name="type" ngModel placeholder="Type" required type="text">
+            <label for="name">Role</label>
+          <select class="selectpicker show-menu-arrow"name="role" ngModel>
+            <option value="0">ADIM</option>
+            <option value="1">MANAGER</option>
+            <option value="2">PM</option>
+            <option value="3">MEMBER</option>
+            </select><br>
           </div>
           <div class="form-group">
-            <label for="Role">Role</label>
-            <input class="form-control" id="Role" name="role" ngModel placeholder="Job Role" required type="text">
-          </div>
-          <div class="form-group">
-            <label for="Fullname">Fullname</label>
-            <input class="form-control" id="Fullname" name="personalid" ngModel placeholder="Fullname" required
+            <label for="Fullname">Username</label>
+            <input class="form-control"  name="username" ngModel placeholder="Fullname" required
                    type="text">
           </div>
           <div class="form-group">
-            <label for="Username">Username</label>
-            <input class="form-control" id="Username" name="username" ngModel placeholder=" Username" required
+            <label for="Username">Firstname</label>
+            <input class="form-control"  name="firstName" ngModel placeholder=" Username" required
                    type="text">
           </div>
           <div class="form-group">
             <label for="Gender">Gender</label>
-            <input class="form-control" id="Gender" name="gender" ngModel placeholder=" Gender" required type="text">
+            <!-- class="form-control" -->
+            <input name="gender" ngModel  type="radio" value="true">Nam
+            <input name="gender" type="radio" ngModel  value="false">Nu
+           
           </div>
+          <!-- [(ngModel)]="aa" -->
           <div class="form-group">
             <label for="Email">Email</label>
-            <input class="form-control" id="Email" name="email" ngModel placeholder=" Email" required type="text">
+            <input class="form-control" name="email" ngModel placeholder=" Email" required type="text">
           </div>
           <div class="form-group">
             <label for="Phone">Phone</label>
-            <input class="form-control" id="Phone" name="phone" ngModel placeholder=" Phone" required type="text">
+            <input class="form-control"  name="phone" ngModel placeholder=" Phone" required type="text">
           </div>
           <div class="form-group">
-            <label for="Status">Status</label>
-            <input class="form-control" id="Status" name="status" ngModel placeholder=" Status" required type="text">
+            <label for="email">Status</label>
+            <select class="form-control"  name="status" ngModel>
+              <option value="0">INACTIVE</option>
+              <option value="1">ACTIVE</option>
+      
+              </select><br>
+          
           </div>
+          <div class="form-group">
+            <label for="Status">Birthday</label>
+            <input class="form-control"  name="birthday" ngModel placeholder=" Status" required type="date">
+            
+          </div>
+</div>
+<div style="float:left">
+          <div class="form-group 2">
+            <label for="Status">Middlename</label>
+            <input class="form-control"  name="middleName" ngModel placeholder=" Status" required type="text">
+            
+          
+          </div>
+          <div class="form-group 2">
+            <label for="Status">Lastname</label>
+            <input class="form-control" name="lastname" ngModel placeholder=" Status" required type="text">
+            
+          
+          </div>
+          <div class="form-group">
+            <label for="Status">Personalid</label>
+            <input class="form-control"  name="personalid" ngModel placeholder=" Status" required type="text">
+            
+          
+          </div>
+          <div class="form-group">
+            <label for="Status">Hometown</label>
+            <input class="form-control"  name="hometown" ngModel placeholder=" Status" required type="text">
+            
+          
+          </div>
+          <div class="form-group">
+            <label for="Status">School</label>
+            <input class="form-control"  name="school" ngModel placeholder=" Status" required type="text">
+
+          </div>
+          <div class="form-group">
+            <label for="Status">Education</label>
+            <input class="form-control"  ngModel name="education" placeholder=" Status" required type="text">
+            
+          </div>
+          <div class="form-group">
+            <label for="Status">Major</label>
+            <input class="form-control"  name="major" ngModel placeholder=" Status" required type="text">
+            
+          </div>
+          <div class="form-group">
+            <label for="Status">Avatar</label>
+            <input class="form-control"  name="avatar" ngModel placeholder=" Status" required type="text">
+            
+          </div>
+          <div class="form-group">
+            <label for="Status">DayOffLastYear</label>
+            <input class="form-control"  name="dayOffLastYear" ngModel placeholder=" Status" required type="text">
+            
+          </div>
+          <div class="form-group">
+            <label for="Status">DateCreated</label>
+            <input class="form-control"  name="dateCreated" ngModel placeholder=" Status" required type="date">
+            
+          </div>
+         
+          
+
           <div class="modal-footer">
             <button class="btn btn-secondary" data-dismiss="modal" id="add-employee-form" type="button">Close</button>
             <!-- [disabled]="addForm.invalid" -->
             <button class="btn btn-primary" type="submit">Save changes</button>
           </div>
+
+   </div>
+
         </form>
       </div>
     </div>
@@ -190,77 +381,100 @@
       </div>
       <div class="modal-body">
         <form #editForm="ngForm">
-          <div class="form-group">
-            <label for="name">ID</label>
-            <input class="form-control" id="id" name="id" ngModel="{{editUser?.id}}" placeholder="Name" type="text">
 
-          </div>
+          
+         <div style="float: left;">
+            <label for="name">ID</label>
+            <input class="form-control"  name="id" ngModel="{{editUser?.id}}" placeholder="Name" type="text">
+          
           <label for="name">Role</label>
-          <input class="form-control" id="Role" name="role" ngModel="{{editUser?.role}}" placeholder="FULL_NAME">
+          <select class="selectpicker show-menu-arrow"name="role" ngModel>
+            <option value="0">ADIM</option>
+            <option value="1">MANAGER</option>
+            <option value="2">PM</option>
+            <option value="3">MEMBER</option>
+            </select><br>
           <label for="name">User Name</label>
-          <input class="form-control" id="CLASS_NAME" name="username" ngModel="{{editUser?.username}}"
+          <input class="form-control"  name="username" ngModel="{{editUser?.username}}"
                  placeholder="CLASS_NAME">
 
-          <div class="form-group">
+          
             <label for="email">Password</label>
-            <input class="form-control" id="Password" name="password" ngModel="{{editUser?.password}}" placeholder="personId"
+            <input class="form-control" name="password" ngModel="{{editUser?.password}}" placeholder="personId"
                    type="text">
             <label for="email">Email</label>
-            <input class="form-control" id="Email" name="email" ngModel="{{editUser?.email}}" placeholder="personId"
+            <input class="form-control"  name="email" ngModel="{{editUser?.email}}" placeholder="personId"
                    type="text">
             <label for="email">Phone</label>
-            <input class="form-control" id="phone" name="phone" ngModel="{{editUser?.phone}}" placeholder="personId"
+            <input class="form-control"  name="phone" ngModel="{{editUser?.phone}}" placeholder="personId"
                    type="text">
             <label for="email">First Name</label>
-            <input class="form-control" id="firstname" name="firstname" ngModel="{{editUser?.firstname}}" placeholder="personId"
+            <input class="form-control" name="firstName" ngModel="{{editUser?.firstName}}" placeholder="personId"
                    type="text">
             <label for="email">Middle Name</label>
-            <input class="form-control" id="middlename" name="middlename" ngModel="{{editUser?.middlename}}" placeholder="personId"
+            <input class="form-control"  name="middleName" ngModel="{{editUser?.middleName}}" placeholder="personId"
                    type="text">
             <label for="email">Lastname</label>
-            <input class="form-control" id="lastname" name="lastname" ngModel="{{editUser?.lastname}}" placeholder="personId"
+            <input class="form-control"  name="lastname" ngModel="{{editUser?.lastname}}" placeholder="personId"
                    type="text">
             <label for="email">Type</label>
-            <input class="form-control" id="type" name="type" ngModel="{{editUser?.type}}" placeholder="personId"
-                   type="text">
+            <select class="selectpicker show-menu-arrow"  name="type" ngModel>
+              <option value="0">Thu Viec</option>
+              <option value="1">Thuc Tap</option>
+              <option value="2">NHan Vien Chinh Thuc</option>
+                 
+              </select><br>
+
+              <label for="email">Gender</label>
+              <input name="gender" ngModel  type="radio" value="true">Nam
+              <input name="gender" type="radio" ngModel  value="false">Nu<br>
+  </div>
+
+        
+            
+  
+          <div style="float:left">
             <label for="email">personId</label>
-            <input class="form-control" id="personId" name="personalid" ngModel="{{editUser?.personId}}" placeholder="personId"
+            <input class="form-control"   name="personId" ngModel="{{editUser?.personalid}}" placeholder="personId"
                    type="text">
             <label for="email">Home Town</label>
-            <input class="form-control" id="hometown" name="hometown" ngModel="{{editUser?.hometown}}" placeholder="personId"
+            <input class="form-control" name="hometown" ngModel="{{editUser?.hometown}}" placeholder="personId"
                    type="text">
             <label for="email">Education</label>
-            <input class="form-control" id="Education" name="education" ngModel="{{editUser?.education}}" placeholder="personId"
+            <input class="form-control"  name="education" ngModel="{{editUser?.education}}" placeholder="personId"
                     type="text">
                     <label for="email">School</label>
-            <input class="form-control" id="school" name="school" ngModel="{{editUser?.school}}" placeholder="personId"
+            <input class="form-control" name="school" ngModel="{{editUser?.school}}" placeholder="personId"
                    type="text">
             <label for="email">Major</label>
-            <input class="form-control" id="major" name="major" ngModel="{{editUser?.major}}" placeholder="personId"
+            <input class="form-control" name="major" ngModel="{{editUser?.major}}" placeholder="personId"
                     type="text">
                     <label for="email">Status</label>
-            <input class="form-control" id="status" name="status" ngModel="{{editUser?.status}}" placeholder="personId"
-                   type="text">
+                    <select class="form-control"  name="status" ngModel>
+                      <option value="0">INACTIVE</option>
+                      <option value="1">ACTIVE</option>
+              
+                      </select><br>
             <label for="email">Avatar</label>
-            <input class="form-control" id="avatar" name="avatar" ngModel="{{editUser?.avatar}}" placeholder="personId"
+            <input class="form-control"  name="avatar" ngModel="{{editUser?.avatar}}" placeholder="personId"
                     type="text">
                     <label for="email">Date Off LastYear</label>
-            <input class="form-control" id="dayofflastyear" name="dayofflastyear" ngModel="{{editUser?.dayofflastyear}}" placeholder="personId"
+            <input class="form-control"  name="dayOffLastYear" ngModel="{{editUser?.dayOffLastYear}}"
                    type="text">
             <label for="email">Date Created</label>
-            <input class="form-control" id="dateCreat" name="dateCreat" ngModel="{{editUser?.dateCreat}}" placeholder="personId"
-                    type="text">
-                    <label for="email">Gender</label>
-            <input class="form-control" id="gender" name="gender" ngModel="{{editUser?.gender}}" placeholder="personId"
-                   type="text">
+            <input class="form-control"  name="dateCreated" ngModel="{{editUser?.dateCreated}}" placeholder=""
+                    type="date">
+           
             <label for="email">Birthday</label>
-            <input class="form-control" id="birthday" name="birthday" ngModel="{{editUser?.birthday}}" placeholder="personId"
-                    type="text">
+            <input class="form-control" name="birthday" ngModel="{{editUser?.birthday}}" placeholder=""
+                    type="date">
+
+                  </div>
 
 
-          </div>
+         
 
-          <div class="modal-footer">
+          <div  style="float:right ;" >
             <button class="btn btn-secondary" data-dismiss="modal" id="" type="button">Close</button>
             <button (click)="onUpdateUser(editForm.value)" class="btn btn-primary" data-dismiss="modal">Save changes
             </button>
@@ -297,8 +511,9 @@
 </div>
 
 
-<!-- Move-Modal -->
-<!-- <div class="modal" tabindex="-1" role="dialog" id="moveEmployeeModal">
+<!-- Move-Modal  -->
+
+  <div class="modal" tabindex="-1" role="dialog" id="moveEmployeeModal">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
        <div class="modal-header">
@@ -311,13 +526,10 @@
          <form #move="ngForm">
             <div class="form-group">
                <label for="name">ID</label>
-               <input type="text" ngModel="{{moveEmployee?.id}}" name="id" class="form-control" id="id" readonly="readonly"  >
+               <input type="text" ngModel="{{moveUser?.id}}" name="id" class="form-control"  readonly="readonly"  >
                <label for="name">Type</label>
-               <input type="hidden" ngModel="{{moveEmployee?.FULL_NAME}}" name="FULL_NAME" class="form-control" id="id"   >
-               <label for="name">Role</label>
-               <input type="text" ngModel="{{moveEmployee?.CLASS_NAME}}" name="CLASS_NAME" class="form-control" id="id" >
-               <label for="name">Full name</label>
-               <input type="hidden" ngModel="{{moveEmployee?.personId}}" name="personId" class="form-control" id="id">
+               <input type="text" ngModel="{{moveUser?.divisionId}}" name="divisionId" class="form-control"   >
+               
 
             </div>
          </form>
@@ -329,8 +541,5 @@
      </div>
    </div>
    </div>
- </div> -->
 
-
-
-
+ </div> 
