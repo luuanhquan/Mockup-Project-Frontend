@@ -1,7 +1,7 @@
 export interface Project2Model {
+  id: number,
   name: string,
-  des: string,
+  description: string,
   date_start: Date,
-  date_end: Date,
-  status: string,
+  date_end: Date
 }

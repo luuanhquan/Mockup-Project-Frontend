@@ -1,4 +1,12 @@
 export interface Project {
   id: number,
-  name: String
+  name: string,
+  description: string,
+  dateStated: Date,
+  dateEnded: Date,
+  status: number,
+  totalMember: number,
+  listMember: [],
+  totalIssues: number,
+  listIssues: []
 }

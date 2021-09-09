@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 // import { type } from 'os';
 import {ReportModel} from '../_model/report.model';
 import {ReportService} from '../_service/report.service';
-import {Project} from '../_model/project.model';
+import {ProjectList} from '../_model/projectList.model';
 import {report} from 'process';
 import {HttpErrorResponse} from '@angular/common/http';
 
@@ -13,7 +13,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 export class ReportComponent implements OnInit, OnDestroy {
   public reports: ReportModel[];
   public readrequest: ReportModel;
-  public project: Project[] = [];
+  public project: ProjectList[] = [];
   status: { isOpen: boolean } = {isOpen: false};
   disabled: boolean = false;
   autoClose: boolean = false;
@@ -74,7 +74,7 @@ export class ReportComponent implements OnInit, OnDestroy {
 
   public getProject() {
     this.reportService.getProject().subscribe(
-      (response: Project[]) => {
+      (response: ProjectList[]) => {
         this.project = response;
         console.log(response);
         console.log(this.project);
