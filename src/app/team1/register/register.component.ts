@@ -1,77 +1,120 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UsernameValidator,} from '../_validators';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { AuthenticationService } from '../_service/auth.service';
+import { Router } from '@angular/router';
+import {Location} from '@angular/common';
+import { Register } from '../_model/register.model';
 
+
+
+
+class CustomValidators {
+  static passwordContainsNumber(control: AbstractControl): ValidationErrors {
+    const regex= /\d/;
+
+    if(regex.test(control.value) && control.value !== null) {
+      return null;
+    } else {
+      return {passwordInvalid: true};
+    }
+  }
+
+  static passwordsMatch (control: AbstractControl): ValidationErrors {
+    const password = control.get('password').value;
+    const confirmPassword = control.get('confirmPassword').value;
+
+    if((password === confirmPassword) && (password !== null && confirmPassword !== null)) {
+      return null;
+    } else {
+      return {passwordsNotMatching: true};
+    }
+  }
+}
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
-
 })
 export class RegisterComponent implements OnInit {
 
-  register_form: FormGroup;
+  display = 'none';
+  modalObject = {};
+  errorMessage: string;
 
+  register :Register;
+  registerForm: FormGroup;
 
-  constructor() {
+  constructor(
+    private location: Location,
+    private authService: AuthenticationService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.registerForm = this.formBuilder.group({
+      phone: [ null, [ Validators.required]],
+      username: [null, [Validators.required]],
+      email: [null, [
+        Validators.required,
+        Validators.email,
+        Validators.minLength(6)
+      ]],
+      password: [null, [
+        Validators.required,
+        Validators.minLength(3),
+        CustomValidators.passwordContainsNumber
+      ]],
+      confirmPassword: [null, [Validators.required]]
+    },{
+       validators: CustomValidators.passwordsMatch
+    })
+    this.modalObject = {
+      title: "",
+      body: ""
+    }
   }
 
-  get username() {
-    return this.register_form.get('username');
+  onSubmit() {
+    // if(this.registerForm.invalid) {
+    //        return;
+    //      }
+    //      console.log(this.registerForm.value);
+      this.authService.register(this.registerForm.value).subscribe(
+      response => {
+
+        this.errorMessage = null;
+        this.showModal();
+        console.log(response)
+      },
+      error => {
+        this.registerForm.reset();
+        if(error.error.message) {
+          this.errorMessage = error.error.message;
+        } else {
+          this.errorMessage = "Unknown error occured, try after some time..";
+        }
+      }
+    )
   }
 
-  get email() {
-    return this.register_form.get('email');
+  displayChange(value) {
+    this.display = 'none'
   }
 
-  get phone() {
-    return this.register_form.get('phone');
-  }
-
-  get password() {
-    return this.register_form.get('password');
-  }
-
-  ngOnInit() {
-
-
-    this.register_form = new FormGroup({
-
-      username: new FormControl('', Validators.compose([
-        UsernameValidator.validUsername,
-        Validators.maxLength(25),
-        Validators.minLength(5),
-        Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
-        Validators.required
-      ])),
+  showModal() {
+    this.display = 'block';
+    this.modalObject = {
+      title: "SignUp Successful",
+      body: `Thanks for signing in!.
+            Account verification link is sent on your mail id
+            ${this.registerForm.value.email}.
+            Click on link to activate your account.`
+    }
 
 
-      // 'username' : new FormControl('', Validators.required),
-      'email': new FormControl('', [Validators.required, Validators.email]),
-      'phone': new FormControl(
-        null,
-        [
-          Validators.required,
-          Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')
-        ]),
 
+}
 
-      'password': new FormControl('', [Validators.compose([Validators.required, Validators.minLength(6)])]),
-
-
-      'confirm_password': new FormControl('', [Validators.compose([Validators.required, Validators.minLength(6)])]),
-
-
-    });
-  }
-
-  clicksub() {
-    console.log(this.register_form.value);
-    this.register_form.reset();
-  }
-
-  onSubmitRegister(value) {
-    console.log(value);
-  }
 }

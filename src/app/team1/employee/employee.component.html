@@ -41,22 +41,21 @@
             <th>Email</th>
             <th>Phone</th>
             <th>Status</th>
-            <th></th>
+            <th>i</th>
 
 
           </tr>
           </thead>
           <tbody>
 
-          <tr *ngFor="let user of users|paginate:{itemsPerPage:4,currentPage:p};">
-
-
+          <tr *ngFor="let user of users">
+            <!-- |paginate:{itemsPerPage:4,currentPage:p}; -->
             <td><input id="checkd" type="checkbox"></td>
             <td>{{ user.id}}</td>
-            <td>{{ user.role}}</td>
-            <td>{{ user.type }}</td>
+            <td>{{ user.type}}</td>
+            <td>{{ user.role }}</td>
             <td>{{ user.fullname }}</td>
-            <td>{{ user.usename}}</td>
+            <td>{{ user.username}}</td>
             <td>{{ user.gender}}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.phone }}</td>
@@ -92,7 +91,7 @@
           </ul>
         </nav> -->
         <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
-        <pagination-controls (pageChange)=" p= $event"></pagination-controls>
+        <!-- <pagination-controls (pageChange)=" p= $event"></pagination-controls> -->
 
         <div>
 
@@ -196,43 +195,68 @@
             <input class="form-control" id="id" name="id" ngModel="{{editUser?.id}}" placeholder="Name" type="text">
 
           </div>
-          <label for="name">Fullname</label>
-          <input class="form-control" id="FULL_NAME" name="role" ngModel="{{editUser?.role}}" placeholder="FULL_NAME">
-          <label for="name">class_NAME</label>
+          <label for="name">Role</label>
+          <input class="form-control" id="Role" name="role" ngModel="{{editUser?.role}}" placeholder="FULL_NAME">
+          <label for="name">User Name</label>
           <input class="form-control" id="CLASS_NAME" name="username" ngModel="{{editUser?.username}}"
                  placeholder="CLASS_NAME">
 
           <div class="form-group">
-            <label for="email">personId</label>
-            <input class="form-control" id="personId" name="password" ngModel="{{editUser?.password}}" placeholder="personId"
+            <label for="email">Password</label>
+            <input class="form-control" id="Password" name="password" ngModel="{{editUser?.password}}" placeholder="personId"
+                   type="text">
+            <label for="email">Email</label>
+            <input class="form-control" id="Email" name="email" ngModel="{{editUser?.email}}" placeholder="personId"
+                   type="text">
+            <label for="email">Phone</label>
+            <input class="form-control" id="phone" name="phone" ngModel="{{editUser?.phone}}" placeholder="personId"
+                   type="text">
+            <label for="email">First Name</label>
+            <input class="form-control" id="firstname" name="firstname" ngModel="{{editUser?.firstname}}" placeholder="personId"
+                   type="text">
+            <label for="email">Middle Name</label>
+            <input class="form-control" id="middlename" name="middlename" ngModel="{{editUser?.middlename}}" placeholder="personId"
+                   type="text">
+            <label for="email">Lastname</label>
+            <input class="form-control" id="lastname" name="lastname" ngModel="{{editUser?.lastname}}" placeholder="personId"
+                   type="text">
+            <label for="email">Type</label>
+            <input class="form-control" id="type" name="type" ngModel="{{editUser?.type}}" placeholder="personId"
                    type="text">
             <label for="email">personId</label>
-            <input class="form-control" id="personId" name="email" ngModel="{{editUser?.email}}" placeholder="personId"
+            <input class="form-control" id="personId" name="personalid" ngModel="{{editUser?.personId}}" placeholder="personId"
                    type="text">
-            <label for="email">personId</label>
-            <input class="form-control" id="personId" name="phone" ngModel="{{editUser?.phone}}" placeholder="personId"
+            <label for="email">Home Town</label>
+            <input class="form-control" id="hometown" name="hometown" ngModel="{{editUser?.hometown}}" placeholder="personId"
                    type="text">
-            <label for="email">personId</label>
-            <input class="form-control" id="personId" name="firstname" ngModel="{{editUser?.firstname}}" placeholder="personId"
-                   type="text">
-            <label for="email">personId</label>
-            <input class="form-control" id="personId" name="middlename" ngModel="{{editUser?.middlename}}" placeholder="personId"
-                   type="text">
-            <label for="email">personId</label>
-            <input class="form-control" id="personId" name="lastname" ngModel="{{editUser?.lastname}}" placeholder="personId"
-                   type="text">
-            <label for="email">personId</label>
-            <input class="form-control" id="personId" name="type" ngModel="{{editUser?.type}}" placeholder="personId"
-                   type="text">
-            <label for="email">personId</label>
-            <input class="form-control" id="personId" name="personalid" ngModel="{{editUser?.personalid}}" placeholder="personId"
-                   type="text">
-            <label for="email">personId</label>
-            <input class="form-control" id="personId" name="hometown" ngModel="{{editUser?.hometown}}" placeholder="personId"
-                   type="text">
-            <label for="email">personId</label>
-            <<input class="form-control" id="personId" name="avatar" ngModel="{{editUser?.avatar}}" placeholder="personId"
+            <label for="email">Education</label>
+            <input class="form-control" id="Education" name="education" ngModel="{{editUser?.education}}" placeholder="personId"
                     type="text">
+                    <label for="email">School</label>
+            <input class="form-control" id="school" name="school" ngModel="{{editUser?.school}}" placeholder="personId"
+                   type="text">
+            <label for="email">Major</label>
+            <input class="form-control" id="major" name="major" ngModel="{{editUser?.major}}" placeholder="personId"
+                    type="text">
+                    <label for="email">Status</label>
+            <input class="form-control" id="status" name="status" ngModel="{{editUser?.status}}" placeholder="personId"
+                   type="text">
+            <label for="email">Avatar</label>
+            <input class="form-control" id="avatar" name="avatar" ngModel="{{editUser?.avatar}}" placeholder="personId"
+                    type="text">
+                    <label for="email">Date Off LastYear</label>
+            <input class="form-control" id="dayofflastyear" name="dayofflastyear" ngModel="{{editUser?.dayofflastyear}}" placeholder="personId"
+                   type="text">
+            <label for="email">Date Created</label>
+            <input class="form-control" id="dateCreat" name="dateCreat" ngModel="{{editUser?.dateCreat}}" placeholder="personId"
+                    type="text">
+                    <label for="email">Gender</label>
+            <input class="form-control" id="gender" name="gender" ngModel="{{editUser?.gender}}" placeholder="personId"
+                   type="text">
+            <label for="email">Birthday</label>
+            <input class="form-control" id="birthday" name="birthday" ngModel="{{editUser?.birthday}}" placeholder="personId"
+                    type="text">
+
 
           </div>
 

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {catchError} from "rxjs/operators";
+import {Observable, of} from "rxjs";
 import {LeaveRequests} from '../_model/leaverequests';
 import {environment} from '../../../environments/environment';
 
@@ -9,34 +10,45 @@ import {environment} from '../../../environments/environment';
   providedIn: 'root'
 })
 export class LeaveRequestService {
-  private apiServerUrl = environment.apiBaseUrl;
 
+  private apiServerUrl = environment.apiBaseUrl;
   constructor(private http: HttpClient) {
   }
-
-  ///xem
+  ///get Request
   public getLeaveRequests(): Observable<LeaveRequests[]> {
-    return this.http.get<LeaveRequests[]>(`${this.apiServerUrl}/leaverequest/list`);
+    return this.http.get<LeaveRequests[]>(`${this.apiServerUrl}/request`).pipe(
+      catchError(_ => of(null))
+    );
 
-  }
-
-  //tao
+ }
+  //Post add
   public addNewRequest(leaveRequests: LeaveRequests): Observable<LeaveRequests> {
-    return this.http.post<LeaveRequests>(`${this.apiServerUrl}/leaverequest/add`, leaveRequests);
-  }
-
-//// chap nhan
-  public approveRequest(leaveRequests: LeaveRequests): Observable<LeaveRequests> {
-    return this.http.put<LeaveRequests>(`${this.apiServerUrl}/leaverequest/{id}/true`, leaveRequests);
-  }
-
-  public refuseRequest(leaveRequests: LeaveRequests): Observable<LeaveRequests> {
-    return this.http.put<LeaveRequests>(`${this.apiServerUrl}/leaverequest/{id}/false`, leaveRequests);
+    return this.http.post<LeaveRequests>(`${this.apiServerUrl}/request/add`, leaveRequests).pipe(
+         catchError(_ => of(null))
+    );
   }
 
 
-  ///---------------thu hoi
-  public cancelRequest(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/leaverequest/${id}/cancel`);
-  }
+//Get  page
+  getPage(page = 1, size = 5): Observable<any> {
+    return this.http.get(`${this.apiServerUrl}?page=${page}&size=${size}`).pipe();
+}
+//Patch cancel
+cancel(id): Observable<LeaveRequests> {
+  return this.http.patch<LeaveRequests>(`${this.apiServerUrl}/request/cancel/${id}`, null).pipe(
+      catchError(_ => of(null))
+  );
+}
+//Put Approved
+approved(id): Observable<LeaveRequests> {
+  return this.http.put<LeaveRequests>(`${this.apiServerUrl}/request/approved/${id}`, null).pipe(
+      catchError(_ => of(null))
+  );
+}
+//Put Denied
+denied(id): Observable<LeaveRequests> {
+  return this.http.put<LeaveRequests>(`${this.apiServerUrl}/request/denied/${id}`, null).pipe(
+      catchError(_ => of(null))
+  );
+}
 }

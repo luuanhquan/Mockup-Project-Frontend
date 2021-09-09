@@ -7,8 +7,10 @@ import {IssueComponent} from './issue/issue.component';
 import {ProjectComponent} from './project/project.component';
 import {RegisterComponent} from './register/register.component';
 import {ReportComponent} from './report/report.component';
+import { SettingprofileComponent } from './settingprofile/settingprofile.component';
 
 import {ProfileComponent} from './profile/profile.component';
+import { RequestComponent } from './request/request.component';
 
 
 const routes: Routes = [
@@ -67,9 +69,16 @@ const routes: Routes = [
       },
       {
         path: 'request',
-        component: ReportComponent,
+        component: RequestComponent,
         data: {
           title: 'Requests'
+        }
+      },
+      {
+        path: 'setting',
+        component: SettingprofileComponent,
+        data: {
+          title: 'Setting'
         }
       },
       {

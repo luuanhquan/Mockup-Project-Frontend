@@ -9,7 +9,7 @@ import {IssueComponent} from './issue/issue.component';
 import {ProjectComponent} from './project/project.component';
 import {RegisterComponent} from './register/register.component';
 import {ReportComponent} from './report/report.component';
-
+import { SettingprofileComponent } from './settingprofile/settingprofile.component';
 
 // Tabs Component
 import {TabsModule} from 'ngx-bootstrap/tabs';
@@ -24,6 +24,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
 import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import { RequestComponent } from './request/request.component';
 
 @NgModule({
   imports: [
@@ -47,9 +48,10 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
     ReportComponent,
     RegisterComponent,
     ProfileComponent,
+    RequestComponent,
     NavbarsComponent,
-    NavbarsComponent,
-    ReportComponent
+    ReportComponent,
+    SettingprofileComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

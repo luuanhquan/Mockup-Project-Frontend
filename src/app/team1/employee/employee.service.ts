@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Users} from './users';
 import {environment} from '../../../environments/environment';
+import { Usersfull } from './users1';
 
 
 @Injectable({
@@ -18,12 +19,12 @@ export class UserService {
     return this.http.get<Users[]>(`${this.apiServerUrl}/user/all`);
   }
 
-  public addUser(user: Users): Observable<Users> {
-    return this.http.post<Users>(`${this.apiServerUrl}/user/add`, user);
+  public addUser(userfull: Usersfull): Observable<Usersfull> {
+    return this.http.post<Usersfull>(`${this.apiServerUrl}/user/add`, userfull);
   }
 
-  public updateUser(user: Users): Observable<Users> {
-    return this.http.put<Users>(`${this.apiServerUrl}/user/update/${user.id}`, user);
+  public updateUser(userfull: Usersfull): Observable<Usersfull> {
+    return this.http.put<Usersfull>(`${this.apiServerUrl}/user/update/${userfull.id}`, userfull);
   }
 
   public deleteUser(userId: number): Observable<void> {

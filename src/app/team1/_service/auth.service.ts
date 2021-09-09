@@ -1,22 +1,25 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {map} from 'rxjs/operators';
+import {map, tap, catchError} from 'rxjs/operators';
 import {LoginModel} from '../_model/Login.model';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
-
+import { Register } from '../_model/register.model';
+import { User } from '../_model/user';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+
 
   private userLogin: BehaviorSubject<LoginModel>;
   public currentUserLogin: Observable<LoginModel>;
 
   constructor(
     private http: HttpClient,
-    private router: Router)
+    private router: Router
+   )
   {
     this.userLogin = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('user')));
     this.currentUserLogin = this.userLogin.asObservable();
@@ -48,7 +51,6 @@ export class AuthenticationService {
     );
   }
 
-
   logout() {
     localStorage.removeItem('user');
     this.userLogin.next(null);
@@ -78,4 +80,29 @@ export class AuthenticationService {
   checkKey(key: string): Observable<void>  {
     return this.http.get<any>(`${environment.apiBaseUrl}/forgot-password/${key}`);
   }
+
+  register(register: Register): Observable<Register> {
+    const url =`${environment.apiBaseUrl}/register`;
+    return this.http.post<Register>(url, register);
+}
+
+updateProfile(user: User): Observable<User> {
+  const url = `${environment.apiBaseUrl}/user/profile/update`;
+  return this.http.put<User>(url, user);    }
+
+  getProfile(id: number): Observable<User> {
+    const url = `${environment.apiBaseUrl}/user/profile/${id}`;
+    return this.http.get<User>(url);
+}
+
+getEmail(email: string): Observable<User> {
+  const url = `${environment.apiBaseUrl}/user/profile/${email}`;
+  return this.http.get<User>(url);
+}
+getUsers():any{
+  return JSON.parse(localStorage.getItem("user"));
+}
+
+
+
 }

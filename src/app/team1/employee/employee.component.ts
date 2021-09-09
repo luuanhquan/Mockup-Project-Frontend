@@ -4,6 +4,7 @@ import {NgForm} from '@angular/forms';
 import {Users} from './users';
 
 import {UserService} from './employee.service';
+import { Usersfull } from './users1';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,9 @@ import {UserService} from './employee.service';
 })
 export class EmployeeComponent implements OnInit {
   public users: Users[];
-  public editUser: Users;
-  public deleteUser: Users;
-  public moveUser: Users;
+  public editUser: Usersfull;
+  public deleteUser: Usersfull;
+  public moveUser: Usersfull;
   p: number = 1;
 
   constructor(private userService: UserService) {
@@ -37,7 +38,7 @@ export class EmployeeComponent implements OnInit {
   public onAddUser(addForm: NgForm): void {
     document.getElementById('add-employee-form').click();
     this.userService.addUser(addForm.value).subscribe(
-      (response: Users) => {
+      (response: Usersfull) => {
         this.getUsers();
         addForm.reset();
       },
@@ -48,10 +49,10 @@ export class EmployeeComponent implements OnInit {
     );
   }
 
-  public onUpdateUser(users: Users): void {
-    this.userService.updateUser(users).subscribe(
-      (response: Users) => {
-        console.log(users);
+  public onUpdateUser(usersfull: Usersfull): void {
+    this.userService.updateUser(usersfull).subscribe(
+      (response: Usersfull) => {
+        console.log(usersfull);
         this.getUsers();
       },
       (error: HttpErrorResponse) => {
@@ -102,7 +103,7 @@ export class EmployeeComponent implements OnInit {
     }
   }
 
-  public onOpenModal(user: Users, mode: string): void {
+  public onOpenModal(userfull: Usersfull, mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
@@ -112,15 +113,15 @@ export class EmployeeComponent implements OnInit {
       button.setAttribute('data-target', '#addEmployeeModal');
     }
     if (mode === 'edit') {
-      this.editUser = user;
+      this.editUser = userfull;
       button.setAttribute('data-target', '#updateEmployeeModal');
     }
     if (mode === 'delete') {
-      this.deleteUser = user;
+      this.deleteUser = userfull;
       button.setAttribute('data-target', '#deleteEmployeeModal');
     }
     if (mode === 'move') {
-      this.moveUser = user;
+      this.moveUser = userfull;
       button.setAttribute('data-target', '#moveEmployeeModal');
     }
     container.appendChild(button);

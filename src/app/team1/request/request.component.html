@@ -52,12 +52,17 @@
             <td>
               <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
                 <a
-                  (click)="onOpenModal(leaveRequests, 'approve')"
+                  (click)="approved(leaveRequests)"
                   class="btn btn-primary"
                   role="button"
                 >Approve</a
                 >
-
+                <!-- <a *ngIf="leaveRequests.status == 0"   class="btn btn-primary" style="display: block" (click)="approved(leaveRequests)" routerLink="./">Approved</a> -->
+                <!-- <a *ngIf="currentUser.role != Role.PM && leaveRequests.status == 0"
+                style="display: block"
+                (click)="approved(leaveRequests)"
+                routerLink="./">
+                 Approved</a> -->
                 <!-- <span class="sr-only">(current)</span> -->
                 <button
                   (click)="onOpenModal(leaveRequests, 'refuse')"
@@ -137,8 +142,14 @@
           <div class="form-group">
             <label for="select1">Type</label>
             <select class="form-control" id="select1" name="type">
-              <option value="1">Intern</option>
-              <option value="2">Staff</option>
+              <option value="1">EARLY</option>
+              <option value="2">LATE</option>
+              <option value="3">YEARLY</option>
+              <option value="4">NO PAID</option>
+              <option value="5">BIRTHDAY</option>
+              <option value="6">MARIAGE</option>
+
+
             </select>
           </div>
           <div class="form-group">
@@ -152,20 +163,7 @@
               type="number"
             />
           </div>
-          <div class="form-group">
-            <label for="select1">Unit</label>
-            <select class="form-control" id="select1" name="unit">
-              <option value="1">DAY</option>
-              <option value="2">HOUR</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="select1">Status</label>
-            <select class="form-control" id="select1" name="type">
-              <option value="1">PENDING</option>
-              <option value="2">CANCEL</option>
-            </select>
-          </div>
+
           <div class="form-group">
             <label for="Status">Date Request</label>
             <input
@@ -177,7 +175,7 @@
             />
           </div>
           <div class="modal-footer">
-            <button
+            <!-- <button
               (click)="cModal()"
               class="btn btn-secondary"
               data-dismiss="modal"
@@ -185,7 +183,16 @@
             >
               Close
             </button>
-            <button (click)="hideModal()" class="btn btn-primary" type="submit">Save changes</button>
+            <button (click)="hideModal()" class="btn btn-primary" type="submit">Save changes</button> -->
+   <!-- //////////////////////////////////////////// -->
+            <!-- <button class="btn btn-secondary" data-dismiss="modal" id="" type="button">Close</button>
+            <button (click)="onAddRequest(addForm.value)" class="btn btn-primary" data-dismiss="modal">Save changes
+            </button> -->
+
+            <button class="btn btn-secondary" data-dismiss="modal" id="add-request-form" type="button">Close</button>
+            <!-- [disabled]="addForm.invalid" -->
+            <button class="btn btn-primary" type="submit">Save changes</button>
+
           </div>
         </form>
       </div>
@@ -222,13 +229,13 @@
           <button class="btn btn-secondary" data-dismiss="modal" type="button">
             No
           </button>
-          <button
+          <!-- <button
             (click)="onCancelRequest(cancelRequest.id)"
             class="btn btn-danger"
             data-dismiss="modal"
           >
             Yes
-          </button>
+          </button> -->
           <!-- (click)="onDeleteEmloyee(deleteRequest?.id)" -->
         </div>
       </div>
